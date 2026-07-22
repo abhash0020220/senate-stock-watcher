@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Congress Stock Watcher</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div>
+      <h1>Congress Stock Watcher</h1>
+      <p class="sub">Every publicly disclosed stock trade made by a U.S. House member, in one searchable table.</p>
+    </div>
+  </header>
+
+  <div class="banner" id="coverageBanner">
+    Loading dataset…
+  </div>
+
+  <section class="stats" id="stats"></section>
+
+  <section class="controls">
+    <input type="text" id="searchInput" placeholder="Search member, ticker, company, office…" />
+  </section>
+  <section class="controls controls-secondary">
+    <select id="stateFilter">
+      <option value="">All states</option>
+    </select>
+    <select id="typeFilter">
+      <option value="">All transaction types</option>
+      <option value="Purchase">Purchase</option>
+      <option value="Sale">Sale</option>
+      <option value="Sale (Partial)">Sale (Partial)</option>
+      <option value="Exchange">Exchange</option>
+    </select>
+    <select id="minAmountFilter">
+      <option value="0">Any amount</option>
+      <option value="1001">$1,001+</option>
+      <option value="15001">$15,001+</option>
+      <option value="50001">$50,001+</option>
+      <option value="100001">$100,001+</option>
+      <option value="250001">$250,001+</option>
+      <option value="500001">$500,001+</option>
+      <option value="1000001">$1,000,001+</option>
+    </select>
+    <label class="date-label">From <input type="date" id="dateFrom" /></label>
+    <label class="date-label">To <input type="date" id="dateTo" /></label>
+    <select id="sortSelect">
+      <option value="date_desc">Newest first</option>
+      <option value="date_asc">Oldest first</option>
+      <option value="member_asc">Member (A–Z)</option>
+      <option value="ticker_asc">Ticker (A–Z)</option>
+      <option value="amount_desc">Amount (high–low)</option>
+    </select>
+    <button class="secondary" id="clearFilters">Clear filters</button>
+  </section>
+
+  <div class="pager">
+    <button id="prevPage" class="secondary">← Prev</button>
+    <span id="pageInfo"></span>
+    <button id="nextPage" class="secondary">Next →</button>
+  </div>
+
+  <section class="table-wrap">
+    <table id="trTable">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Member</th>
+          <th>State</th>
+          <th>Office</th>
+          <th>Ticker</th>
+          <th>Asset</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="trBody"></tbody>
+    </table>
+    <div id="emptyState" class="empty-state" style="display:none;">No trades match those filters.</div>
+  </section>
+
+  <footer>
+    <p>Data source: House of Representatives Periodic Transaction Reports filed at
+      <a href="https://disclosures-clerk.house.gov/FinancialDisclosure" target="_blank" rel="noopener">disclosures-clerk.house.gov</a>,
+      parsed directly from the filed PDFs. Bond, treasury, and municipal-note disclosures (which carry no
+      stock ticker) and a small number of older scanned filings aren't included. Live, auto-updating data is
+      planned — see the
+      <a href="https://github.com/abhash0020220/senate-stock-watcher" target="_blank" rel="noopener">repo</a> for progress.
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
