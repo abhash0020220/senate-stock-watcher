@@ -128,10 +128,14 @@ thead th {
   letter-spacing: 0.04em;
   border-bottom: 1px solid var(--border);
   white-space: nowrap;
-  cursor: help;
-  text-decoration: underline dotted rgba(154, 154, 154, 0.5);
-  text-underline-offset: 3px;
 }
+
+.info-icon {
+  cursor: help;
+  opacity: 0.6;
+  font-size: 0.85em;
+}
+.info-icon:hover { opacity: 1; }
 tbody td {
   padding: 10px 12px;
   border-bottom: 1px solid var(--border);
