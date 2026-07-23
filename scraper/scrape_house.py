@@ -17,6 +17,7 @@ from pathlib import Path
 import requests
 
 from parse_ptr import parse_ptr_pdf
+from slugify import member_url as build_member_url
 
 BASE = 'https://disclosures-clerk.house.gov'
 SEARCH_URL = f'{BASE}/FinancialDisclosure/ViewMemberSearchResult'
@@ -96,8 +97,7 @@ if __name__ == '__main__':
         t['chamber'] = 'House'
         t['state'] = (t.get('office') or '')[:2]
         t['party'] = info.get('party')
-        bioguide = info.get('bioguide_id')
-        t['member_url'] = f'https://bioguide.congress.gov/search/bio/{bioguide}' if bioguide else None
+        t['member_url'] = build_member_url(info.get('name'), info.get('bioguide_id'))
 
         t['days_to_file'] = None
         if t.get('filed_date') and t.get('transaction_date'):

@@ -23,6 +23,7 @@ import requests
 from bs4 import BeautifulSoup
 
 from build_senate_lookup import norm
+from slugify import member_url as build_member_url
 
 # efdsearch's own search results are the *only* place these two problems
 # show up — checked directly against the raw JSON response:
@@ -183,7 +184,7 @@ def scrape_years(years):
                     t['party'] = info.get('party')
                     t['chamber'] = 'Senate'
                     t['ptr_link'] = f['url']
-                    t['member_url'] = f'https://bioguide.congress.gov/search/bio/{bioguide}' if bioguide else None
+                    t['member_url'] = build_member_url(t['member'], bioguide)
                     t['filed_date'] = f['filing_date']
                     t['days_to_file'] = days_between(t['transaction_date'], f['filing_date'])
                 all_trades.extend(trades)
