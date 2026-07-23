@@ -17,9 +17,15 @@ const STATE_NAMES = {
   MP: 'Northern Mariana Islands',
 };
 
+const PARTY_NAMES = { R: 'Republican', D: 'Democrat', I: 'Independent' };
+const PARTY_COLORS = { R: '#ff6b6b', D: '#4f9dff', I: '#8a919c' };
+
 let allTrades = [];
 let filteredTrades = [];
 let currentPage = 1;
+let partyByOffice = {};
+let charts = {};
+let analyticsBuilt = false;
 
 const els = {
   banner: document.getElementById('coverageBanner'),
@@ -37,6 +43,16 @@ const els = {
   prevPage: document.getElementById('prevPage'),
   nextPage: document.getElementById('nextPage'),
   pageInfo: document.getElementById('pageInfo'),
+  tabTrades: document.getElementById('tabTrades'),
+  tabAnalytics: document.getElementById('tabAnalytics'),
+  tradesView: document.getElementById('tradesView'),
+  analyticsView: document.getElementById('analyticsView'),
+  memberSelect: document.getElementById('memberSelect'),
+  partyCaveat: document.getElementById('partyCaveat'),
+  chartModal: document.getElementById('chartModal'),
+  modalCanvas: document.getElementById('modalCanvas'),
+  modalTitle: document.getElementById('modalTitle'),
+  modalClose: document.getElementById('modalClose'),
 };
 
 function parseDate(str) {
@@ -64,12 +80,15 @@ function amountLowerBound(amountStr) {
 }
 
 function loadData() {
-  return fetch('data/transactions.json')
-    .then(res => {
+  return Promise.all([
+    fetch('data/transactions.json').then(res => {
       if (!res.ok) throw new Error(`Failed to load dataset (${res.status})`);
       return res.json();
-    })
-    .then(raw => {
+    }),
+    fetch('data/member_parties.json').then(res => res.ok ? res.json() : {}).catch(() => ({})),
+  ])
+    .then(([raw, parties]) => {
+      partyByOffice = parties;
       allTrades = raw
         .filter(t => t.ticker && t.member)
         .map(t => {
@@ -82,7 +101,9 @@ function loadData() {
           const _dateIssue = _notifDate && _notifDate < _date;
           const _state = (t.office || '').slice(0, 2);
           const _amountLow = amountLowerBound(t.amount || '');
-          return { ...t, _date, _dateIssue, _state, _amountLow };
+          const _party = (partyByOffice[t.office] || {}).party || null;
+          const _month = `${_date.getFullYear()}-${String(_date.getMonth() + 1).padStart(2, '0')}`;
+          return { ...t, _date, _dateIssue, _state, _amountLow, _party, _month };
         });
 
       populateStateFilter();
@@ -203,6 +224,340 @@ function clearFilters() {
   els.sortSelect.value = 'date_desc';
   applyFilters();
 }
+
+// ---------- Analytics ----------
+
+const STATE_CHART_COLORS = [
+  '#4f9dff', '#3ddc84', '#ff6b6b', '#f7b955', '#c084fc',
+  '#5eead4', '#f472b6', '#a3e635', '#9a9a9a',
+];
+
+const AMOUNT_BRACKET_ORDER = [
+  '$1,001 - $15,000', '$15,001 - $50,000', '$50,001 - $100,000',
+  '$100,001 - $250,000', '$250,001 - $500,000', '$500,001 - $1,000,000',
+  '$1,000,001 - $5,000,000', '$5,000,001 - $25,000,000',
+];
+
+// Each chart is defined as a (canvasId) => Chart factory, so the exact same
+// definition can build either the small card chart or the expanded modal
+// version — no config duplication between the two sizes.
+const chartMakers = {};
+const chartTitles = {};
+const CHART_CANVAS_IDS = {
+  states: 'chartStates', member: 'chartMember', party: 'chartParty', partyType: 'chartPartyType',
+  topTickers: 'chartTopTickers', topMembers: 'chartTopMembers', buySell: 'chartBuySell', amountDist: 'chartAmountDist',
+};
+
+function sortedMonths() {
+  return [...new Set(allTrades.map(t => t._month))].sort();
+}
+
+function monthLabel(m) {
+  const [y, mo] = m.split('-').map(Number);
+  return new Date(y, mo - 1, 1).toLocaleDateString('en-US', { year: '2-digit', month: 'short' });
+}
+
+function switchView(view) {
+  const showAnalytics = view === 'analytics';
+  els.tradesView.style.display = showAnalytics ? 'none' : '';
+  els.analyticsView.style.display = showAnalytics ? '' : 'none';
+  els.tabTrades.classList.toggle('active', !showAnalytics);
+  els.tabAnalytics.classList.toggle('active', showAnalytics);
+  if (showAnalytics && !analyticsBuilt) {
+    buildAnalytics();
+    analyticsBuilt = true;
+  }
+}
+
+function buildAnalytics() {
+  registerStateChart();
+  registerMemberChart();
+  registerPartyChart();
+  registerPartyTypeChart();
+  registerTopTickersChart();
+  registerTopMembersChart();
+  registerBuySellChart();
+  registerAmountDistChart();
+
+  Object.keys(chartMakers).forEach(key => {
+    charts[key] = chartMakers[key](CHART_CANVAS_IDS[key]);
+  });
+}
+
+function baseChartOptions(extra) {
+  return Object.assign({
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { labels: { color: '#eef1f5', boxWidth: 12, font: { size: 11 } } },
+    },
+    scales: {
+      x: { ticks: { color: '#8a919c', font: { size: 10 } }, grid: { color: '#2a3038' } },
+      y: { ticks: { color: '#8a919c', font: { size: 10 } }, grid: { color: '#2a3038' }, beginAtZero: true },
+    },
+  }, extra || {});
+}
+
+function registerStateChart() {
+  chartTitles.states = 'Trades over time by state';
+  chartMakers.states = (canvasId) => {
+    const months = sortedMonths();
+    const totalsByState = {};
+    allTrades.forEach(t => { totalsByState[t._state] = (totalsByState[t._state] || 0) + 1; });
+    const topStates = Object.entries(totalsByState).sort((a, b) => b[1] - a[1]).slice(0, 8).map(([s]) => s);
+
+    const perMonthState = {};
+    months.forEach(m => { perMonthState[m] = {}; });
+    allTrades.forEach(t => {
+      const key = topStates.includes(t._state) ? t._state : 'Other';
+      perMonthState[t._month][key] = (perMonthState[t._month][key] || 0) + 1;
+    });
+
+    const seriesKeys = [...topStates, 'Other'];
+    const datasets = seriesKeys.map((key, i) => ({
+      label: key === 'Other' ? 'Other' : (STATE_NAMES[key] || key),
+      data: months.map(m => perMonthState[m][key] || 0),
+      borderColor: STATE_CHART_COLORS[i % STATE_CHART_COLORS.length],
+      backgroundColor: STATE_CHART_COLORS[i % STATE_CHART_COLORS.length],
+      tension: 0.25,
+      pointRadius: 2,
+      fill: false,
+    }));
+
+    return new Chart(document.getElementById(canvasId), {
+      type: 'line',
+      data: { labels: months.map(monthLabel), datasets },
+      options: baseChartOptions(),
+    });
+  };
+}
+
+function populateMemberSelect() {
+  const counts = {};
+  allTrades.forEach(t => { counts[t.member] = (counts[t.member] || 0) + 1; });
+  const members = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+  els.memberSelect.innerHTML = members
+    .map(([name, count]) => `<option value="${escapeHtml(name)}">${escapeHtml(name)} (${count})</option>`)
+    .join('');
+}
+
+function memberChartConfig(memberName) {
+  const months = sortedMonths();
+  const trades = allTrades.filter(t => t.member === memberName);
+  const counts = {};
+  trades.forEach(t => { counts[t._month] = (counts[t._month] || 0) + 1; });
+  return {
+    labels: months.map(monthLabel),
+    datasets: [{
+      label: memberName,
+      data: months.map(m => counts[m] || 0),
+      backgroundColor: '#4f9dff',
+      borderRadius: 3,
+    }],
+  };
+}
+
+function registerMemberChart() {
+  chartTitles.member = "A member's trades over time";
+  populateMemberSelect();
+  chartMakers.member = (canvasId) => new Chart(document.getElementById(canvasId), {
+    type: 'bar',
+    data: memberChartConfig(els.memberSelect.value),
+    options: baseChartOptions({ plugins: { legend: { display: false } } }),
+  });
+  els.memberSelect.addEventListener('change', () => {
+    if (charts.member) charts.member.destroy();
+    charts.member = chartMakers.member('chartMember');
+  });
+}
+
+function registerPartyChart() {
+  chartTitles.party = 'Republican vs. Democrat trades over time';
+  chartMakers.party = (canvasId) => {
+    const months = sortedMonths();
+    const withParty = allTrades.filter(t => t._party === 'R' || t._party === 'D');
+    const perMonth = { R: {}, D: {} };
+    withParty.forEach(t => { perMonth[t._party][t._month] = (perMonth[t._party][t._month] || 0) + 1; });
+
+    const memberSet = { R: new Set(), D: new Set() };
+    withParty.forEach(t => memberSet[t._party].add(t.member));
+    els.partyCaveat.textContent =
+      `Raw trade counts, not adjusted for how many members of each party filed disclosures in this dataset ` +
+      `(${memberSet.R.size} Republican members, ${memberSet.D.size} Democrat members appear here).`;
+
+    return new Chart(document.getElementById(canvasId), {
+      type: 'line',
+      data: {
+        labels: months.map(monthLabel),
+        datasets: ['R', 'D'].map(p => ({
+          label: PARTY_NAMES[p],
+          data: months.map(m => perMonth[p][m] || 0),
+          borderColor: PARTY_COLORS[p],
+          backgroundColor: PARTY_COLORS[p],
+          tension: 0.25,
+          pointRadius: 2,
+          fill: false,
+        })),
+      },
+      options: baseChartOptions(),
+    });
+  };
+}
+
+function registerPartyTypeChart() {
+  chartTitles.partyType = 'Republican vs. Democrat: purchases vs. sales';
+  chartMakers.partyType = (canvasId) => {
+    const withParty = allTrades.filter(t => t._party === 'R' || t._party === 'D');
+    const categories = ['Purchase', 'Sale', 'Exchange'];
+    const normType = t => t.type.startsWith('Sale') ? 'Sale' : t.type;
+
+    const counts = { R: { Purchase: 0, Sale: 0, Exchange: 0 }, D: { Purchase: 0, Sale: 0, Exchange: 0 } };
+    withParty.forEach(t => {
+      const cat = normType(t);
+      if (counts[t._party][cat] !== undefined) counts[t._party][cat]++;
+    });
+
+    return new Chart(document.getElementById(canvasId), {
+      type: 'bar',
+      data: {
+        labels: categories,
+        datasets: ['R', 'D'].map(p => ({
+          label: PARTY_NAMES[p],
+          data: categories.map(c => counts[p][c]),
+          backgroundColor: PARTY_COLORS[p],
+          borderRadius: 3,
+        })),
+      },
+      options: baseChartOptions(),
+    });
+  };
+}
+
+function registerTopTickersChart() {
+  chartTitles.topTickers = 'Most-traded tickers';
+  chartMakers.topTickers = (canvasId) => {
+    const counts = {};
+    allTrades.forEach(t => { counts[t.ticker] = (counts[t.ticker] || 0) + 1; });
+    const top = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 10);
+
+    return new Chart(document.getElementById(canvasId), {
+      type: 'bar',
+      data: {
+        labels: top.map(([ticker]) => ticker),
+        datasets: [{ label: 'Trades', data: top.map(([, c]) => c), backgroundColor: '#3ddc84', borderRadius: 3 }],
+      },
+      options: baseChartOptions({ indexAxis: 'y', plugins: { legend: { display: false } } }),
+    });
+  };
+}
+
+function registerTopMembersChart() {
+  chartTitles.topMembers = 'Most active traders';
+  chartMakers.topMembers = (canvasId) => {
+    const counts = {};
+    const partyOf = {};
+    allTrades.forEach(t => {
+      counts[t.member] = (counts[t.member] || 0) + 1;
+      partyOf[t.member] = t._party;
+    });
+    const top = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 10);
+
+    return new Chart(document.getElementById(canvasId), {
+      type: 'bar',
+      data: {
+        labels: top.map(([name]) => name),
+        datasets: [{
+          label: 'Trades',
+          data: top.map(([, c]) => c),
+          backgroundColor: top.map(([name]) => PARTY_COLORS[partyOf[name]] || '#9a9a9a'),
+          borderRadius: 3,
+        }],
+      },
+      options: baseChartOptions({ indexAxis: 'y', plugins: { legend: { display: false } } }),
+    });
+  };
+}
+
+function registerBuySellChart() {
+  chartTitles.buySell = 'Buy vs. sell trend over time';
+  chartMakers.buySell = (canvasId) => {
+    const months = sortedMonths();
+    const normType = t => t.type.startsWith('Sale') ? 'Sale' : t.type;
+    const categories = ['Purchase', 'Sale', 'Exchange'];
+    const colors = { Purchase: '#3ddc84', Sale: '#ff6b6b', Exchange: '#f7b955' };
+
+    const perMonth = {};
+    months.forEach(m => { perMonth[m] = { Purchase: 0, Sale: 0, Exchange: 0 }; });
+    allTrades.forEach(t => { perMonth[t._month][normType(t)]++; });
+
+    return new Chart(document.getElementById(canvasId), {
+      type: 'line',
+      data: {
+        labels: months.map(monthLabel),
+        datasets: categories.map(cat => ({
+          label: cat,
+          data: months.map(m => perMonth[m][cat]),
+          borderColor: colors[cat],
+          backgroundColor: colors[cat],
+          tension: 0.25,
+          pointRadius: 2,
+          fill: false,
+        })),
+      },
+      options: baseChartOptions(),
+    });
+  };
+}
+
+function registerAmountDistChart() {
+  chartTitles.amountDist = 'Trade size distribution';
+  chartMakers.amountDist = (canvasId) => {
+    const counts = {};
+    AMOUNT_BRACKET_ORDER.forEach(b => { counts[b] = 0; });
+    let other = 0;
+    allTrades.forEach(t => {
+      if (counts[t.amount] !== undefined) counts[t.amount]++;
+      else other++;
+    });
+    const labels = [...AMOUNT_BRACKET_ORDER, 'Other (exact amounts)'];
+    const data = [...AMOUNT_BRACKET_ORDER.map(b => counts[b]), other];
+
+    return new Chart(document.getElementById(canvasId), {
+      type: 'bar',
+      data: { labels, datasets: [{ label: 'Trades', data, backgroundColor: '#c084fc', borderRadius: 3 }] },
+      options: baseChartOptions({
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { color: '#8a919c', font: { size: 9 }, maxRotation: 40, minRotation: 40 }, grid: { color: '#2a3038' } },
+          y: { ticks: { color: '#8a919c', font: { size: 10 } }, grid: { color: '#2a3038' }, beginAtZero: true },
+        },
+      }),
+    });
+  };
+}
+
+function openChartModal(key) {
+  els.modalTitle.textContent = chartTitles[key] || '';
+  els.chartModal.style.display = 'flex';
+  if (charts.modal) charts.modal.destroy();
+  charts.modal = chartMakers[key]('modalCanvas');
+}
+
+function closeChartModal() {
+  els.chartModal.style.display = 'none';
+  if (charts.modal) { charts.modal.destroy(); charts.modal = null; }
+}
+
+document.querySelectorAll('.expand-btn').forEach(btn => {
+  btn.addEventListener('click', () => openChartModal(btn.dataset.chart));
+});
+els.modalClose.addEventListener('click', closeChartModal);
+els.chartModal.addEventListener('click', (e) => { if (e.target === els.chartModal) closeChartModal(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && els.chartModal.style.display !== 'none') closeChartModal(); });
+
+els.tabTrades.addEventListener('click', () => switchView('trades'));
+els.tabAnalytics.addEventListener('click', () => switchView('analytics'));
 
 els.search.addEventListener('input', applyFilters);
 els.stateFilter.addEventListener('change', applyFilters);

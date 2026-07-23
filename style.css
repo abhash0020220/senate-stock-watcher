@@ -148,6 +148,99 @@ tbody tr:hover { background: var(--surface-2); }
 
 .date-flag { cursor: help; font-size: 0.78rem; }
 
+.view-tabs {
+  display: flex;
+  gap: 4px;
+  margin-top: 22px;
+  border-bottom: 1px solid var(--border);
+}
+.view-tab {
+  background: transparent;
+  color: var(--text-dim);
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  padding: 9px 4px;
+  margin-right: 18px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.view-tab:hover { background: transparent; color: var(--text); }
+.view-tab.active { color: var(--text); border-bottom-color: var(--accent); }
+
+.analytics-view {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+@media (min-width: 900px) {
+  .analytics-view { grid-template-columns: 1fr 1fr; }
+}
+
+.chart-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+.chart-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+.chart-sub { font-size: 0.78rem; color: var(--text-dim); margin-bottom: 10px; }
+.chart-card_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.chart-card_header h3 { margin-bottom: 0; }
+.chart-card_header select { max-width: 220px; }
+.chart-card_controls { display: flex; align-items: center; gap: 8px; }
+.chart-wrap { position: relative; height: 280px; }
+
+.expand-btn {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  border-radius: 6px;
+  padding: 5px 9px;
+  font-size: 0.9rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.expand-btn:hover { background: #262c37; color: var(--text); }
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.modal-content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 22px;
+  width: 100%;
+  max-width: 1000px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.modal-header h3 { font-size: 1.05rem; font-weight: 700; }
+.modal-chart-wrap { position: relative; flex: 1; min-height: 60vh; }
+
 .ptr-link { color: var(--accent); text-decoration: none; font-size: 0.8rem; }
 .ptr-link:hover { text-decoration: underline; }
 

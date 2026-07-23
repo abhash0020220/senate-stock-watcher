@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Congress Stock Watcher</title>
 <link rel="stylesheet" href="style.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -20,6 +21,92 @@
   </div>
 
   <section class="stats" id="stats"></section>
+
+  <div class="view-tabs">
+    <button class="view-tab active" id="tabTrades" data-view="trades">Trades</button>
+    <button class="view-tab" id="tabAnalytics" data-view="analytics">Analytics</button>
+  </div>
+
+  <section id="analyticsView" class="analytics-view" style="display:none;">
+    <div class="chart-card">
+      <div class="chart-card_header">
+        <div><h3>Trades over time by state</h3><p class="chart-sub">Top 8 states by trade volume, monthly. All others grouped as "Other".</p></div>
+        <button class="expand-btn" data-chart="states" title="Expand">⤢</button>
+      </div>
+      <div class="chart-wrap"><canvas id="chartStates"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card_header">
+        <h3>A member's trades over time</h3>
+        <div class="chart-card_controls">
+          <select id="memberSelect"></select>
+          <button class="expand-btn" data-chart="member" title="Expand">⤢</button>
+        </div>
+      </div>
+      <div class="chart-wrap"><canvas id="chartMember"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card_header">
+        <div><h3>Republican vs. Democrat trades over time</h3><p class="chart-sub" id="partyCaveat"></p></div>
+        <button class="expand-btn" data-chart="party" title="Expand">⤢</button>
+      </div>
+      <div class="chart-wrap"><canvas id="chartParty"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card_header">
+        <h3>Republican vs. Democrat: purchases vs. sales</h3>
+        <button class="expand-btn" data-chart="partyType" title="Expand">⤢</button>
+      </div>
+      <div class="chart-wrap"><canvas id="chartPartyType"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card_header">
+        <h3>Most-traded tickers</h3>
+        <button class="expand-btn" data-chart="topTickers" title="Expand">⤢</button>
+      </div>
+      <div class="chart-wrap"><canvas id="chartTopTickers"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card_header">
+        <h3>Most active traders</h3>
+        <button class="expand-btn" data-chart="topMembers" title="Expand">⤢</button>
+      </div>
+      <div class="chart-wrap"><canvas id="chartTopMembers"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card_header">
+        <div><h3>Buy vs. sell trend over time</h3><p class="chart-sub">All members combined.</p></div>
+        <button class="expand-btn" data-chart="buySell" title="Expand">⤢</button>
+      </div>
+      <div class="chart-wrap"><canvas id="chartBuySell"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card_header">
+        <div><h3>Trade size distribution</h3><p class="chart-sub">Number of trades in each disclosed dollar-amount bracket.</p></div>
+        <button class="expand-btn" data-chart="amountDist" title="Expand">⤢</button>
+      </div>
+      <div class="chart-wrap"><canvas id="chartAmountDist"></canvas></div>
+    </div>
+  </section>
+
+  <div id="chartModal" class="modal-overlay" style="display:none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle"></h3>
+        <button class="secondary" id="modalClose">✕ Close</button>
+      </div>
+      <div class="modal-chart-wrap"><canvas id="modalCanvas"></canvas></div>
+    </div>
+  </div>
+
+  <div id="tradesView">
 
   <section class="controls">
     <input type="text" id="searchInput" placeholder="Search member, ticker, company, office…" />
@@ -82,6 +169,8 @@
     </table>
     <div id="emptyState" class="empty-state" style="display:none;">No trades match those filters.</div>
   </section>
+
+  </div>
 
   <footer>
     <p>Data source: House of Representatives Periodic Transaction Reports filed at
