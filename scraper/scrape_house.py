@@ -4,7 +4,7 @@ Senate's site — has no bot protection and returns plain HTML/PDF over
 simple HTTP requests. No API key, no cost.
 
 Usage: python3 scrape_house.py [years...]
-Writes ../data/transactions.json
+Writes ../data/house_trades.json — combine with Senate data via merge_data.py.
 """
 import io
 import json
@@ -87,6 +87,15 @@ if __name__ == '__main__':
     years = [int(a) for a in sys.argv[1:]] or [current_year - 1, current_year]
     trades = scrape_years(years)
     trades = [t for t in trades if t.get('ticker')]  # drop rows we couldn't identify a ticker for
-    out_path = Path(__file__).parent.parent / 'data' / 'transactions.json'
+
+    parties_path = Path(__file__).parent.parent / 'data' / 'member_parties.json'
+    parties = json.loads(parties_path.read_text()) if parties_path.exists() else {}
+    for t in trades:
+        info = parties.get(t.get('office'), {})
+        t['chamber'] = 'House'
+        t['state'] = (t.get('office') or '')[:2]
+        t['party'] = info.get('party')
+
+    out_path = Path(__file__).parent.parent / 'data' / 'house_trades.json'
     out_path.write_text(json.dumps(trades, indent=2))
     print(f'Wrote {len(trades)} trades to {out_path}', file=sys.stderr)

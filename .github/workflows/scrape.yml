@@ -1,9 +1,9 @@
-name: Scrape House trade disclosures
+name: Scrape Congress trade disclosures
 
 on:
   schedule:
     # Every Monday at 09:00 UTC. Free — runs on GitHub's infrastructure,
-    # no API keys, no Claude involved, just the plain Python scraper.
+    # no API keys, no Claude involved, just the plain Python scrapers.
     - cron: '0 9 * * 1'
   workflow_dispatch: {}
 
@@ -23,18 +23,28 @@ jobs:
       - name: Install dependencies
         run: pip install -r scraper/requirements.txt
 
-      - name: Run scraper
+      - name: Refresh party/state lookups
+        working-directory: scraper
+        run: |
+          python3 build_party_lookup.py
+          python3 build_senate_lookup.py
+
+      - name: Scrape House
         working-directory: scraper
         run: python3 scrape_house.py
 
-      - name: Refresh party lookup
+      - name: Scrape Senate
         working-directory: scraper
-        run: python3 build_party_lookup.py
+        run: python3 scrape_senate.py
+
+      - name: Merge into transactions.json
+        working-directory: scraper
+        run: python3 merge_data.py
 
       - name: Commit updated data if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/transactions.json data/member_parties.json
+          git add data/transactions.json data/member_parties.json data/senate_lookup.json data/house_trades.json data/senate_trades.json
           git diff --cached --quiet && echo "No changes" || git commit -m "Weekly data refresh"
           git push

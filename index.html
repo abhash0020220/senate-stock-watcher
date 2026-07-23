@@ -12,7 +12,7 @@
   <header class="topbar">
     <div>
       <h1>Congress Stock Watcher</h1>
-      <p class="sub">Every publicly disclosed stock trade made by a U.S. House member, in one searchable table.</p>
+      <p class="sub">Every publicly disclosed stock trade made by a U.S. House member or Senator, in one searchable table.</p>
     </div>
   </header>
 
@@ -112,6 +112,11 @@
     <input type="text" id="searchInput" placeholder="Search member, ticker, company, office…" />
   </section>
   <section class="controls controls-secondary">
+    <select id="chamberFilter">
+      <option value="">House + Senate</option>
+      <option value="House">House</option>
+      <option value="Senate">Senate</option>
+    </select>
     <select id="stateFilter">
       <option value="">All states</option>
     </select>
@@ -119,6 +124,7 @@
       <option value="">All transaction types</option>
       <option value="Purchase">Purchase</option>
       <option value="Sale">Sale</option>
+      <option value="Sale (Full)">Sale (Full)</option>
       <option value="Sale (Partial)">Sale (Partial)</option>
       <option value="Exchange">Exchange</option>
     </select>
@@ -156,6 +162,7 @@
         <tr>
           <th>Date</th>
           <th>Member</th>
+          <th>Chamber</th>
           <th>State</th>
           <th>Office</th>
           <th>Ticker</th>
@@ -173,11 +180,12 @@
   </div>
 
   <footer>
-    <p>Data source: House of Representatives Periodic Transaction Reports filed at
-      <a href="https://disclosures-clerk.house.gov/FinancialDisclosure" target="_blank" rel="noopener">disclosures-clerk.house.gov</a>,
-      parsed directly from the filed PDFs. Bond, treasury, and municipal-note disclosures (which carry no
-      stock ticker) and a small number of older scanned filings aren't included. Live, auto-updating data is
-      planned — see the
+    <p>Data source: Periodic Transaction Reports filed at
+      <a href="https://disclosures-clerk.house.gov/FinancialDisclosure" target="_blank" rel="noopener">disclosures-clerk.house.gov</a>
+      (House) and
+      <a href="https://efdsearch.senate.gov/search/" target="_blank" rel="noopener">efdsearch.senate.gov</a>
+      (Senate). Bond, treasury, and municipal-note disclosures (which carry no stock ticker) and a small number
+      of older scanned filings aren't included. Live, auto-updating data is planned — see the
       <a href="https://github.com/abhash0020220/senate-stock-watcher" target="_blank" rel="noopener">repo</a> for progress.
     </p>
   </footer>

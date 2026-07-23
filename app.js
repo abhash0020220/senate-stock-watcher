@@ -23,7 +23,6 @@ const PARTY_COLORS = { R: '#ff6b6b', D: '#4f9dff', I: '#8a919c' };
 let allTrades = [];
 let filteredTrades = [];
 let currentPage = 1;
-let partyByOffice = {};
 let charts = {};
 let analyticsBuilt = false;
 
@@ -32,6 +31,7 @@ const els = {
   stats: document.getElementById('stats'),
   search: document.getElementById('searchInput'),
   stateFilter: document.getElementById('stateFilter'),
+  chamberFilter: document.getElementById('chamberFilter'),
   typeFilter: document.getElementById('typeFilter'),
   minAmountFilter: document.getElementById('minAmountFilter'),
   dateFrom: document.getElementById('dateFrom'),
@@ -80,15 +80,12 @@ function amountLowerBound(amountStr) {
 }
 
 function loadData() {
-  return Promise.all([
-    fetch('data/transactions.json').then(res => {
+  return fetch('data/transactions.json')
+    .then(res => {
       if (!res.ok) throw new Error(`Failed to load dataset (${res.status})`);
       return res.json();
-    }),
-    fetch('data/member_parties.json').then(res => res.ok ? res.json() : {}).catch(() => ({})),
-  ])
-    .then(([raw, parties]) => {
-      partyByOffice = parties;
+    })
+    .then(raw => {
       allTrades = raw
         .filter(t => t.ticker && t.member)
         .map(t => {
@@ -96,12 +93,14 @@ function loadData() {
           const _notifDate = t.notification_date ? parseDate(t.notification_date) : null;
           // A notification date before the transaction date is physically
           // impossible (you can't be notified of a trade before it
-          // happens), so it flags a typo in the original House filing
-          // itself, not something we can safely auto-correct.
+          // happens), so it flags a typo in the original filing itself,
+          // not something we can safely auto-correct. Senate filings don't
+          // carry a notification date at all, so this only ever applies
+          // to House trades.
           const _dateIssue = _notifDate && _notifDate < _date;
-          const _state = (t.office || '').slice(0, 2);
+          const _state = t.state || (t.office || '').slice(0, 2);
           const _amountLow = amountLowerBound(t.amount || '');
-          const _party = (partyByOffice[t.office] || {}).party || null;
+          const _party = t.party || null;
           const _month = `${_date.getFullYear()}-${String(_date.getMonth() + 1).padStart(2, '0')}`;
           return { ...t, _date, _dateIssue, _state, _amountLow, _party, _month };
         });
@@ -128,7 +127,9 @@ function renderCoverageBanner() {
   const first = dates[0];
   const last = dates[dates.length - 1];
   const fmt = d => d.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
-  els.banner.textContent = `Showing ${allTrades.length.toLocaleString()} disclosed House trades, ${fmt(first)} – ${fmt(last)}. Live tracking coming soon.`;
+  const houseCount = allTrades.filter(t => t.chamber === 'House').length;
+  const senateCount = allTrades.filter(t => t.chamber === 'Senate').length;
+  els.banner.textContent = `Showing ${allTrades.length.toLocaleString()} disclosed trades (${houseCount.toLocaleString()} House, ${senateCount.toLocaleString()} Senate), ${fmt(first)} – ${fmt(last)}. Live tracking coming soon.`;
 }
 
 function renderStats() {
@@ -152,6 +153,7 @@ function renderStats() {
 function applyFilters() {
   const q = els.search.value.trim().toLowerCase();
   const stateVal = els.stateFilter.value;
+  const chamberVal = els.chamberFilter.value;
   const typeVal = els.typeFilter.value;
   const minAmount = parseInt(els.minAmountFilter.value, 10) || 0;
   const fromVal = els.dateFrom.value ? new Date(els.dateFrom.value) : null;
@@ -160,6 +162,7 @@ function applyFilters() {
 
   filteredTrades = allTrades.filter(t => {
     if (stateVal && t._state !== stateVal) return false;
+    if (chamberVal && t.chamber !== chamberVal) return false;
     if (typeVal && t.type !== typeVal) return false;
     if (minAmount && t._amountLow < minAmount) return false;
     if (fromVal && t._date < fromVal) return false;
@@ -198,6 +201,7 @@ function renderTable() {
     <tr>
       <td>${t.transaction_date}${t._dateIssue ? ` <span class="date-flag" title="This filing's notification date is before its transaction date — likely a typo in the original House filing, not this app.">⚠</span>` : ''}</td>
       <td>${escapeHtml(t.member)}</td>
+      <td>${escapeHtml(t.chamber)}</td>
       <td>${escapeHtml(STATE_NAMES[t._state] || t._state)}</td>
       <td>${escapeHtml(t.office)}</td>
       <td><strong>${escapeHtml(t.ticker)}</strong></td>
@@ -217,6 +221,7 @@ function renderTable() {
 function clearFilters() {
   els.search.value = '';
   els.stateFilter.value = '';
+  els.chamberFilter.value = '';
   els.typeFilter.value = '';
   els.minAmountFilter.value = '0';
   els.dateFrom.value = '';
@@ -561,6 +566,7 @@ els.tabAnalytics.addEventListener('click', () => switchView('analytics'));
 
 els.search.addEventListener('input', applyFilters);
 els.stateFilter.addEventListener('change', applyFilters);
+els.chamberFilter.addEventListener('change', applyFilters);
 els.typeFilter.addEventListener('change', applyFilters);
 els.minAmountFilter.addEventListener('change', applyFilters);
 els.dateFrom.addEventListener('change', applyFilters);
