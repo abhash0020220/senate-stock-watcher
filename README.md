@@ -1,4 +1,4 @@
-# Congress Stock Watcher
+# Hill & Wall
 
 A searchable dashboard of stock trades publicly disclosed by U.S. House members and Senators, built as a fully static, zero-backend site — no API keys, no server, no cost.
 
