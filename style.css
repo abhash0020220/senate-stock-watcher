@@ -166,9 +166,7 @@ tbody tr:hover { background: var(--surface-2); }
   border-radius: 999px;
   font-size: 0.72rem;
   font-weight: 600;
-  transition: transform 0.15s ease;
 }
-.type-pill:hover, .party-pill:hover, .days-pill:hover { transform: scale(1.08); }
 
 .type-purchase { background: rgba(61, 220, 132, 0.15); color: var(--green); }
 .type-sale-full { background: rgba(255, 107, 107, 0.15); color: var(--red); }
