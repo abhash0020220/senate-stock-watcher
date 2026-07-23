@@ -186,6 +186,16 @@ tbody tr:hover { background: var(--surface-2); }
 .days-pill.on-time { background: rgba(61, 220, 132, 0.15); color: var(--green); }
 .days-pill.late { background: rgba(255, 107, 107, 0.15); color: var(--red); }
 
+.state-flag {
+  width: 18px;
+  height: 12px;
+  object-fit: cover;
+  border-radius: 2px;
+  vertical-align: middle;
+  margin-right: 6px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
 .member-link { color: var(--accent); text-decoration: none; font-size: 0.8rem; transition: transform 0.15s ease; display: inline-block; }
 .member-link:hover { text-decoration: underline; transform: scale(1.15); }
 
@@ -246,7 +256,7 @@ tbody tr:hover { background: var(--surface-2); }
 .chart-card_header select { max-width: 220px; }
 .chart-card_controls { display: flex; align-items: center; gap: 8px; }
 
-#blogView { margin-top: 20px; }
+#blogView, #aboutView { margin-top: 20px; }
 
 .article {
   max-width: 720px;

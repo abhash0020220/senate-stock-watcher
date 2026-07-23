@@ -19,6 +19,30 @@ const STATE_NAMES = {
   MP: 'Northern Mariana Islands',
 };
 
+// Wikimedia Commons file-name slugs for "Flag_of_{slug}.svg" — public
+// domain, verified individually against commons.wikimedia.org before use.
+const STATE_FLAG_SLUGS = {
+  AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas', CA: 'California',
+  CO: 'Colorado', CT: 'Connecticut', DE: 'Delaware', DC: 'District_of_Columbia', FL: 'Florida',
+  GA: 'Georgia_(U.S._state)', HI: 'Hawaii', ID: 'Idaho', IL: 'Illinois', IN: 'Indiana',
+  IA: 'Iowa', KS: 'Kansas', KY: 'Kentucky', LA: 'Louisiana', ME: 'Maine',
+  MD: 'Maryland', MA: 'Massachusetts', MI: 'Michigan', MN: 'Minnesota',
+  MS: 'Mississippi', MO: 'Missouri', MT: 'Montana', NE: 'Nebraska',
+  NV: 'Nevada', NH: 'New_Hampshire', NJ: 'New_Jersey', NM: 'New_Mexico',
+  NY: 'New_York', NC: 'North_Carolina', ND: 'North_Dakota', OH: 'Ohio',
+  OK: 'Oklahoma', OR: 'Oregon', PA: 'Pennsylvania', RI: 'Rhode_Island',
+  SC: 'South_Carolina', SD: 'South_Dakota', TN: 'Tennessee', TX: 'Texas',
+  UT: 'Utah', VT: 'Vermont', VA: 'Virginia', WA: 'Washington',
+  WV: 'West_Virginia', WI: 'Wisconsin', WY: 'Wyoming',
+  PR: 'Puerto_Rico', GU: 'Guam', VI: 'the_United_States_Virgin_Islands', AS: 'American_Samoa',
+  MP: 'the_Northern_Mariana_Islands',
+};
+
+function stateFlagUrl(code) {
+  const slug = STATE_FLAG_SLUGS[code];
+  return slug ? `https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_${slug}.svg` : null;
+}
+
 const PARTY_NAMES = { R: 'Republican', D: 'Democrat', I: 'Independent' };
 const PARTY_COLORS = { R: '#ff6b6b', D: '#4f9dff', I: '#8a919c' };
 const CHAMBER_COLORS = { House: '#4f9dff', Senate: '#c084fc' };
@@ -113,6 +137,7 @@ function loadData() {
       allTrades = raw
         .filter(t => t.ticker && t.member)
         .map(t => {
+          if (t.member) t.member = t.member.replace(/^Hon\.\s+/, '');
           const _date = parseDate(t.transaction_date);
           const _notifDate = t.notification_date ? parseDate(t.notification_date) : null;
           const _filedDate = t.filed_date ? parseDate(t.filed_date) : null;
@@ -237,7 +262,7 @@ function renderTable() {
       <td>${escapeHtml(t.member)}${t.member_url ? ` <a class="member-link" href="${t.member_url}" target="_blank" rel="noopener" title="Official congress.gov profile">↗</a>` : ''}</td>
       <td>${t._party ? `<span class="party-pill" style="background:${PARTY_COLORS[t._party]}22; color:${PARTY_COLORS[t._party]};">${escapeHtml(PARTY_NAMES[t._party] || t._party)}</span>` : '—'}</td>
       <td>${escapeHtml(t.chamber)}</td>
-      <td>${escapeHtml(STATE_NAMES[t._state] || t._state)}</td>
+      <td>${stateFlagUrl(t._state) ? `<img class="state-flag" src="${stateFlagUrl(t._state)}" alt="" loading="lazy" />` : ''}${escapeHtml(STATE_NAMES[t._state] || t._state)}</td>
       <td>${escapeHtml(t.office)}</td>
       <td><strong>${escapeHtml(t.ticker)}</strong> <a class="member-link" href="https://finance.yahoo.com/quote/${encodeURIComponent(t.ticker)}" target="_blank" rel="noopener" title="View on Yahoo Finance">↗</a></td>
       <td><span class="type-pill ${typeClass(t.type)}">${escapeHtml(normalizeType(t.type))}</span></td>
