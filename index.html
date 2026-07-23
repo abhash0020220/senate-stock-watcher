@@ -6,6 +6,8 @@
 <title>Congress Stock Watcher</title>
 <link rel="stylesheet" href="style.css" />
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
 </head>
 <body>
 
@@ -28,13 +30,21 @@
   </div>
 
   <section id="analyticsView" class="analytics-view" style="display:none;">
-    <div class="controls" style="margin-top:0;">
-      <label class="date-label">Scope <select id="analyticsChamberFilter">
-        <option value="">House + Senate</option>
-        <option value="House">House only</option>
-        <option value="Senate">Senate only</option>
-      </select></label>
-      <span class="chart-sub" style="margin:0;">Applies to every chart below except the House vs. Senate comparisons, which always show both.</span>
+    <div class="chart-card analytics-intro">
+      <div class="chart-card_header">
+        <h3>Analytics</h3>
+        <label class="date-label">Scope <select id="analyticsChamberFilter">
+          <option value="">House + Senate</option>
+          <option value="House">House only</option>
+          <option value="Senate">Senate only</option>
+        </select></label>
+      </div>
+      <p class="chart-sub">
+        Explore trading patterns across the House and Senate. The scope selector above filters every chart below to
+        one chamber or both combined — except the House vs. Senate comparison charts, which always show both so
+        there's something to compare. Click a legend entry to isolate that series (click another to add it, click
+        the last one off to reset), use the +/− buttons to zoom into a time range, and ⤢ to expand any chart.
+      </p>
     </div>
 
     <div class="chart-card">

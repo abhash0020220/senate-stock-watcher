@@ -1,3 +1,5 @@
+if (typeof ChartZoom !== 'undefined') Chart.register(ChartZoom);
+
 const PAGE_SIZE = 50;
 
 const STATE_NAMES = {
@@ -344,6 +346,34 @@ function buildAnalytics() {
   registerMonthlyTotalChart();
 
   rebuildAllCharts();
+  addZoomControls();
+}
+
+function addZoomControls() {
+  document.querySelectorAll('.expand-btn[data-chart]').forEach(expandBtn => {
+    if (expandBtn.dataset.zoomWired) return;
+    expandBtn.dataset.zoomWired = '1';
+    const key = expandBtn.dataset.chart;
+
+    const group = document.createElement('span');
+    group.className = 'zoom-controls';
+    group.innerHTML = `
+      <button class="zoom-btn" data-action="out" title="Zoom out">−</button>
+      <button class="zoom-btn" data-action="in" title="Zoom in">+</button>
+      <button class="zoom-btn" data-action="reset" title="Reset zoom">↺</button>
+    `;
+    expandBtn.insertAdjacentElement('beforebegin', group);
+
+    group.querySelectorAll('.zoom-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const chart = charts[key];
+        if (!chart) return;
+        if (btn.dataset.action === 'in') chart.zoom(1.2);
+        else if (btn.dataset.action === 'out') chart.zoom(0.8);
+        else chart.resetZoom();
+      });
+    });
+  });
 }
 
 function rebuildAllCharts() {
@@ -376,18 +406,33 @@ function isolateLegendClick(e, legendItem, legend) {
 }
 
 function baseChartOptions(extra) {
-  return Object.assign({
+  extra = extra || {};
+  const merged = Object.assign({
     responsive: true,
     maintainAspectRatio: false,
     interaction: { mode: 'index', intersect: false },
-    plugins: {
-      legend: { labels: { color: '#eef1f5', boxWidth: 12, font: { size: 11 } }, onClick: isolateLegendClick },
+  }, extra);
+
+  // Merge plugins/scales one level deep instead of Object.assign's default
+  // shallow replace, so a chart that only overrides e.g. legend.display
+  // doesn't accidentally lose the zoom config that lives alongside it.
+  merged.plugins = Object.assign({
+    legend: { labels: { color: '#eef1f5', boxWidth: 12, font: { size: 11 } }, onClick: isolateLegendClick },
+    zoom: {
+      pan: { enabled: true, mode: 'x' },
+      // Wheel/pinch zoom disabled — they hijack normal page scrolling
+      // when the cursor happens to be over a chart. Zoom is button-only.
+      zoom: { wheel: { enabled: false }, pinch: { enabled: false }, mode: 'x' },
+      limits: { x: { min: 'original', max: 'original' } },
     },
-    scales: {
-      x: { ticks: { color: '#8a919c', font: { size: 10 } }, grid: { color: '#2a3038' } },
-      y: { ticks: { color: '#8a919c', font: { size: 10 } }, grid: { color: '#2a3038' }, beginAtZero: true },
-    },
-  }, extra || {});
+  }, extra.plugins);
+
+  merged.scales = Object.assign({
+    x: { ticks: { color: '#8a919c', font: { size: 10 } }, grid: { color: '#2a3038' } },
+    y: { ticks: { color: '#8a919c', font: { size: 10 } }, grid: { color: '#2a3038' }, beginAtZero: true },
+  }, extra.scales);
+
+  return merged;
 }
 
 function registerStateChart() {
