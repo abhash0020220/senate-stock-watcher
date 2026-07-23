@@ -131,7 +131,7 @@ thead th {
 }
 
 .info-icon {
-  cursor: help;
+  cursor: default;
   opacity: 0.6;
   font-size: 0.85em;
 }
