@@ -353,13 +353,35 @@ function rebuildAllCharts() {
   });
 }
 
+// Clicking a legend item isolates that series (hides every other one)
+// instead of Chart.js's default of just toggling the clicked series off.
+// Clicking a second item adds it to the visible set rather than replacing
+// the first. Clicking the last visible item off resets back to "show all"
+// so users don't get stuck on a blank chart. "Isolated" is derived from
+// current visibility state rather than tracked separately, so it works
+// the same after any sequence of clicks.
+function isolateLegendClick(e, legendItem, legend) {
+  const chart = legend.chart;
+  const metas = chart.data.datasets.map((_, i) => chart.getDatasetMeta(i));
+  const allVisible = metas.every(m => !m.hidden);
+
+  if (allVisible) {
+    metas.forEach((m, i) => { m.hidden = i !== legendItem.datasetIndex; });
+  } else {
+    const meta = metas[legendItem.datasetIndex];
+    meta.hidden = meta.hidden ? false : true;
+    if (metas.every(m => m.hidden)) metas.forEach(m => { m.hidden = false; });
+  }
+  chart.update();
+}
+
 function baseChartOptions(extra) {
   return Object.assign({
     responsive: true,
     maintainAspectRatio: false,
     interaction: { mode: 'index', intersect: false },
     plugins: {
-      legend: { labels: { color: '#eef1f5', boxWidth: 12, font: { size: 11 } } },
+      legend: { labels: { color: '#eef1f5', boxWidth: 12, font: { size: 11 } }, onClick: isolateLegendClick },
     },
     scales: {
       x: { ticks: { color: '#8a919c', font: { size: 10 } }, grid: { color: '#2a3038' } },
