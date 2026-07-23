@@ -215,6 +215,7 @@ function renderTable() {
       <td>${t.transaction_date}${t._dateIssue ? ` <span class="date-flag" title="This filing's notification/filed date is before its transaction date — almost certainly a typo in the original filing's transaction date, not this app.">⚠</span>` : ''}</td>
       <td>${t.filed_date ? escapeHtml(t.filed_date) : '—'}${t._daysToFile !== null ? ` <span class="days-pill${t._daysToFile < 45 ? ' on-time' : ' late'}">${t._daysToFile}d</span>` : ''}</td>
       <td>${escapeHtml(t.member)}${t.member_url ? ` <a class="member-link" href="${t.member_url}" target="_blank" rel="noopener" title="Official congress.gov profile">↗</a>` : ''}</td>
+      <td>${t._party ? `<span class="party-pill" style="background:${PARTY_COLORS[t._party]}22; color:${PARTY_COLORS[t._party]};">${escapeHtml(PARTY_NAMES[t._party] || t._party)}</span>` : '—'}</td>
       <td>${escapeHtml(t.chamber)}</td>
       <td>${escapeHtml(STATE_NAMES[t._state] || t._state)}</td>
       <td>${escapeHtml(t.office)}</td>

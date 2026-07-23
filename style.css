@@ -149,6 +149,14 @@ tbody tr:hover { background: var(--surface-2); }
 .type-sale { background: rgba(255, 107, 107, 0.15); color: var(--red); }
 .type-other { background: rgba(255, 255, 255, 0.08); color: var(--text-dim); }
 
+.party-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
 .date-flag { cursor: help; font-size: 0.78rem; }
 
 .days-pill {
