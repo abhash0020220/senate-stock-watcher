@@ -4,7 +4,8 @@
       "party": "D",
       "state": "MD",
       "name": "Angela D. Alsobrooks",
-      "first_name": "Angela D."
+      "first_name": "Angela D.",
+      "bioguide_id": "A000382"
     }
   ],
   "armstrong": [
@@ -12,7 +13,8 @@
       "party": "R",
       "state": "OK",
       "name": "Alan Armstrong",
-      "first_name": "Alan"
+      "first_name": "Alan",
+      "bioguide_id": "A000383"
     }
   ],
   "baldwin": [
@@ -20,7 +22,8 @@
       "party": "D",
       "state": "WI",
       "name": "Tammy Baldwin",
-      "first_name": "Tammy"
+      "first_name": "Tammy",
+      "bioguide_id": "B001230"
     }
   ],
   "banks": [
@@ -28,7 +31,8 @@
       "party": "R",
       "state": "IN",
       "name": "Jim Banks",
-      "first_name": "Jim"
+      "first_name": "Jim",
+      "bioguide_id": "B001299"
     }
   ],
   "barrasso": [
@@ -36,7 +40,8 @@
       "party": "R",
       "state": "WY",
       "name": "John Barrasso",
-      "first_name": "John"
+      "first_name": "John",
+      "bioguide_id": "B001261"
     }
   ],
   "bennet": [
@@ -44,7 +49,8 @@
       "party": "D",
       "state": "CO",
       "name": "Michael F. Bennet",
-      "first_name": "Michael F."
+      "first_name": "Michael F.",
+      "bioguide_id": "B001267"
     }
   ],
   "blackburn": [
@@ -52,7 +58,8 @@
       "party": "R",
       "state": "TN",
       "name": "Marsha Blackburn",
-      "first_name": "Marsha"
+      "first_name": "Marsha",
+      "bioguide_id": "B001243"
     }
   ],
   "blumenthal": [
@@ -60,7 +67,8 @@
       "party": "D",
       "state": "CT",
       "name": "Richard Blumenthal",
-      "first_name": "Richard"
+      "first_name": "Richard",
+      "bioguide_id": "B001277"
     }
   ],
   "blunt rochester": [
@@ -68,7 +76,8 @@
       "party": "D",
       "state": "DE",
       "name": "Lisa Blunt Rochester",
-      "first_name": "Lisa"
+      "first_name": "Lisa",
+      "bioguide_id": "B001303"
     }
   ],
   "booker": [
@@ -76,7 +85,8 @@
       "party": "D",
       "state": "NJ",
       "name": "Cory A. Booker",
-      "first_name": "Cory A."
+      "first_name": "Cory A.",
+      "bioguide_id": "B001288"
     }
   ],
   "boozman": [
@@ -84,7 +94,8 @@
       "party": "R",
       "state": "AR",
       "name": "John Boozman",
-      "first_name": "John"
+      "first_name": "John",
+      "bioguide_id": "B001236"
     }
   ],
   "britt": [
@@ -92,7 +103,8 @@
       "party": "R",
       "state": "AL",
       "name": "Katie Boyd Britt",
-      "first_name": "Katie Boyd"
+      "first_name": "Katie Boyd",
+      "bioguide_id": "B001319"
     }
   ],
   "budd": [
@@ -100,7 +112,8 @@
       "party": "R",
       "state": "NC",
       "name": "Ted Budd",
-      "first_name": "Ted"
+      "first_name": "Ted",
+      "bioguide_id": "B001305"
     }
   ],
   "cantwell": [
@@ -108,7 +121,8 @@
       "party": "D",
       "state": "WA",
       "name": "Maria Cantwell",
-      "first_name": "Maria"
+      "first_name": "Maria",
+      "bioguide_id": "C000127"
     }
   ],
   "capito": [
@@ -116,7 +130,8 @@
       "party": "R",
       "state": "WV",
       "name": "Shelley Moore Capito",
-      "first_name": "Shelley Moore"
+      "first_name": "Shelley Moore",
+      "bioguide_id": "C001047"
     }
   ],
   "cassidy": [
@@ -124,7 +139,8 @@
       "party": "R",
       "state": "LA",
       "name": "Bill Cassidy",
-      "first_name": "Bill"
+      "first_name": "Bill",
+      "bioguide_id": "C001075"
     }
   ],
   "collins": [
@@ -132,7 +148,8 @@
       "party": "R",
       "state": "ME",
       "name": "Susan M. Collins",
-      "first_name": "Susan M."
+      "first_name": "Susan M.",
+      "bioguide_id": "C001035"
     }
   ],
   "coons": [
@@ -140,7 +157,8 @@
       "party": "D",
       "state": "DE",
       "name": "Christopher A. Coons",
-      "first_name": "Christopher A."
+      "first_name": "Christopher A.",
+      "bioguide_id": "C001088"
     }
   ],
   "cornyn": [
@@ -148,7 +166,8 @@
       "party": "R",
       "state": "TX",
       "name": "John Cornyn",
-      "first_name": "John"
+      "first_name": "John",
+      "bioguide_id": "C001056"
     }
   ],
   "cortez masto": [
@@ -156,7 +175,8 @@
       "party": "D",
       "state": "NV",
       "name": "Catherine Cortez Masto",
-      "first_name": "Catherine"
+      "first_name": "Catherine",
+      "bioguide_id": "C001113"
     }
   ],
   "cotton": [
@@ -164,7 +184,8 @@
       "party": "R",
       "state": "AR",
       "name": "Tom Cotton",
-      "first_name": "Tom"
+      "first_name": "Tom",
+      "bioguide_id": "C001095"
     }
   ],
   "cramer": [
@@ -172,7 +193,8 @@
       "party": "R",
       "state": "ND",
       "name": "Kevin Cramer",
-      "first_name": "Kevin"
+      "first_name": "Kevin",
+      "bioguide_id": "C001096"
     }
   ],
   "crapo": [
@@ -180,7 +202,8 @@
       "party": "R",
       "state": "ID",
       "name": "Mike Crapo",
-      "first_name": "Mike"
+      "first_name": "Mike",
+      "bioguide_id": "C000880"
     }
   ],
   "cruz": [
@@ -188,7 +211,8 @@
       "party": "R",
       "state": "TX",
       "name": "Ted Cruz",
-      "first_name": "Ted"
+      "first_name": "Ted",
+      "bioguide_id": "C001098"
     }
   ],
   "curtis": [
@@ -196,7 +220,8 @@
       "party": "R",
       "state": "UT",
       "name": "John R. Curtis",
-      "first_name": "John R."
+      "first_name": "John R.",
+      "bioguide_id": "C001114"
     }
   ],
   "daines": [
@@ -204,7 +229,8 @@
       "party": "R",
       "state": "MT",
       "name": "Steve Daines",
-      "first_name": "Steve"
+      "first_name": "Steve",
+      "bioguide_id": "D000618"
     }
   ],
   "duckworth": [
@@ -212,7 +238,8 @@
       "party": "D",
       "state": "IL",
       "name": "Tammy Duckworth",
-      "first_name": "Tammy"
+      "first_name": "Tammy",
+      "bioguide_id": "D000622"
     }
   ],
   "durbin": [
@@ -220,7 +247,8 @@
       "party": "D",
       "state": "IL",
       "name": "Richard J. Durbin",
-      "first_name": "Richard J."
+      "first_name": "Richard J.",
+      "bioguide_id": "D000563"
     }
   ],
   "ernst": [
@@ -228,7 +256,8 @@
       "party": "R",
       "state": "IA",
       "name": "Joni Ernst",
-      "first_name": "Joni"
+      "first_name": "Joni",
+      "bioguide_id": "E000295"
     }
   ],
   "fetterman": [
@@ -236,7 +265,8 @@
       "party": "D",
       "state": "PA",
       "name": "John Fetterman",
-      "first_name": "John"
+      "first_name": "John",
+      "bioguide_id": "F000479"
     }
   ],
   "fischer": [
@@ -244,7 +274,8 @@
       "party": "R",
       "state": "NE",
       "name": "Deb Fischer",
-      "first_name": "Deb"
+      "first_name": "Deb",
+      "bioguide_id": "F000463"
     }
   ],
   "gallego": [
@@ -252,7 +283,8 @@
       "party": "D",
       "state": "AZ",
       "name": "Ruben Gallego",
-      "first_name": "Ruben"
+      "first_name": "Ruben",
+      "bioguide_id": "G000574"
     }
   ],
   "gillibrand": [
@@ -260,7 +292,8 @@
       "party": "D",
       "state": "NY",
       "name": "Kirsten E. Gillibrand",
-      "first_name": "Kirsten E."
+      "first_name": "Kirsten E.",
+      "bioguide_id": "G000555"
     }
   ],
   "graham": [
@@ -268,7 +301,8 @@
       "party": "R",
       "state": "SC",
       "name": "Darline Graham",
-      "first_name": "Darline"
+      "first_name": "Darline",
+      "bioguide_id": "G000608"
     }
   ],
   "grassley": [
@@ -276,7 +310,8 @@
       "party": "R",
       "state": "IA",
       "name": "Chuck Grassley",
-      "first_name": "Chuck"
+      "first_name": "Chuck",
+      "bioguide_id": "G000386"
     }
   ],
   "hagerty": [
@@ -284,7 +319,8 @@
       "party": "R",
       "state": "TN",
       "name": "Bill Hagerty",
-      "first_name": "Bill"
+      "first_name": "Bill",
+      "bioguide_id": "H000601"
     }
   ],
   "hassan": [
@@ -292,7 +328,8 @@
       "party": "D",
       "state": "NH",
       "name": "Margaret Wood Hassan",
-      "first_name": "Margaret Wood"
+      "first_name": "Margaret Wood",
+      "bioguide_id": "H001076"
     }
   ],
   "hawley": [
@@ -300,7 +337,8 @@
       "party": "R",
       "state": "MO",
       "name": "Josh Hawley",
-      "first_name": "Josh"
+      "first_name": "Josh",
+      "bioguide_id": "H001089"
     }
   ],
   "heinrich": [
@@ -308,7 +346,8 @@
       "party": "D",
       "state": "NM",
       "name": "Martin Heinrich",
-      "first_name": "Martin"
+      "first_name": "Martin",
+      "bioguide_id": "H001046"
     }
   ],
   "hickenlooper": [
@@ -316,7 +355,8 @@
       "party": "D",
       "state": "CO",
       "name": "John W. Hickenlooper",
-      "first_name": "John W."
+      "first_name": "John W.",
+      "bioguide_id": "H000273"
     }
   ],
   "hirono": [
@@ -324,7 +364,8 @@
       "party": "D",
       "state": "HI",
       "name": "Mazie K. Hirono",
-      "first_name": "Mazie K."
+      "first_name": "Mazie K.",
+      "bioguide_id": "H001042"
     }
   ],
   "hoeven": [
@@ -332,7 +373,8 @@
       "party": "R",
       "state": "ND",
       "name": "John Hoeven",
-      "first_name": "John"
+      "first_name": "John",
+      "bioguide_id": "H001061"
     }
   ],
   "husted": [
@@ -340,7 +382,8 @@
       "party": "R",
       "state": "OH",
       "name": "Jon Husted",
-      "first_name": "Jon"
+      "first_name": "Jon",
+      "bioguide_id": "H001104"
     }
   ],
   "hyde-smith": [
@@ -348,7 +391,8 @@
       "party": "R",
       "state": "MS",
       "name": "Cindy Hyde-Smith",
-      "first_name": "Cindy"
+      "first_name": "Cindy",
+      "bioguide_id": "H001079"
     }
   ],
   "johnson": [
@@ -356,7 +400,8 @@
       "party": "R",
       "state": "WI",
       "name": "Ron Johnson",
-      "first_name": "Ron"
+      "first_name": "Ron",
+      "bioguide_id": "J000293"
     }
   ],
   "justice": [
@@ -364,7 +409,8 @@
       "party": "R",
       "state": "WV",
       "name": "James C. Justice",
-      "first_name": "James C."
+      "first_name": "James C.",
+      "bioguide_id": "J000312"
     }
   ],
   "kaine": [
@@ -372,7 +418,8 @@
       "party": "D",
       "state": "VA",
       "name": "Tim Kaine",
-      "first_name": "Tim"
+      "first_name": "Tim",
+      "bioguide_id": "K000384"
     }
   ],
   "kelly": [
@@ -380,7 +427,8 @@
       "party": "D",
       "state": "AZ",
       "name": "Mark Kelly",
-      "first_name": "Mark"
+      "first_name": "Mark",
+      "bioguide_id": "K000377"
     }
   ],
   "kennedy": [
@@ -388,7 +436,8 @@
       "party": "R",
       "state": "LA",
       "name": "John Kennedy",
-      "first_name": "John"
+      "first_name": "John",
+      "bioguide_id": "K000393"
     }
   ],
   "kim": [
@@ -396,7 +445,8 @@
       "party": "D",
       "state": "NJ",
       "name": "Andy Kim",
-      "first_name": "Andy"
+      "first_name": "Andy",
+      "bioguide_id": "K000394"
     }
   ],
   "king": [
@@ -404,7 +454,8 @@
       "party": "I",
       "state": "ME",
       "name": "Angus S., Jr. King",
-      "first_name": "Angus S., Jr."
+      "first_name": "Angus S., Jr.",
+      "bioguide_id": "K000383"
     }
   ],
   "klobuchar": [
@@ -412,7 +463,8 @@
       "party": "D",
       "state": "MN",
       "name": "Amy Klobuchar",
-      "first_name": "Amy"
+      "first_name": "Amy",
+      "bioguide_id": "K000367"
     }
   ],
   "lankford": [
@@ -420,7 +472,8 @@
       "party": "R",
       "state": "OK",
       "name": "James Lankford",
-      "first_name": "James"
+      "first_name": "James",
+      "bioguide_id": "L000575"
     }
   ],
   "lee": [
@@ -428,7 +481,8 @@
       "party": "R",
       "state": "UT",
       "name": "Mike Lee",
-      "first_name": "Mike"
+      "first_name": "Mike",
+      "bioguide_id": "L000577"
     }
   ],
   "luj\u00e1n": [
@@ -436,7 +490,8 @@
       "party": "D",
       "state": "NM",
       "name": "Ben Ray Luj\u00e1n",
-      "first_name": "Ben Ray"
+      "first_name": "Ben Ray",
+      "bioguide_id": "L000570"
     }
   ],
   "lummis": [
@@ -444,7 +499,8 @@
       "party": "R",
       "state": "WY",
       "name": "Cynthia M. Lummis",
-      "first_name": "Cynthia M."
+      "first_name": "Cynthia M.",
+      "bioguide_id": "L000571"
     }
   ],
   "markey": [
@@ -452,7 +508,8 @@
       "party": "D",
       "state": "MA",
       "name": "Edward J. Markey",
-      "first_name": "Edward J."
+      "first_name": "Edward J.",
+      "bioguide_id": "M000133"
     }
   ],
   "marshall": [
@@ -460,7 +517,8 @@
       "party": "R",
       "state": "KS",
       "name": "Roger Marshall",
-      "first_name": "Roger"
+      "first_name": "Roger",
+      "bioguide_id": "M001198"
     }
   ],
   "mcconnell": [
@@ -468,7 +526,8 @@
       "party": "R",
       "state": "KY",
       "name": "Mitch McConnell",
-      "first_name": "Mitch"
+      "first_name": "Mitch",
+      "bioguide_id": "M000355"
     }
   ],
   "mccormick": [
@@ -476,7 +535,8 @@
       "party": "R",
       "state": "PA",
       "name": "David McCormick",
-      "first_name": "David"
+      "first_name": "David",
+      "bioguide_id": "M001243"
     }
   ],
   "merkley": [
@@ -484,7 +544,8 @@
       "party": "D",
       "state": "OR",
       "name": "Jeff Merkley",
-      "first_name": "Jeff"
+      "first_name": "Jeff",
+      "bioguide_id": "M001176"
     }
   ],
   "moody": [
@@ -492,7 +553,8 @@
       "party": "R",
       "state": "FL",
       "name": "Ashley Moody",
-      "first_name": "Ashley"
+      "first_name": "Ashley",
+      "bioguide_id": "M001244"
     }
   ],
   "moran": [
@@ -500,7 +562,8 @@
       "party": "R",
       "state": "KS",
       "name": "Jerry Moran",
-      "first_name": "Jerry"
+      "first_name": "Jerry",
+      "bioguide_id": "M000934"
     }
   ],
   "moreno": [
@@ -508,7 +571,8 @@
       "party": "R",
       "state": "OH",
       "name": "Bernie Moreno",
-      "first_name": "Bernie"
+      "first_name": "Bernie",
+      "bioguide_id": "M001242"
     }
   ],
   "murkowski": [
@@ -516,7 +580,8 @@
       "party": "R",
       "state": "AK",
       "name": "Lisa Murkowski",
-      "first_name": "Lisa"
+      "first_name": "Lisa",
+      "bioguide_id": "M001153"
     }
   ],
   "murphy": [
@@ -524,7 +589,8 @@
       "party": "D",
       "state": "CT",
       "name": "Christopher Murphy",
-      "first_name": "Christopher"
+      "first_name": "Christopher",
+      "bioguide_id": "M001169"
     }
   ],
   "murray": [
@@ -532,7 +598,8 @@
       "party": "D",
       "state": "WA",
       "name": "Patty Murray",
-      "first_name": "Patty"
+      "first_name": "Patty",
+      "bioguide_id": "M001111"
     }
   ],
   "ossoff": [
@@ -540,7 +607,8 @@
       "party": "D",
       "state": "GA",
       "name": "Jon Ossoff",
-      "first_name": "Jon"
+      "first_name": "Jon",
+      "bioguide_id": "O000174"
     }
   ],
   "padilla": [
@@ -548,7 +616,8 @@
       "party": "D",
       "state": "CA",
       "name": "Alex Padilla",
-      "first_name": "Alex"
+      "first_name": "Alex",
+      "bioguide_id": "P000145"
     }
   ],
   "paul": [
@@ -556,7 +625,8 @@
       "party": "R",
       "state": "KY",
       "name": "Rand Paul",
-      "first_name": "Rand"
+      "first_name": "Rand",
+      "bioguide_id": "P000603"
     }
   ],
   "peters": [
@@ -564,7 +634,8 @@
       "party": "D",
       "state": "MI",
       "name": "Gary C. Peters",
-      "first_name": "Gary C."
+      "first_name": "Gary C.",
+      "bioguide_id": "P000595"
     }
   ],
   "reed": [
@@ -572,7 +643,8 @@
       "party": "D",
       "state": "RI",
       "name": "Jack Reed",
-      "first_name": "Jack"
+      "first_name": "Jack",
+      "bioguide_id": "R000122"
     }
   ],
   "ricketts": [
@@ -580,7 +652,8 @@
       "party": "R",
       "state": "NE",
       "name": "Pete Ricketts",
-      "first_name": "Pete"
+      "first_name": "Pete",
+      "bioguide_id": "R000618"
     }
   ],
   "risch": [
@@ -588,7 +661,8 @@
       "party": "R",
       "state": "ID",
       "name": "James E. Risch",
-      "first_name": "James E."
+      "first_name": "James E.",
+      "bioguide_id": "R000584"
     }
   ],
   "rosen": [
@@ -596,7 +670,8 @@
       "party": "D",
       "state": "NV",
       "name": "Jacky Rosen",
-      "first_name": "Jacky"
+      "first_name": "Jacky",
+      "bioguide_id": "R000608"
     }
   ],
   "rounds": [
@@ -604,7 +679,8 @@
       "party": "R",
       "state": "SD",
       "name": "Mike Rounds",
-      "first_name": "Mike"
+      "first_name": "Mike",
+      "bioguide_id": "R000605"
     }
   ],
   "sanders": [
@@ -612,7 +688,8 @@
       "party": "I",
       "state": "VT",
       "name": "Bernard Sanders",
-      "first_name": "Bernard"
+      "first_name": "Bernard",
+      "bioguide_id": "S000033"
     }
   ],
   "schatz": [
@@ -620,7 +697,8 @@
       "party": "D",
       "state": "HI",
       "name": "Brian Schatz",
-      "first_name": "Brian"
+      "first_name": "Brian",
+      "bioguide_id": "S001194"
     }
   ],
   "schiff": [
@@ -628,7 +706,8 @@
       "party": "D",
       "state": "CA",
       "name": "Adam B. Schiff",
-      "first_name": "Adam B."
+      "first_name": "Adam B.",
+      "bioguide_id": "S001150"
     }
   ],
   "schmitt": [
@@ -636,7 +715,8 @@
       "party": "R",
       "state": "MO",
       "name": "Eric Schmitt",
-      "first_name": "Eric"
+      "first_name": "Eric",
+      "bioguide_id": "S001227"
     }
   ],
   "schumer": [
@@ -644,7 +724,8 @@
       "party": "D",
       "state": "NY",
       "name": "Charles E. Schumer",
-      "first_name": "Charles E."
+      "first_name": "Charles E.",
+      "bioguide_id": "S000148"
     }
   ],
   "scott": [
@@ -652,13 +733,15 @@
       "party": "R",
       "state": "FL",
       "name": "Rick Scott",
-      "first_name": "Rick"
+      "first_name": "Rick",
+      "bioguide_id": "S001217"
     },
     {
       "party": "R",
       "state": "SC",
       "name": "Tim Scott",
-      "first_name": "Tim"
+      "first_name": "Tim",
+      "bioguide_id": "S001184"
     }
   ],
   "shaheen": [
@@ -666,7 +749,8 @@
       "party": "D",
       "state": "NH",
       "name": "Jeanne Shaheen",
-      "first_name": "Jeanne"
+      "first_name": "Jeanne",
+      "bioguide_id": "S001181"
     }
   ],
   "sheehy": [
@@ -674,7 +758,8 @@
       "party": "R",
       "state": "MT",
       "name": "Tim Sheehy",
-      "first_name": "Tim"
+      "first_name": "Tim",
+      "bioguide_id": "S001232"
     }
   ],
   "slotkin": [
@@ -682,7 +767,8 @@
       "party": "D",
       "state": "MI",
       "name": "Elissa Slotkin",
-      "first_name": "Elissa"
+      "first_name": "Elissa",
+      "bioguide_id": "S001208"
     }
   ],
   "smith": [
@@ -690,7 +776,8 @@
       "party": "D",
       "state": "MN",
       "name": "Tina Smith",
-      "first_name": "Tina"
+      "first_name": "Tina",
+      "bioguide_id": "S001203"
     }
   ],
   "sullivan": [
@@ -698,7 +785,8 @@
       "party": "R",
       "state": "AK",
       "name": "Dan Sullivan",
-      "first_name": "Dan"
+      "first_name": "Dan",
+      "bioguide_id": "S001198"
     }
   ],
   "thune": [
@@ -706,7 +794,8 @@
       "party": "R",
       "state": "SD",
       "name": "John Thune",
-      "first_name": "John"
+      "first_name": "John",
+      "bioguide_id": "T000250"
     }
   ],
   "tillis": [
@@ -714,7 +803,8 @@
       "party": "R",
       "state": "NC",
       "name": "Thom Tillis",
-      "first_name": "Thom"
+      "first_name": "Thom",
+      "bioguide_id": "T000476"
     }
   ],
   "tuberville": [
@@ -722,7 +812,8 @@
       "party": "R",
       "state": "AL",
       "name": "Tommy Tuberville",
-      "first_name": "Tommy"
+      "first_name": "Tommy",
+      "bioguide_id": "T000278"
     }
   ],
   "van hollen": [
@@ -730,7 +821,8 @@
       "party": "D",
       "state": "MD",
       "name": "Chris Van Hollen",
-      "first_name": "Chris"
+      "first_name": "Chris",
+      "bioguide_id": "V000128"
     }
   ],
   "warner": [
@@ -738,7 +830,8 @@
       "party": "D",
       "state": "VA",
       "name": "Mark R. Warner",
-      "first_name": "Mark R."
+      "first_name": "Mark R.",
+      "bioguide_id": "W000805"
     }
   ],
   "warnock": [
@@ -746,7 +839,8 @@
       "party": "D",
       "state": "GA",
       "name": "Raphael G. Warnock",
-      "first_name": "Raphael G."
+      "first_name": "Raphael G.",
+      "bioguide_id": "W000790"
     }
   ],
   "warren": [
@@ -754,7 +848,8 @@
       "party": "D",
       "state": "MA",
       "name": "Elizabeth Warren",
-      "first_name": "Elizabeth"
+      "first_name": "Elizabeth",
+      "bioguide_id": "W000817"
     }
   ],
   "welch": [
@@ -762,7 +857,8 @@
       "party": "D",
       "state": "VT",
       "name": "Peter Welch",
-      "first_name": "Peter"
+      "first_name": "Peter",
+      "bioguide_id": "W000800"
     }
   ],
   "whitehouse": [
@@ -770,7 +866,8 @@
       "party": "D",
       "state": "RI",
       "name": "Sheldon Whitehouse",
-      "first_name": "Sheldon"
+      "first_name": "Sheldon",
+      "bioguide_id": "W000802"
     }
   ],
   "wicker": [
@@ -778,7 +875,8 @@
       "party": "R",
       "state": "MS",
       "name": "Roger F. Wicker",
-      "first_name": "Roger F."
+      "first_name": "Roger F.",
+      "bioguide_id": "W000437"
     }
   ],
   "wyden": [
@@ -786,7 +884,8 @@
       "party": "D",
       "state": "OR",
       "name": "Ron Wyden",
-      "first_name": "Ron"
+      "first_name": "Ron",
+      "bioguide_id": "W000779"
     }
   ],
   "young": [
@@ -794,7 +893,8 @@
       "party": "R",
       "state": "IN",
       "name": "Todd Young",
-      "first_name": "Todd"
+      "first_name": "Todd",
+      "bioguide_id": "Y000064"
     }
   ]
 }

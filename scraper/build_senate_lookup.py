@@ -34,6 +34,7 @@ def build():
         first = m.find('first_name')
         party = m.find('party')
         state = m.find('state')
+        bioguide = m.find('bioguide_id')
         if last is None or first is None:
             continue
         key = norm(last.text)
@@ -42,6 +43,7 @@ def build():
             'state': state.text if state is not None else None,
             'name': f'{first.text} {last.text}'.strip(),
             'first_name': first.text or '',
+            'bioguide_id': bioguide.text if bioguide is not None else None,
         })
 
     out_path = Path(__file__).parent.parent / 'data' / 'senate_lookup.json'

@@ -25,9 +25,11 @@ def build():
             continue
         party = info.find('party')
         name = info.find('official-name')
+        bioguide = info.find('bioguideID')
         lookup[sd.text] = {
             'party': party.text if party is not None else None,
             'name': name.text if name is not None else None,
+            'bioguide_id': bioguide.text if bioguide is not None else None,
         }
 
     out_path = Path(__file__).parent.parent / 'data' / 'member_parties.json'

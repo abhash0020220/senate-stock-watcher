@@ -6,6 +6,7 @@ simple HTTP requests. No API key, no cost.
 Usage: python3 scrape_house.py [years...]
 Writes ../data/house_trades.json — combine with Senate data via merge_data.py.
 """
+import datetime
 import io
 import json
 import re
@@ -95,6 +96,19 @@ if __name__ == '__main__':
         t['chamber'] = 'House'
         t['state'] = (t.get('office') or '')[:2]
         t['party'] = info.get('party')
+        bioguide = info.get('bioguide_id')
+        t['member_url'] = f'https://bioguide.congress.gov/search/bio/{bioguide}' if bioguide else None
+
+        t['days_to_file'] = None
+        if t.get('filed_date') and t.get('transaction_date'):
+            try:
+                fmt = '%m/%d/%Y'
+                t['days_to_file'] = (
+                    datetime.datetime.strptime(t['filed_date'], fmt)
+                    - datetime.datetime.strptime(t['transaction_date'], fmt)
+                ).days
+            except ValueError:
+                pass
 
     out_path = Path(__file__).parent.parent / 'data' / 'house_trades.json'
     out_path.write_text(json.dumps(trades, indent=2))

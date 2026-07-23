@@ -47,6 +47,10 @@ COLUMNS = [
 ]
 
 DETAIL_PREFIX_RE = re.compile(r'^[A-Z]\W*[A-Z]?\W*:')
+# Every PTR ends with "Digitally Signed: <name> , MM/DD/YYYY" — the actual
+# filing/disclosure date, separate from any individual trade's transaction
+# date. Used to compute how many days after a trade it was disclosed.
+SIGNED_DATE_RE = re.compile(r'Digitally Signed:.*?,\s*(\d{2}/\d{2}/\d{4})')
 
 
 def bucket(x0):
@@ -82,10 +86,16 @@ def parse_ptr_pdf(path_or_file):
     trades = []
     member = None
     office = None
+    filed_date = None
     row_dicts = []
 
     with pdfplumber.open(path_or_file) as pdf:
         for page in pdf.pages:
+            page_text = page.extract_text() or ''
+            signed_m = SIGNED_DATE_RE.search(page_text)
+            if signed_m:
+                filed_date = signed_m.group(1)
+
             words = page.extract_words()
             for line in group_lines(words):
                 text = ' '.join(w['text'] for w in sorted(line, key=lambda w: w['x0']))
@@ -146,6 +156,7 @@ def parse_ptr_pdf(path_or_file):
                     'type': TYPE_MAP.get(txn_type, txn_type),
                     'transaction_date': date1,
                     'notification_date': date2,
+                    'filed_date': filed_date,
                     'amount': amount_m.group(0) if amount_m else amount_text.strip(),
                 })
             i = j

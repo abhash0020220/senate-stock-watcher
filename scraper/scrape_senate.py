@@ -11,6 +11,7 @@ position bucketing needed).
 Usage: python3 scrape_senate.py [years...]
 Writes ../data/senate_trades.json
 """
+import datetime
 import io
 import json
 import re
@@ -36,12 +37,22 @@ from build_senate_lookup import norm
 #      silently blank.
 SUFFIX_RE = re.compile(r',?\s*(jr\.?|sr\.?|i{2,3}|iv)\s*$', re.I)
 MANUAL_SENATOR_OVERRIDES = {
-    'mullin': [{'party': 'R', 'state': 'OK', 'name': 'Markwayne Mullin', 'first_name': 'Markwayne'}],
+    # bioguide_id verified directly against congress.gov's own member URL
+    # (congress.gov/member/markwayne-mullin/M001190), not guessed.
+    'mullin': [{'party': 'R', 'state': 'OK', 'name': 'Markwayne Mullin', 'first_name': 'Markwayne', 'bioguide_id': 'M001190'}],
 }
 
 
 def clean_last_name(last_name):
     return SUFFIX_RE.sub('', norm(last_name).rstrip(',').strip())
+
+
+def days_between(transaction_date, filed_date):
+    try:
+        fmt = '%m/%d/%Y'
+        return (datetime.datetime.strptime(filed_date, fmt) - datetime.datetime.strptime(transaction_date, fmt)).days
+    except (ValueError, TypeError):
+        return None
 
 
 def lookup_senator(lookup, first_name, last_name):
@@ -162,6 +173,7 @@ def scrape_years(years):
 
         for i, f in enumerate(ptr_filings):
             info = lookup_senator(lookup, f['first_name'], f['last_name'])
+            bioguide = info.get('bioguide_id')
             try:
                 trades = parse_ptr_page(client, f['url'])
                 for t in trades:
@@ -171,6 +183,9 @@ def scrape_years(years):
                     t['party'] = info.get('party')
                     t['chamber'] = 'Senate'
                     t['ptr_link'] = f['url']
+                    t['member_url'] = f'https://bioguide.congress.gov/search/bio/{bioguide}' if bioguide else None
+                    t['filed_date'] = f['filing_date']
+                    t['days_to_file'] = days_between(t['transaction_date'], f['filing_date'])
                 all_trades.extend(trades)
             except Exception as e:
                 print(f'  failed {f["url"]}: {e}', file=sys.stderr)

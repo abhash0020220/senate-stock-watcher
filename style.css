@@ -126,6 +126,9 @@ thead th {
   letter-spacing: 0.04em;
   border-bottom: 1px solid var(--border);
   white-space: nowrap;
+  cursor: help;
+  text-decoration: underline dotted rgba(154, 154, 154, 0.5);
+  text-underline-offset: 3px;
 }
 tbody td {
   padding: 10px 12px;
@@ -147,6 +150,21 @@ tbody tr:hover { background: var(--surface-2); }
 .type-other { background: rgba(255, 255, 255, 0.08); color: var(--text-dim); }
 
 .date-flag { cursor: help; font-size: 0.78rem; }
+
+.days-pill {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-dim);
+}
+.days-pill.on-time { background: rgba(61, 220, 132, 0.15); color: var(--green); }
+.days-pill.late { background: rgba(255, 107, 107, 0.15); color: var(--red); }
+
+.member-link { color: var(--accent); text-decoration: none; font-size: 0.8rem; }
+.member-link:hover { text-decoration: underline; }
 
 .view-tabs {
   display: flex;

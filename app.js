@@ -19,6 +19,7 @@ const STATE_NAMES = {
 
 const PARTY_NAMES = { R: 'Republican', D: 'Democrat', I: 'Independent' };
 const PARTY_COLORS = { R: '#ff6b6b', D: '#4f9dff', I: '#8a919c' };
+const CHAMBER_COLORS = { House: '#4f9dff', Senate: '#c084fc' };
 
 let allTrades = [];
 let filteredTrades = [];
@@ -36,6 +37,7 @@ const els = {
   minAmountFilter: document.getElementById('minAmountFilter'),
   dateFrom: document.getElementById('dateFrom'),
   dateTo: document.getElementById('dateTo'),
+  daysToFileFilter: document.getElementById('daysToFileFilter'),
   sortSelect: document.getElementById('sortSelect'),
   clearFilters: document.getElementById('clearFilters'),
   body: document.getElementById('trBody'),
@@ -43,12 +45,16 @@ const els = {
   prevPage: document.getElementById('prevPage'),
   nextPage: document.getElementById('nextPage'),
   pageInfo: document.getElementById('pageInfo'),
+  prevPageBottom: document.getElementById('prevPageBottom'),
+  nextPageBottom: document.getElementById('nextPageBottom'),
+  pageInfoBottom: document.getElementById('pageInfoBottom'),
   tabTrades: document.getElementById('tabTrades'),
   tabAnalytics: document.getElementById('tabAnalytics'),
   tradesView: document.getElementById('tradesView'),
   analyticsView: document.getElementById('analyticsView'),
   memberSelect: document.getElementById('memberSelect'),
   partyCaveat: document.getElementById('partyCaveat'),
+  analyticsChamberFilter: document.getElementById('analyticsChamberFilter'),
   chartModal: document.getElementById('chartModal'),
   modalCanvas: document.getElementById('modalCanvas'),
   modalTitle: document.getElementById('modalTitle'),
@@ -91,18 +97,21 @@ function loadData() {
         .map(t => {
           const _date = parseDate(t.transaction_date);
           const _notifDate = t.notification_date ? parseDate(t.notification_date) : null;
-          // A notification date before the transaction date is physically
-          // impossible (you can't be notified of a trade before it
-          // happens), so it flags a typo in the original filing itself,
-          // not something we can safely auto-correct. Senate filings don't
-          // carry a notification date at all, so this only ever applies
-          // to House trades.
-          const _dateIssue = _notifDate && _notifDate < _date;
+          const _filedDate = t.filed_date ? parseDate(t.filed_date) : null;
+          // A notification/filed date before the transaction date is
+          // physically impossible (you can't be notified of, or disclose,
+          // a trade before it happens), so it flags a typo in the original
+          // filing's transaction date, not something we can safely
+          // auto-correct — verified against several real cases where the
+          // "Digitally Signed" filed date matched the PDF exactly, so the
+          // transaction date is the one that's wrong.
+          const _dateIssue = (_notifDate && _notifDate < _date) || (_filedDate && _filedDate < _date);
           const _state = t.state || (t.office || '').slice(0, 2);
           const _amountLow = amountLowerBound(t.amount || '');
           const _party = t.party || null;
           const _month = `${_date.getFullYear()}-${String(_date.getMonth() + 1).padStart(2, '0')}`;
-          return { ...t, _date, _dateIssue, _state, _amountLow, _party, _month };
+          const _daysToFile = typeof t.days_to_file === 'number' ? t.days_to_file : null;
+          return { ...t, _date, _dateIssue, _state, _amountLow, _party, _month, _filedDate, _daysToFile };
         });
 
       populateStateFilter();
@@ -129,7 +138,7 @@ function renderCoverageBanner() {
   const fmt = d => d.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
   const houseCount = allTrades.filter(t => t.chamber === 'House').length;
   const senateCount = allTrades.filter(t => t.chamber === 'Senate').length;
-  els.banner.textContent = `Showing ${allTrades.length.toLocaleString()} disclosed trades (${houseCount.toLocaleString()} House, ${senateCount.toLocaleString()} Senate), ${fmt(first)} – ${fmt(last)}. Live tracking coming soon.`;
+  els.banner.textContent = `Showing ${allTrades.length.toLocaleString()} disclosed trades (${houseCount.toLocaleString()} House, ${senateCount.toLocaleString()} Senate), ${fmt(first)} – ${fmt(last)}. Auto-refreshed daily — "Filed" is when the trade was disclosed, not when it happened.`;
 }
 
 function renderStats() {
@@ -158,6 +167,7 @@ function applyFilters() {
   const minAmount = parseInt(els.minAmountFilter.value, 10) || 0;
   const fromVal = els.dateFrom.value ? new Date(els.dateFrom.value) : null;
   const toVal = els.dateTo.value ? new Date(els.dateTo.value) : null;
+  const minDaysToFile = parseInt(els.daysToFileFilter.value, 10) || 0;
   const sortVal = els.sortSelect.value;
 
   filteredTrades = allTrades.filter(t => {
@@ -167,6 +177,7 @@ function applyFilters() {
     if (minAmount && t._amountLow < minAmount) return false;
     if (fromVal && t._date < fromVal) return false;
     if (toVal && t._date > toVal) return false;
+    if (minDaysToFile && (t._daysToFile === null || t._daysToFile < minDaysToFile)) return false;
     if (!q) return true;
     return (
       t.member.toLowerCase().includes(q) ||
@@ -180,9 +191,11 @@ function applyFilters() {
   filteredTrades.sort((a, b) => {
     switch (sortVal) {
       case 'date_asc': return a._date - b._date;
+      case 'filed_desc': return (b._filedDate || 0) - (a._filedDate || 0);
       case 'member_asc': return a.member.localeCompare(b.member);
       case 'ticker_asc': return a.ticker.localeCompare(b.ticker);
       case 'amount_desc': return b._amountLow - a._amountLow;
+      case 'days_desc': return (b._daysToFile ?? -1) - (a._daysToFile ?? -1);
       default: return b._date - a._date; // date_desc
     }
   });
@@ -199,23 +212,28 @@ function renderTable() {
 
   els.body.innerHTML = pageItems.map(t => `
     <tr>
-      <td>${t.transaction_date}${t._dateIssue ? ` <span class="date-flag" title="This filing's notification date is before its transaction date — likely a typo in the original House filing, not this app.">⚠</span>` : ''}</td>
-      <td>${escapeHtml(t.member)}</td>
+      <td>${t.transaction_date}${t._dateIssue ? ` <span class="date-flag" title="This filing's notification/filed date is before its transaction date — almost certainly a typo in the original filing's transaction date, not this app.">⚠</span>` : ''}</td>
+      <td>${t.filed_date ? escapeHtml(t.filed_date) : '—'}${t._daysToFile !== null ? ` <span class="days-pill${t._daysToFile < 45 ? ' on-time' : ' late'}">${t._daysToFile}d</span>` : ''}</td>
+      <td>${escapeHtml(t.member)}${t.member_url ? ` <a class="member-link" href="${t.member_url}" target="_blank" rel="noopener" title="Official congress.gov profile">↗</a>` : ''}</td>
       <td>${escapeHtml(t.chamber)}</td>
       <td>${escapeHtml(STATE_NAMES[t._state] || t._state)}</td>
       <td>${escapeHtml(t.office)}</td>
       <td><strong>${escapeHtml(t.ticker)}</strong></td>
-      <td>${escapeHtml(t.asset_description)}</td>
       <td><span class="type-pill ${typeClass(t.type)}">${escapeHtml(t.type)}</span></td>
       <td>${escapeHtml(t.amount)}</td>
+      <td>${escapeHtml(t.asset_description)}</td>
       <td>${t.ptr_link ? `<a class="ptr-link" href="${t.ptr_link}" target="_blank" rel="noopener">filing ↗</a>` : ''}</td>
     </tr>
   `).join('');
 
   const totalPages = Math.max(1, Math.ceil(filteredTrades.length / PAGE_SIZE));
-  els.pageInfo.textContent = `Page ${currentPage} of ${totalPages} (${filteredTrades.length.toLocaleString()} trades)`;
+  const pageInfoText = `Page ${currentPage} of ${totalPages} (${filteredTrades.length.toLocaleString()} trades)`;
+  els.pageInfo.textContent = pageInfoText;
+  els.pageInfoBottom.textContent = pageInfoText;
   els.prevPage.disabled = currentPage <= 1;
   els.nextPage.disabled = currentPage >= totalPages;
+  els.prevPageBottom.disabled = currentPage <= 1;
+  els.nextPageBottom.disabled = currentPage >= totalPages;
 }
 
 function clearFilters() {
@@ -226,6 +244,7 @@ function clearFilters() {
   els.minAmountFilter.value = '0';
   els.dateFrom.value = '';
   els.dateTo.value = '';
+  els.daysToFileFilter.value = '0';
   els.sortSelect.value = 'date_desc';
   applyFilters();
 }
@@ -250,11 +269,27 @@ const chartMakers = {};
 const chartTitles = {};
 const CHART_CANVAS_IDS = {
   states: 'chartStates', member: 'chartMember', party: 'chartParty', partyType: 'chartPartyType',
+  chamber: 'chartChamber', chamberType: 'chartChamberType',
   topTickers: 'chartTopTickers', topMembers: 'chartTopMembers', buySell: 'chartBuySell', amountDist: 'chartAmountDist',
+  daysDist: 'chartDaysDist', avgDaysParty: 'chartAvgDaysParty', avgDaysChamber: 'chartAvgDaysChamber',
+  volumeByState: 'chartVolumeByState', volumeByTicker: 'chartVolumeByTicker', monthlyTotal: 'chartMonthlyTotal',
 };
+// Charts that inherently compare House vs. Senate ignore the scope
+// selector — filtering to "House only" would make a House-vs-Senate
+// comparison meaningless — everything else respects it.
+const CHAMBER_COMPARISON_CHARTS = new Set(['chamber', 'chamberType', 'avgDaysChamber']);
 
-function sortedMonths() {
-  return [...new Set(allTrades.map(t => t._month))].sort();
+function scopedTrades() {
+  const chamber = els.analyticsChamberFilter.value;
+  return chamber ? allTrades.filter(t => t.chamber === chamber) : allTrades;
+}
+
+function tradesFor(key) {
+  return CHAMBER_COMPARISON_CHARTS.has(key) ? allTrades : scopedTrades();
+}
+
+function sortedMonths(trades) {
+  return [...new Set((trades || scopedTrades()).map(t => t._month))].sort();
 }
 
 function monthLabel(m) {
@@ -279,12 +314,25 @@ function buildAnalytics() {
   registerMemberChart();
   registerPartyChart();
   registerPartyTypeChart();
+  registerChamberChart();
+  registerChamberTypeChart();
   registerTopTickersChart();
   registerTopMembersChart();
   registerBuySellChart();
   registerAmountDistChart();
+  registerDaysDistChart();
+  registerAvgDaysPartyChart();
+  registerAvgDaysChamberChart();
+  registerVolumeByStateChart();
+  registerVolumeByTickerChart();
+  registerMonthlyTotalChart();
 
+  rebuildAllCharts();
+}
+
+function rebuildAllCharts() {
   Object.keys(chartMakers).forEach(key => {
+    if (charts[key]) charts[key].destroy();
     charts[key] = chartMakers[key](CHART_CANVAS_IDS[key]);
   });
 }
@@ -307,14 +355,15 @@ function baseChartOptions(extra) {
 function registerStateChart() {
   chartTitles.states = 'Trades over time by state';
   chartMakers.states = (canvasId) => {
-    const months = sortedMonths();
+    const trades = tradesFor('states');
+    const months = sortedMonths(trades);
     const totalsByState = {};
-    allTrades.forEach(t => { totalsByState[t._state] = (totalsByState[t._state] || 0) + 1; });
+    trades.forEach(t => { totalsByState[t._state] = (totalsByState[t._state] || 0) + 1; });
     const topStates = Object.entries(totalsByState).sort((a, b) => b[1] - a[1]).slice(0, 8).map(([s]) => s);
 
     const perMonthState = {};
     months.forEach(m => { perMonthState[m] = {}; });
-    allTrades.forEach(t => {
+    trades.forEach(t => {
       const key = topStates.includes(t._state) ? t._state : 'Other';
       perMonthState[t._month][key] = (perMonthState[t._month][key] || 0) + 1;
     });
@@ -339,19 +388,23 @@ function registerStateChart() {
 }
 
 function populateMemberSelect() {
+  const trades = tradesFor('member');
   const counts = {};
-  allTrades.forEach(t => { counts[t.member] = (counts[t.member] || 0) + 1; });
+  trades.forEach(t => { counts[t.member] = (counts[t.member] || 0) + 1; });
   const members = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+  const prevValue = els.memberSelect.value;
   els.memberSelect.innerHTML = members
     .map(([name, count]) => `<option value="${escapeHtml(name)}">${escapeHtml(name)} (${count})</option>`)
     .join('');
+  if (members.some(([name]) => name === prevValue)) els.memberSelect.value = prevValue;
 }
 
 function memberChartConfig(memberName) {
-  const months = sortedMonths();
-  const trades = allTrades.filter(t => t.member === memberName);
+  const trades = tradesFor('member');
+  const months = sortedMonths(trades);
+  const memberTrades = trades.filter(t => t.member === memberName);
   const counts = {};
-  trades.forEach(t => { counts[t._month] = (counts[t._month] || 0) + 1; });
+  memberTrades.forEach(t => { counts[t._month] = (counts[t._month] || 0) + 1; });
   return {
     labels: months.map(monthLabel),
     datasets: [{
@@ -380,8 +433,9 @@ function registerMemberChart() {
 function registerPartyChart() {
   chartTitles.party = 'Republican vs. Democrat trades over time';
   chartMakers.party = (canvasId) => {
-    const months = sortedMonths();
-    const withParty = allTrades.filter(t => t._party === 'R' || t._party === 'D');
+    const trades = tradesFor('party');
+    const months = sortedMonths(trades);
+    const withParty = trades.filter(t => t._party === 'R' || t._party === 'D');
     const perMonth = { R: {}, D: {} };
     withParty.forEach(t => { perMonth[t._party][t._month] = (perMonth[t._party][t._month] || 0) + 1; });
 
@@ -413,7 +467,7 @@ function registerPartyChart() {
 function registerPartyTypeChart() {
   chartTitles.partyType = 'Republican vs. Democrat: purchases vs. sales';
   chartMakers.partyType = (canvasId) => {
-    const withParty = allTrades.filter(t => t._party === 'R' || t._party === 'D');
+    const withParty = tradesFor('partyType').filter(t => t._party === 'R' || t._party === 'D');
     const categories = ['Purchase', 'Sale', 'Exchange'];
     const normType = t => t.type.startsWith('Sale') ? 'Sale' : t.type;
 
@@ -439,11 +493,67 @@ function registerPartyTypeChart() {
   };
 }
 
+function registerChamberChart() {
+  chartTitles.chamber = 'House vs. Senate trades over time';
+  chartMakers.chamber = (canvasId) => {
+    const trades = tradesFor('chamber'); // always allTrades — comparison chart
+    const months = sortedMonths(trades);
+    const perMonth = { House: {}, Senate: {} };
+    trades.forEach(t => { perMonth[t.chamber][t._month] = (perMonth[t.chamber][t._month] || 0) + 1; });
+
+    return new Chart(document.getElementById(canvasId), {
+      type: 'line',
+      data: {
+        labels: months.map(monthLabel),
+        datasets: ['House', 'Senate'].map(c => ({
+          label: c,
+          data: months.map(m => perMonth[c][m] || 0),
+          borderColor: CHAMBER_COLORS[c],
+          backgroundColor: CHAMBER_COLORS[c],
+          tension: 0.25,
+          pointRadius: 2,
+          fill: false,
+        })),
+      },
+      options: baseChartOptions(),
+    });
+  };
+}
+
+function registerChamberTypeChart() {
+  chartTitles.chamberType = 'House vs. Senate: purchases vs. sales';
+  chartMakers.chamberType = (canvasId) => {
+    const trades = tradesFor('chamberType'); // always allTrades
+    const categories = ['Purchase', 'Sale', 'Exchange'];
+    const normType = t => t.type.startsWith('Sale') ? 'Sale' : t.type;
+
+    const counts = { House: { Purchase: 0, Sale: 0, Exchange: 0 }, Senate: { Purchase: 0, Sale: 0, Exchange: 0 } };
+    trades.forEach(t => {
+      const cat = normType(t);
+      if (counts[t.chamber] && counts[t.chamber][cat] !== undefined) counts[t.chamber][cat]++;
+    });
+
+    return new Chart(document.getElementById(canvasId), {
+      type: 'bar',
+      data: {
+        labels: categories,
+        datasets: ['House', 'Senate'].map(c => ({
+          label: c,
+          data: categories.map(cat => counts[c][cat]),
+          backgroundColor: CHAMBER_COLORS[c],
+          borderRadius: 3,
+        })),
+      },
+      options: baseChartOptions(),
+    });
+  };
+}
+
 function registerTopTickersChart() {
   chartTitles.topTickers = 'Most-traded tickers';
   chartMakers.topTickers = (canvasId) => {
     const counts = {};
-    allTrades.forEach(t => { counts[t.ticker] = (counts[t.ticker] || 0) + 1; });
+    tradesFor('topTickers').forEach(t => { counts[t.ticker] = (counts[t.ticker] || 0) + 1; });
     const top = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 10);
 
     return new Chart(document.getElementById(canvasId), {
@@ -462,7 +572,7 @@ function registerTopMembersChart() {
   chartMakers.topMembers = (canvasId) => {
     const counts = {};
     const partyOf = {};
-    allTrades.forEach(t => {
+    tradesFor('topMembers').forEach(t => {
       counts[t.member] = (counts[t.member] || 0) + 1;
       partyOf[t.member] = t._party;
     });
@@ -487,14 +597,15 @@ function registerTopMembersChart() {
 function registerBuySellChart() {
   chartTitles.buySell = 'Buy vs. sell trend over time';
   chartMakers.buySell = (canvasId) => {
-    const months = sortedMonths();
+    const trades = tradesFor('buySell');
+    const months = sortedMonths(trades);
     const normType = t => t.type.startsWith('Sale') ? 'Sale' : t.type;
     const categories = ['Purchase', 'Sale', 'Exchange'];
     const colors = { Purchase: '#3ddc84', Sale: '#ff6b6b', Exchange: '#f7b955' };
 
     const perMonth = {};
     months.forEach(m => { perMonth[m] = { Purchase: 0, Sale: 0, Exchange: 0 }; });
-    allTrades.forEach(t => { perMonth[t._month][normType(t)]++; });
+    trades.forEach(t => { perMonth[t._month][normType(t)]++; });
 
     return new Chart(document.getElementById(canvasId), {
       type: 'line',
@@ -521,7 +632,7 @@ function registerAmountDistChart() {
     const counts = {};
     AMOUNT_BRACKET_ORDER.forEach(b => { counts[b] = 0; });
     let other = 0;
-    allTrades.forEach(t => {
+    tradesFor('amountDist').forEach(t => {
       if (counts[t.amount] !== undefined) counts[t.amount]++;
       else other++;
     });
@@ -538,6 +649,150 @@ function registerAmountDistChart() {
           y: { ticks: { color: '#8a919c', font: { size: 10 } }, grid: { color: '#2a3038' }, beginAtZero: true },
         },
       }),
+    });
+  };
+}
+
+const DAYS_BUCKET_ORDER = ['0–15', '15–30', '30–45', '45–60', '60–90', '90+'];
+function daysBucket(days) {
+  if (days < 15) return '0–15';
+  if (days < 30) return '15–30';
+  if (days < 45) return '30–45';
+  if (days < 60) return '45–60';
+  if (days < 90) return '60–90';
+  return '90+';
+}
+
+function registerDaysDistChart() {
+  chartTitles.daysDist = 'Days-to-file distribution';
+  chartMakers.daysDist = (canvasId) => {
+    const counts = {};
+    DAYS_BUCKET_ORDER.forEach(b => { counts[b] = 0; });
+    tradesFor('daysDist').forEach(t => {
+      if (t._daysToFile !== null && t._daysToFile >= 0) counts[daysBucket(t._daysToFile)]++;
+    });
+
+    return new Chart(document.getElementById(canvasId), {
+      type: 'bar',
+      data: {
+        labels: DAYS_BUCKET_ORDER,
+        datasets: [{
+          label: 'Trades',
+          data: DAYS_BUCKET_ORDER.map(b => counts[b]),
+          backgroundColor: DAYS_BUCKET_ORDER.map(b => (b === '45–60' || b === '60–90' || b === '90+') ? '#ff6b6b' : '#3ddc84'),
+          borderRadius: 3,
+        }],
+      },
+      options: baseChartOptions({ plugins: { legend: { display: false } } }),
+    });
+  };
+}
+
+function registerAvgDaysPartyChart() {
+  chartTitles.avgDaysParty = 'Average days to file, by party';
+  chartMakers.avgDaysParty = (canvasId) => {
+    const trades = tradesFor('avgDaysParty').filter(t => (t._party === 'R' || t._party === 'D') && t._daysToFile !== null && t._daysToFile >= 0);
+    const sums = { R: 0, D: 0 };
+    const counts = { R: 0, D: 0 };
+    trades.forEach(t => { sums[t._party] += t._daysToFile; counts[t._party]++; });
+    const avg = p => counts[p] ? Math.round(sums[p] / counts[p]) : 0;
+
+    return new Chart(document.getElementById(canvasId), {
+      type: 'bar',
+      data: {
+        labels: [PARTY_NAMES.R, PARTY_NAMES.D],
+        datasets: [{ label: 'Avg. days to file', data: [avg('R'), avg('D')], backgroundColor: [PARTY_COLORS.R, PARTY_COLORS.D], borderRadius: 3 }],
+      },
+      options: baseChartOptions({ plugins: { legend: { display: false } } }),
+    });
+  };
+}
+
+function registerAvgDaysChamberChart() {
+  chartTitles.avgDaysChamber = 'Average days to file: House vs. Senate';
+  chartMakers.avgDaysChamber = (canvasId) => {
+    const trades = tradesFor('avgDaysChamber').filter(t => t._daysToFile !== null && t._daysToFile >= 0); // always allTrades
+    const sums = { House: 0, Senate: 0 };
+    const counts = { House: 0, Senate: 0 };
+    trades.forEach(t => { sums[t.chamber] += t._daysToFile; counts[t.chamber]++; });
+    const avg = c => counts[c] ? Math.round(sums[c] / counts[c]) : 0;
+
+    return new Chart(document.getElementById(canvasId), {
+      type: 'bar',
+      data: {
+        labels: ['House', 'Senate'],
+        datasets: [{ label: 'Avg. days to file', data: [avg('House'), avg('Senate')], backgroundColor: [CHAMBER_COLORS.House, CHAMBER_COLORS.Senate], borderRadius: 3 }],
+      },
+      options: baseChartOptions({ plugins: { legend: { display: false } } }),
+    });
+  };
+}
+
+function registerVolumeByStateChart() {
+  chartTitles.volumeByState = 'Dollar volume by state';
+  chartMakers.volumeByState = (canvasId) => {
+    const sums = {};
+    tradesFor('volumeByState').forEach(t => { sums[t._state] = (sums[t._state] || 0) + t._amountLow; });
+    const top = Object.entries(sums).sort((a, b) => b[1] - a[1]).slice(0, 10);
+
+    return new Chart(document.getElementById(canvasId), {
+      type: 'bar',
+      data: {
+        labels: top.map(([s]) => STATE_NAMES[s] || s),
+        datasets: [{ label: 'Min. dollar volume', data: top.map(([, v]) => v), backgroundColor: '#f7b955', borderRadius: 3 }],
+      },
+      options: baseChartOptions({
+        indexAxis: 'y',
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx) => `$${ctx.parsed.x.toLocaleString()}+` } } },
+      }),
+    });
+  };
+}
+
+function registerVolumeByTickerChart() {
+  chartTitles.volumeByTicker = 'Dollar volume by ticker';
+  chartMakers.volumeByTicker = (canvasId) => {
+    const sums = {};
+    tradesFor('volumeByTicker').forEach(t => { sums[t.ticker] = (sums[t.ticker] || 0) + t._amountLow; });
+    const top = Object.entries(sums).sort((a, b) => b[1] - a[1]).slice(0, 10);
+
+    return new Chart(document.getElementById(canvasId), {
+      type: 'bar',
+      data: {
+        labels: top.map(([t]) => t),
+        datasets: [{ label: 'Min. dollar volume', data: top.map(([, v]) => v), backgroundColor: '#5eead4', borderRadius: 3 }],
+      },
+      options: baseChartOptions({
+        indexAxis: 'y',
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx) => `$${ctx.parsed.x.toLocaleString()}+` } } },
+      }),
+    });
+  };
+}
+
+function registerMonthlyTotalChart() {
+  chartTitles.monthlyTotal = 'Overall trade volume over time';
+  chartMakers.monthlyTotal = (canvasId) => {
+    const trades = tradesFor('monthlyTotal');
+    const months = sortedMonths(trades);
+    const perMonth = {};
+    trades.forEach(t => { perMonth[t._month] = (perMonth[t._month] || 0) + 1; });
+
+    return new Chart(document.getElementById(canvasId), {
+      type: 'line',
+      data: {
+        labels: months.map(monthLabel),
+        datasets: [{
+          label: 'Trades',
+          data: months.map(m => perMonth[m] || 0),
+          borderColor: '#4f9dff',
+          backgroundColor: 'rgba(79, 157, 255, 0.15)',
+          tension: 0.25,
+          pointRadius: 2,
+          fill: true,
+        }],
+      },
+      options: baseChartOptions({ plugins: { legend: { display: false } } }),
     });
   };
 }
@@ -563,6 +818,10 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && els.char
 
 els.tabTrades.addEventListener('click', () => switchView('trades'));
 els.tabAnalytics.addEventListener('click', () => switchView('analytics'));
+els.analyticsChamberFilter.addEventListener('change', () => {
+  populateMemberSelect();
+  rebuildAllCharts();
+});
 
 els.search.addEventListener('input', applyFilters);
 els.stateFilter.addEventListener('change', applyFilters);
@@ -571,12 +830,20 @@ els.typeFilter.addEventListener('change', applyFilters);
 els.minAmountFilter.addEventListener('change', applyFilters);
 els.dateFrom.addEventListener('change', applyFilters);
 els.dateTo.addEventListener('change', applyFilters);
+els.daysToFileFilter.addEventListener('change', applyFilters);
 els.sortSelect.addEventListener('change', applyFilters);
 els.clearFilters.addEventListener('click', clearFilters);
-els.prevPage.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderTable(); } });
-els.nextPage.addEventListener('click', () => {
+function goPrevPage() { if (currentPage > 1) { currentPage--; renderTable(); scrollToTable(); } }
+function goNextPage() {
   const totalPages = Math.max(1, Math.ceil(filteredTrades.length / PAGE_SIZE));
-  if (currentPage < totalPages) { currentPage++; renderTable(); }
-});
+  if (currentPage < totalPages) { currentPage++; renderTable(); scrollToTable(); }
+}
+function scrollToTable() {
+  document.getElementById('trTable').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+els.prevPage.addEventListener('click', goPrevPage);
+els.nextPage.addEventListener('click', goNextPage);
+els.prevPageBottom.addEventListener('click', goPrevPage);
+els.nextPageBottom.addEventListener('click', goNextPage);
 
 loadData();

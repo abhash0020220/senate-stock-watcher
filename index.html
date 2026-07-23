@@ -28,6 +28,15 @@
   </div>
 
   <section id="analyticsView" class="analytics-view" style="display:none;">
+    <div class="controls" style="margin-top:0;">
+      <label class="date-label">Scope <select id="analyticsChamberFilter">
+        <option value="">House + Senate</option>
+        <option value="House">House only</option>
+        <option value="Senate">Senate only</option>
+      </select></label>
+      <span class="chart-sub" style="margin:0;">Applies to every chart below except the House vs. Senate comparisons, which always show both.</span>
+    </div>
+
     <div class="chart-card">
       <div class="chart-card_header">
         <div><h3>Trades over time by state</h3><p class="chart-sub">Top 8 states by trade volume, monthly. All others grouped as "Other".</p></div>
@@ -65,6 +74,22 @@
 
     <div class="chart-card">
       <div class="chart-card_header">
+        <h3>House vs. Senate trades over time</h3>
+        <button class="expand-btn" data-chart="chamber" title="Expand">⤢</button>
+      </div>
+      <div class="chart-wrap"><canvas id="chartChamber"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card_header">
+        <h3>House vs. Senate: purchases vs. sales</h3>
+        <button class="expand-btn" data-chart="chamberType" title="Expand">⤢</button>
+      </div>
+      <div class="chart-wrap"><canvas id="chartChamberType"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card_header">
         <h3>Most-traded tickers</h3>
         <button class="expand-btn" data-chart="topTickers" title="Expand">⤢</button>
       </div>
@@ -93,6 +118,54 @@
         <button class="expand-btn" data-chart="amountDist" title="Expand">⤢</button>
       </div>
       <div class="chart-wrap"><canvas id="chartAmountDist"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card_header">
+        <div><h3>Days-to-file distribution</h3><p class="chart-sub">How many days after the trade the disclosure was filed. 45+ is past the STOCK Act deadline.</p></div>
+        <button class="expand-btn" data-chart="daysDist" title="Expand">⤢</button>
+      </div>
+      <div class="chart-wrap"><canvas id="chartDaysDist"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card_header">
+        <h3>Average days to file, by party</h3>
+        <button class="expand-btn" data-chart="avgDaysParty" title="Expand">⤢</button>
+      </div>
+      <div class="chart-wrap"><canvas id="chartAvgDaysParty"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card_header">
+        <h3>Average days to file: House vs. Senate</h3>
+        <button class="expand-btn" data-chart="avgDaysChamber" title="Expand">⤢</button>
+      </div>
+      <div class="chart-wrap"><canvas id="chartAvgDaysChamber"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card_header">
+        <div><h3>Dollar volume by state</h3><p class="chart-sub">Top 10 states, summed using each trade's disclosed minimum amount.</p></div>
+        <button class="expand-btn" data-chart="volumeByState" title="Expand">⤢</button>
+      </div>
+      <div class="chart-wrap"><canvas id="chartVolumeByState"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card_header">
+        <div><h3>Dollar volume by ticker</h3><p class="chart-sub">Top 10 tickers, summed using each trade's disclosed minimum amount.</p></div>
+        <button class="expand-btn" data-chart="volumeByTicker" title="Expand">⤢</button>
+      </div>
+      <div class="chart-wrap"><canvas id="chartVolumeByTicker"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card_header">
+        <div><h3>Overall trade volume over time</h3><p class="chart-sub">Total trades per month, House + Senate combined.</p></div>
+        <button class="expand-btn" data-chart="monthlyTotal" title="Expand">⤢</button>
+      </div>
+      <div class="chart-wrap"><canvas id="chartMonthlyTotal"></canvas></div>
     </div>
   </section>
 
@@ -140,12 +213,21 @@
     </select>
     <label class="date-label">From <input type="date" id="dateFrom" /></label>
     <label class="date-label">To <input type="date" id="dateTo" /></label>
+    <select id="daysToFileFilter">
+      <option value="0">Filed any time after</option>
+      <option value="15">Filed 15+ days after</option>
+      <option value="30">Filed 30+ days after</option>
+      <option value="45">Filed 45+ days after (past STOCK Act deadline)</option>
+      <option value="90">Filed 90+ days after</option>
+    </select>
     <select id="sortSelect">
-      <option value="date_desc">Newest first</option>
+      <option value="date_desc">Newest first (traded)</option>
+      <option value="filed_desc">Recently filed</option>
       <option value="date_asc">Oldest first</option>
       <option value="member_asc">Member (A–Z)</option>
       <option value="ticker_asc">Ticker (A–Z)</option>
       <option value="amount_desc">Amount (high–low)</option>
+      <option value="days_desc">Slowest to file</option>
     </select>
     <button class="secondary" id="clearFilters">Clear filters</button>
   </section>
@@ -160,22 +242,29 @@
     <table id="trTable">
       <thead>
         <tr>
-          <th>Date</th>
-          <th>Member</th>
-          <th>Chamber</th>
-          <th>State</th>
-          <th>Office</th>
-          <th>Ticker</th>
-          <th>Asset</th>
-          <th>Type</th>
-          <th>Amount</th>
-          <th></th>
+          <th title="The date the member says the trade actually happened, as reported on the filing.">Date</th>
+          <th title="The date this trade was publicly disclosed, plus how many days after the trade that was. The STOCK Act requires filing within 45 days — the pill turns red at 45+ days (late) and stays green under that.">Filed</th>
+          <th title="The House member or Senator who made the trade. The ↗ links to their official BioGuide profile on congress.gov.">Member</th>
+          <th title="Which chamber of Congress this member serves in.">Chamber</th>
+          <th title="The state this member represents.">State</th>
+          <th title="House: state + district number (e.g. AL04). Senate: just the state, since senators represent the whole state.">Office</th>
+          <th title="Stock ticker symbol traded.">Ticker</th>
+          <th title="Purchase, Sale (Full/Partial), or Exchange.">Type</th>
+          <th title="Disclosed as a dollar range, not an exact amount — members are only required to report which bracket a trade falls into.">Amount</th>
+          <th title="Full name of the asset traded, as written on the filing.">Asset</th>
+          <th title="Link to the original government filing this trade was disclosed on.">Filing</th>
         </tr>
       </thead>
       <tbody id="trBody"></tbody>
     </table>
     <div id="emptyState" class="empty-state" style="display:none;">No trades match those filters.</div>
   </section>
+
+  <div class="pager">
+    <button id="prevPageBottom" class="secondary">← Prev</button>
+    <span id="pageInfoBottom"></span>
+    <button id="nextPageBottom" class="secondary">Next →</button>
+  </div>
 
   </div>
 

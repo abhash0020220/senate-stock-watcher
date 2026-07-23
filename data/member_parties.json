@@ -1,1766 +1,2207 @@
 {
   "AK00": {
     "party": "R",
-    "name": "Nicholas J. Begich III"
+    "name": "Nicholas J. Begich III",
+    "bioguide_id": "B001323"
   },
   "AL01": {
     "party": "R",
-    "name": "Barry Moore"
+    "name": "Barry Moore",
+    "bioguide_id": "M001212"
   },
   "AL02": {
     "party": "D",
-    "name": "Shomari Figures"
+    "name": "Shomari Figures",
+    "bioguide_id": "F000481"
   },
   "AL03": {
     "party": "R",
-    "name": "Mike Rogers"
+    "name": "Mike Rogers",
+    "bioguide_id": "R000575"
   },
   "AL04": {
     "party": "R",
-    "name": "Robert B. Aderholt"
+    "name": "Robert B. Aderholt",
+    "bioguide_id": "A000055"
   },
   "AL05": {
     "party": "R",
-    "name": "Dale W. Strong"
+    "name": "Dale W. Strong",
+    "bioguide_id": "S001220"
   },
   "AL06": {
     "party": "R",
-    "name": "Gary J. Palmer"
+    "name": "Gary J. Palmer",
+    "bioguide_id": "P000609"
   },
   "AL07": {
     "party": "D",
-    "name": "Terri A. Sewell"
+    "name": "Terri A. Sewell",
+    "bioguide_id": "S001185"
   },
   "AR01": {
     "party": "R",
-    "name": "Eric A. \"Rick\" Crawford"
+    "name": "Eric A. \"Rick\" Crawford",
+    "bioguide_id": "C001087"
   },
   "AR02": {
     "party": "R",
-    "name": "J. French Hill"
+    "name": "J. French Hill",
+    "bioguide_id": "H001072"
   },
   "AR03": {
     "party": "R",
-    "name": "Steve Womack"
+    "name": "Steve Womack",
+    "bioguide_id": "W000809"
   },
   "AR04": {
     "party": "R",
-    "name": "Bruce Westerman"
+    "name": "Bruce Westerman",
+    "bioguide_id": "W000821"
   },
   "AQ00": {
     "party": "R",
-    "name": "Aumua Amata Coleman Radewagen"
+    "name": "Aumua Amata Coleman Radewagen",
+    "bioguide_id": "R000600"
   },
   "AZ01": {
     "party": "R",
-    "name": "David Schweikert"
+    "name": "David Schweikert",
+    "bioguide_id": "S001183"
   },
   "AZ02": {
     "party": "R",
-    "name": "Elijah Crane"
+    "name": "Elijah Crane",
+    "bioguide_id": "C001132"
   },
   "AZ03": {
     "party": "D",
-    "name": "Yassamin Ansari"
+    "name": "Yassamin Ansari",
+    "bioguide_id": "A000381"
   },
   "AZ04": {
     "party": "D",
-    "name": "Greg Stanton"
+    "name": "Greg Stanton",
+    "bioguide_id": "S001211"
   },
   "AZ05": {
     "party": "R",
-    "name": "Andy Biggs"
+    "name": "Andy Biggs",
+    "bioguide_id": "B001302"
   },
   "AZ06": {
     "party": "R",
-    "name": "Juan Ciscomani"
+    "name": "Juan Ciscomani",
+    "bioguide_id": "C001133"
   },
   "AZ07": {
     "party": "D",
-    "name": "Adelita S. Grijalva"
+    "name": "Adelita S. Grijalva",
+    "bioguide_id": "G000606"
   },
   "AZ08": {
     "party": "R",
-    "name": "Abraham J. Hamadeh"
+    "name": "Abraham J. Hamadeh",
+    "bioguide_id": "H001098"
   },
   "AZ09": {
     "party": "R",
-    "name": "Paul A. Gosar"
+    "name": "Paul A. Gosar",
+    "bioguide_id": "G000565"
   },
   "CA01": {
     "party": "R",
-    "name": "James Gallagher"
+    "name": "James Gallagher",
+    "bioguide_id": "G000607"
   },
   "CA02": {
     "party": "D",
-    "name": "Jared Huffman"
+    "name": "Jared Huffman",
+    "bioguide_id": "H001068"
   },
   "CA03": {
     "party": "I",
-    "name": "Kevin Kiley"
+    "name": "Kevin Kiley",
+    "bioguide_id": "K000401"
   },
   "CA04": {
     "party": "D",
-    "name": "Mike Thompson"
+    "name": "Mike Thompson",
+    "bioguide_id": "T000460"
   },
   "CA05": {
     "party": "R",
-    "name": "Tom McClintock"
+    "name": "Tom McClintock",
+    "bioguide_id": "M001177"
   },
   "CA06": {
     "party": "D",
-    "name": "Ami Bera"
+    "name": "Ami Bera",
+    "bioguide_id": "B001287"
   },
   "CA07": {
     "party": "D",
-    "name": "Doris O. Matsui"
+    "name": "Doris O. Matsui",
+    "bioguide_id": "M001163"
   },
   "CA08": {
     "party": "D",
-    "name": "John Garamendi"
+    "name": "John Garamendi",
+    "bioguide_id": "G000559"
   },
   "CA09": {
     "party": "D",
-    "name": "Josh Harder"
+    "name": "Josh Harder",
+    "bioguide_id": "H001090"
   },
   "CA10": {
     "party": "D",
-    "name": "Mark DeSaulnier"
+    "name": "Mark DeSaulnier",
+    "bioguide_id": "D000623"
   },
   "CA11": {
     "party": "D",
-    "name": "Nancy Pelosi"
+    "name": "Nancy Pelosi",
+    "bioguide_id": "P000197"
   },
   "CA12": {
     "party": "D",
-    "name": "Lateefah Simon"
+    "name": "Lateefah Simon",
+    "bioguide_id": "S001231"
   },
   "CA13": {
     "party": "D",
-    "name": "Adam Gray"
+    "name": "Adam Gray",
+    "bioguide_id": "G000605"
   },
   "CA14": {
     "party": null,
-    "name": null
+    "name": null,
+    "bioguide_id": null
   },
   "CA15": {
     "party": "D",
-    "name": "Kevin Mullin"
+    "name": "Kevin Mullin",
+    "bioguide_id": "M001225"
   },
   "CA16": {
     "party": "D",
-    "name": "Sam T. Liccardo"
+    "name": "Sam T. Liccardo",
+    "bioguide_id": "L000607"
   },
   "CA17": {
     "party": "D",
-    "name": "Ro Khanna"
+    "name": "Ro Khanna",
+    "bioguide_id": "K000389"
   },
   "CA18": {
     "party": "D",
-    "name": "Zoe Lofgren"
+    "name": "Zoe Lofgren",
+    "bioguide_id": "L000397"
   },
   "CA19": {
     "party": "D",
-    "name": "Jimmy Panetta"
+    "name": "Jimmy Panetta",
+    "bioguide_id": "P000613"
   },
   "CA20": {
     "party": "R",
-    "name": "Vince Fong"
+    "name": "Vince Fong",
+    "bioguide_id": "F000480"
   },
   "CA21": {
     "party": "D",
-    "name": "Jim Costa"
+    "name": "Jim Costa",
+    "bioguide_id": "C001059"
   },
   "CA22": {
     "party": "R",
-    "name": "David G. Valadao"
+    "name": "David G. Valadao",
+    "bioguide_id": "V000129"
   },
   "CA23": {
     "party": "R",
-    "name": "Jay Obernolte"
+    "name": "Jay Obernolte",
+    "bioguide_id": "O000019"
   },
   "CA24": {
     "party": "D",
-    "name": "Salud O. Carbajal"
+    "name": "Salud O. Carbajal",
+    "bioguide_id": "C001112"
   },
   "CA25": {
     "party": "D",
-    "name": "Raul Ruiz"
+    "name": "Raul Ruiz",
+    "bioguide_id": "R000599"
   },
   "CA26": {
     "party": "D",
-    "name": "Julia Brownley"
+    "name": "Julia Brownley",
+    "bioguide_id": "B001285"
   },
   "CA27": {
     "party": "D",
-    "name": "George Whitesides"
+    "name": "George Whitesides",
+    "bioguide_id": "W000830"
   },
   "CA28": {
     "party": "D",
-    "name": "Judy Chu"
+    "name": "Judy Chu",
+    "bioguide_id": "C001080"
   },
   "CA29": {
     "party": "D",
-    "name": "Luz M. Rivas"
+    "name": "Luz M. Rivas",
+    "bioguide_id": "R000620"
   },
   "CA30": {
     "party": "D",
-    "name": "Laura Friedman"
+    "name": "Laura Friedman",
+    "bioguide_id": "F000483"
   },
   "CA31": {
     "party": "D",
-    "name": "Gilbert Ray Cisneros, Jr."
+    "name": "Gilbert Ray Cisneros, Jr.",
+    "bioguide_id": "C001123"
   },
   "CA32": {
     "party": "D",
-    "name": "Brad Sherman"
+    "name": "Brad Sherman",
+    "bioguide_id": "S000344"
   },
   "CA33": {
     "party": "D",
-    "name": "Pete Aguilar"
+    "name": "Pete Aguilar",
+    "bioguide_id": "A000371"
   },
   "CA34": {
     "party": "D",
-    "name": "Jimmy Gomez"
+    "name": "Jimmy Gomez",
+    "bioguide_id": "G000585"
   },
   "CA35": {
     "party": "D",
-    "name": "Norma J. Torres"
+    "name": "Norma J. Torres",
+    "bioguide_id": "T000474"
   },
   "CA36": {
     "party": "D",
-    "name": "Ted Lieu"
+    "name": "Ted Lieu",
+    "bioguide_id": "L000582"
   },
   "CA37": {
     "party": "D",
-    "name": "Sydney Kamlager-Dove"
+    "name": "Sydney Kamlager-Dove",
+    "bioguide_id": "K000400"
   },
   "CA38": {
     "party": "D",
-    "name": "Linda T. S\u00e1nchez"
+    "name": "Linda T. S\u00e1nchez",
+    "bioguide_id": "S001156"
   },
   "CA39": {
     "party": "D",
-    "name": "Mark Takano"
+    "name": "Mark Takano",
+    "bioguide_id": "T000472"
   },
   "CA40": {
     "party": "R",
-    "name": "Young Kim"
+    "name": "Young Kim",
+    "bioguide_id": "K000397"
   },
   "CA41": {
     "party": "R",
-    "name": "Ken Calvert"
+    "name": "Ken Calvert",
+    "bioguide_id": "C000059"
   },
   "CA42": {
     "party": "D",
-    "name": "Robert Garcia"
+    "name": "Robert Garcia",
+    "bioguide_id": "G000598"
   },
   "CA43": {
     "party": "D",
-    "name": "Maxine Waters"
+    "name": "Maxine Waters",
+    "bioguide_id": "W000187"
   },
   "CA44": {
     "party": "D",
-    "name": "Nanette Diaz Barrag\u00e1n"
+    "name": "Nanette Diaz Barrag\u00e1n",
+    "bioguide_id": "B001300"
   },
   "CA45": {
     "party": "D",
-    "name": "Derek Tran"
+    "name": "Derek Tran",
+    "bioguide_id": "T000491"
   },
   "CA46": {
     "party": "D",
-    "name": "J. Luis Correa"
+    "name": "J. Luis Correa",
+    "bioguide_id": "C001110"
   },
   "CA47": {
     "party": "D",
-    "name": "Dave Min"
+    "name": "Dave Min",
+    "bioguide_id": "M001241"
   },
   "CA48": {
     "party": "R",
-    "name": "Darrell Issa"
+    "name": "Darrell Issa",
+    "bioguide_id": "I000056"
   },
   "CA49": {
     "party": "D",
-    "name": "Mike Levin"
+    "name": "Mike Levin",
+    "bioguide_id": "L000593"
   },
   "CA50": {
     "party": "D",
-    "name": "Scott H. Peters"
+    "name": "Scott H. Peters",
+    "bioguide_id": "P000608"
   },
   "CA51": {
     "party": "D",
-    "name": "Sara Jacobs"
+    "name": "Sara Jacobs",
+    "bioguide_id": "J000305"
   },
   "CA52": {
     "party": "D",
-    "name": "Juan Vargas"
+    "name": "Juan Vargas",
+    "bioguide_id": "V000130"
   },
   "CO01": {
     "party": "D",
-    "name": "Diana DeGette"
+    "name": "Diana DeGette",
+    "bioguide_id": "D000197"
   },
   "CO02": {
     "party": "D",
-    "name": "Joe Neguse"
+    "name": "Joe Neguse",
+    "bioguide_id": "N000191"
   },
   "CO03": {
     "party": "R",
-    "name": "Jeff Hurd"
+    "name": "Jeff Hurd",
+    "bioguide_id": "H001100"
   },
   "CO04": {
     "party": "R",
-    "name": "Lauren Boebert"
+    "name": "Lauren Boebert",
+    "bioguide_id": "B000825"
   },
   "CO05": {
     "party": "R",
-    "name": "Jeff Crank"
+    "name": "Jeff Crank",
+    "bioguide_id": "C001137"
   },
   "CO06": {
     "party": "D",
-    "name": "Jason Crow"
+    "name": "Jason Crow",
+    "bioguide_id": "C001121"
   },
   "CO07": {
     "party": "D",
-    "name": "Brittany Pettersen"
+    "name": "Brittany Pettersen",
+    "bioguide_id": "P000620"
   },
   "CO08": {
     "party": "R",
-    "name": "Gabe Evans"
+    "name": "Gabe Evans",
+    "bioguide_id": "E000300"
   },
   "CT01": {
     "party": "D",
-    "name": "John B. Larson"
+    "name": "John B. Larson",
+    "bioguide_id": "L000557"
   },
   "CT02": {
     "party": "D",
-    "name": "Joe Courtney"
+    "name": "Joe Courtney",
+    "bioguide_id": "C001069"
   },
   "CT03": {
     "party": "D",
-    "name": "Rosa L. DeLauro"
+    "name": "Rosa L. DeLauro",
+    "bioguide_id": "D000216"
   },
   "CT04": {
     "party": "D",
-    "name": "James A. Himes"
+    "name": "James A. Himes",
+    "bioguide_id": "H001047"
   },
   "CT05": {
     "party": "D",
-    "name": "Jahana Hayes"
+    "name": "Jahana Hayes",
+    "bioguide_id": "H001081"
   },
   "DC00": {
     "party": "D",
-    "name": "Eleanor Holmes Norton"
+    "name": "Eleanor Holmes Norton",
+    "bioguide_id": "N000147"
   },
   "DE00": {
     "party": "D",
-    "name": "Sarah McBride"
+    "name": "Sarah McBride",
+    "bioguide_id": "M001238"
   },
   "FL01": {
     "party": "R",
-    "name": "Jimmy Patronis"
+    "name": "Jimmy Patronis",
+    "bioguide_id": "P000622"
   },
   "FL02": {
     "party": "R",
-    "name": "Neal P. Dunn"
+    "name": "Neal P. Dunn",
+    "bioguide_id": "D000628"
   },
   "FL03": {
     "party": "R",
-    "name": "Kat Cammack"
+    "name": "Kat Cammack",
+    "bioguide_id": "C001039"
   },
   "FL04": {
     "party": "R",
-    "name": "Aaron Bean"
+    "name": "Aaron Bean",
+    "bioguide_id": "B001314"
   },
   "FL05": {
     "party": "R",
-    "name": "John H. Rutherford"
+    "name": "John H. Rutherford",
+    "bioguide_id": "R000609"
   },
   "FL06": {
     "party": "R",
-    "name": "Randy Fine"
+    "name": "Randy Fine",
+    "bioguide_id": "F000484"
   },
   "FL07": {
     "party": "R",
-    "name": "Cory Mills"
+    "name": "Cory Mills",
+    "bioguide_id": "M001216"
   },
   "FL08": {
     "party": "R",
-    "name": "Mike Haridopolos"
+    "name": "Mike Haridopolos",
+    "bioguide_id": "H001099"
   },
   "FL09": {
     "party": "D",
-    "name": "Darren Soto"
+    "name": "Darren Soto",
+    "bioguide_id": "S001200"
   },
   "FL10": {
     "party": "D",
-    "name": "Maxwell Frost"
+    "name": "Maxwell Frost",
+    "bioguide_id": "F000476"
   },
   "FL11": {
     "party": "R",
-    "name": "Daniel Webster"
+    "name": "Daniel Webster",
+    "bioguide_id": "W000806"
   },
   "FL12": {
     "party": "R",
-    "name": "Gus M. Bilirakis"
+    "name": "Gus M. Bilirakis",
+    "bioguide_id": "B001257"
   },
   "FL13": {
     "party": "R",
-    "name": "Anna Paulina Luna"
+    "name": "Anna Paulina Luna",
+    "bioguide_id": "L000596"
   },
   "FL14": {
     "party": "D",
-    "name": "Kathy Castor"
+    "name": "Kathy Castor",
+    "bioguide_id": "C001066"
   },
   "FL15": {
     "party": "R",
-    "name": "Laurel M. Lee"
+    "name": "Laurel M. Lee",
+    "bioguide_id": "L000597"
   },
   "FL16": {
     "party": "R",
-    "name": "Vern Buchanan"
+    "name": "Vern Buchanan",
+    "bioguide_id": "B001260"
   },
   "FL17": {
     "party": "R",
-    "name": "W. Gregory Steube"
+    "name": "W. Gregory Steube",
+    "bioguide_id": "S001214"
   },
   "FL18": {
     "party": "R",
-    "name": "Scott Franklin"
+    "name": "Scott Franklin",
+    "bioguide_id": "F000472"
   },
   "FL19": {
     "party": "R",
-    "name": "Byron Donalds"
+    "name": "Byron Donalds",
+    "bioguide_id": "D000032"
   },
   "FL20": {
     "party": null,
-    "name": null
+    "name": null,
+    "bioguide_id": null
   },
   "FL21": {
     "party": "R",
-    "name": "Brian J. Mast"
+    "name": "Brian J. Mast",
+    "bioguide_id": "M001199"
   },
   "FL22": {
     "party": "D",
-    "name": "Lois Frankel"
+    "name": "Lois Frankel",
+    "bioguide_id": "F000462"
   },
   "FL23": {
     "party": "D",
-    "name": "Jared Moskowitz"
+    "name": "Jared Moskowitz",
+    "bioguide_id": "M001217"
   },
   "FL24": {
     "party": "D",
-    "name": "Frederica S. Wilson"
+    "name": "Frederica S. Wilson",
+    "bioguide_id": "W000808"
   },
   "FL25": {
     "party": "D",
-    "name": "Debbie Wasserman Schultz"
+    "name": "Debbie Wasserman Schultz",
+    "bioguide_id": "W000797"
   },
   "FL26": {
     "party": "R",
-    "name": "Mario Diaz-Balart"
+    "name": "Mario Diaz-Balart",
+    "bioguide_id": "D000600"
   },
   "FL27": {
     "party": "R",
-    "name": "Maria Elvira Salazar"
+    "name": "Maria Elvira Salazar",
+    "bioguide_id": "S000168"
   },
   "FL28": {
     "party": "R",
-    "name": "Carlos A. Gimenez"
+    "name": "Carlos A. Gimenez",
+    "bioguide_id": "G000593"
   },
   "GA01": {
     "party": "R",
-    "name": "Earl L. \"Buddy\" Carter"
+    "name": "Earl L. \"Buddy\" Carter",
+    "bioguide_id": "C001103"
   },
   "GA02": {
     "party": "D",
-    "name": "Sanford D. Bishop, Jr."
+    "name": "Sanford D. Bishop, Jr.",
+    "bioguide_id": "B000490"
   },
   "GA03": {
     "party": "R",
-    "name": "Brian Jack"
+    "name": "Brian Jack",
+    "bioguide_id": "J000311"
   },
   "GA04": {
     "party": "D",
-    "name": "Henry C. \"Hank\" Johnson, Jr."
+    "name": "Henry C. \"Hank\" Johnson, Jr.",
+    "bioguide_id": "J000288"
   },
   "GA05": {
     "party": "D",
-    "name": "Nikema Williams"
+    "name": "Nikema Williams",
+    "bioguide_id": "W000788"
   },
   "GA06": {
     "party": "D",
-    "name": "Lucy McBath"
+    "name": "Lucy McBath",
+    "bioguide_id": "M001208"
   },
   "GA07": {
     "party": "R",
-    "name": "Richard McCormick"
+    "name": "Richard McCormick",
+    "bioguide_id": "M001218"
   },
   "GA08": {
     "party": "R",
-    "name": "Austin Scott"
+    "name": "Austin Scott",
+    "bioguide_id": "S001189"
   },
   "GA09": {
     "party": "R",
-    "name": "Andrew S. Clyde"
+    "name": "Andrew S. Clyde",
+    "bioguide_id": "C001116"
   },
   "GA10": {
     "party": "R",
-    "name": "Mike Collins"
+    "name": "Mike Collins",
+    "bioguide_id": "C001129"
   },
   "GA11": {
     "party": "R",
-    "name": "Barry Loudermilk"
+    "name": "Barry Loudermilk",
+    "bioguide_id": "L000583"
   },
   "GA12": {
     "party": "R",
-    "name": "Rick W. Allen"
+    "name": "Rick W. Allen",
+    "bioguide_id": "A000372"
   },
   "GA13": {
     "party": null,
-    "name": null
+    "name": null,
+    "bioguide_id": null
   },
   "GA14": {
     "party": "R",
-    "name": "Clay Fuller"
+    "name": "Clay Fuller",
+    "bioguide_id": "F000485"
   },
   "GU00": {
     "party": "R",
-    "name": "James C. Moylan"
+    "name": "James C. Moylan",
+    "bioguide_id": "M001219"
   },
   "HI01": {
     "party": "D",
-    "name": "Ed Case"
+    "name": "Ed Case",
+    "bioguide_id": "C001055"
   },
   "HI02": {
     "party": "D",
-    "name": "Jill N. Tokuda"
+    "name": "Jill N. Tokuda",
+    "bioguide_id": "T000487"
   },
   "IA01": {
     "party": "R",
-    "name": "Mariannette Miller-Meeks"
+    "name": "Mariannette Miller-Meeks",
+    "bioguide_id": "M001215"
   },
   "IA02": {
     "party": "R",
-    "name": "Ashley Hinson"
+    "name": "Ashley Hinson",
+    "bioguide_id": "H001091"
   },
   "IA03": {
     "party": "R",
-    "name": "Zachary Nunn"
+    "name": "Zachary Nunn",
+    "bioguide_id": "N000193"
   },
   "IA04": {
     "party": "R",
-    "name": "Randy Feenstra"
+    "name": "Randy Feenstra",
+    "bioguide_id": "F000446"
   },
   "ID01": {
     "party": "R",
-    "name": "Russ Fulcher"
+    "name": "Russ Fulcher",
+    "bioguide_id": "F000469"
   },
   "ID02": {
     "party": "R",
-    "name": "Michael K. Simpson"
+    "name": "Michael K. Simpson",
+    "bioguide_id": "S001148"
   },
   "IL01": {
     "party": "D",
-    "name": "Jonathan L. Jackson"
+    "name": "Jonathan L. Jackson",
+    "bioguide_id": "J000309"
   },
   "IL02": {
     "party": "D",
-    "name": "Robin L. Kelly"
+    "name": "Robin L. Kelly",
+    "bioguide_id": "K000385"
   },
   "IL03": {
     "party": "D",
-    "name": "Delia C. Ramirez"
+    "name": "Delia C. Ramirez",
+    "bioguide_id": "R000617"
   },
   "IL04": {
     "party": "D",
-    "name": "Jes\u00fas G. \"Chuy\" Garc\u00eda"
+    "name": "Jes\u00fas G. \"Chuy\" Garc\u00eda",
+    "bioguide_id": "G000586"
   },
   "IL05": {
     "party": "D",
-    "name": "Mike Quigley"
+    "name": "Mike Quigley",
+    "bioguide_id": "Q000023"
   },
   "IL06": {
     "party": "D",
-    "name": "Sean Casten"
+    "name": "Sean Casten",
+    "bioguide_id": "C001117"
   },
   "IL07": {
     "party": "D",
-    "name": "Danny K. Davis"
+    "name": "Danny K. Davis",
+    "bioguide_id": "D000096"
   },
   "IL08": {
     "party": "D",
-    "name": "Raja Krishnamoorthi"
+    "name": "Raja Krishnamoorthi",
+    "bioguide_id": "K000391"
   },
   "IL09": {
     "party": "D",
-    "name": "Janice D. Schakowsky"
+    "name": "Janice D. Schakowsky",
+    "bioguide_id": "S001145"
   },
   "IL10": {
     "party": "D",
-    "name": "Bradley Scott Schneider"
+    "name": "Bradley Scott Schneider",
+    "bioguide_id": "S001190"
   },
   "IL11": {
     "party": "D",
-    "name": "Bill Foster"
+    "name": "Bill Foster",
+    "bioguide_id": "F000454"
   },
   "IL12": {
     "party": "R",
-    "name": "Mike Bost"
+    "name": "Mike Bost",
+    "bioguide_id": "B001295"
   },
   "IL13": {
     "party": "D",
-    "name": "Nikki Budzinski"
+    "name": "Nikki Budzinski",
+    "bioguide_id": "B001315"
   },
   "IL14": {
     "party": "D",
-    "name": "Lauren Underwood"
+    "name": "Lauren Underwood",
+    "bioguide_id": "U000040"
   },
   "IL15": {
     "party": "R",
-    "name": "Mary E. Miller"
+    "name": "Mary E. Miller",
+    "bioguide_id": "M001211"
   },
   "IL16": {
     "party": "R",
-    "name": "Darin LaHood"
+    "name": "Darin LaHood",
+    "bioguide_id": "L000585"
   },
   "IL17": {
     "party": "D",
-    "name": "Eric Sorensen"
+    "name": "Eric Sorensen",
+    "bioguide_id": "S001225"
   },
   "IN01": {
     "party": "D",
-    "name": "Frank J. Mrvan"
+    "name": "Frank J. Mrvan",
+    "bioguide_id": "M001214"
   },
   "IN02": {
     "party": "R",
-    "name": "Rudy Yakym III"
+    "name": "Rudy Yakym III",
+    "bioguide_id": "Y000067"
   },
   "IN03": {
     "party": "R",
-    "name": "Marlin A. Stutzman"
+    "name": "Marlin A. Stutzman",
+    "bioguide_id": "S001188"
   },
   "IN04": {
     "party": "R",
-    "name": "James R. Baird"
+    "name": "James R. Baird",
+    "bioguide_id": "B001307"
   },
   "IN05": {
     "party": "R",
-    "name": "Victoria Spartz"
+    "name": "Victoria Spartz",
+    "bioguide_id": "S000929"
   },
   "IN06": {
     "party": "R",
-    "name": "Jefferson Shreve"
+    "name": "Jefferson Shreve",
+    "bioguide_id": "S001229"
   },
   "IN07": {
     "party": "D",
-    "name": "Andr\u00e9 Carson"
+    "name": "Andr\u00e9 Carson",
+    "bioguide_id": "C001072"
   },
   "IN08": {
     "party": "R",
-    "name": "Mark B. Messmer"
+    "name": "Mark B. Messmer",
+    "bioguide_id": "M001233"
   },
   "IN09": {
     "party": "R",
-    "name": "Erin Houchin"
+    "name": "Erin Houchin",
+    "bioguide_id": "H001093"
   },
   "KS01": {
     "party": "R",
-    "name": "Tracey Mann"
+    "name": "Tracey Mann",
+    "bioguide_id": "M000871"
   },
   "KS02": {
     "party": "R",
-    "name": "Derek Schmidt"
+    "name": "Derek Schmidt",
+    "bioguide_id": "S001228"
   },
   "KS03": {
     "party": "D",
-    "name": "Sharice Davids"
+    "name": "Sharice Davids",
+    "bioguide_id": "D000629"
   },
   "KS04": {
     "party": "R",
-    "name": "Ron Estes"
+    "name": "Ron Estes",
+    "bioguide_id": "E000298"
   },
   "KY01": {
     "party": "R",
-    "name": "James Comer"
+    "name": "James Comer",
+    "bioguide_id": "C001108"
   },
   "KY02": {
     "party": "R",
-    "name": "Brett Guthrie"
+    "name": "Brett Guthrie",
+    "bioguide_id": "G000558"
   },
   "KY03": {
     "party": "D",
-    "name": "Morgan McGarvey"
+    "name": "Morgan McGarvey",
+    "bioguide_id": "M001220"
   },
   "KY04": {
     "party": "R",
-    "name": "Thomas Massie"
+    "name": "Thomas Massie",
+    "bioguide_id": "M001184"
   },
   "KY05": {
     "party": "R",
-    "name": "Harold Rogers"
+    "name": "Harold Rogers",
+    "bioguide_id": "R000395"
   },
   "KY06": {
     "party": "R",
-    "name": "Andy Barr"
+    "name": "Andy Barr",
+    "bioguide_id": "B001282"
   },
   "LA01": {
     "party": "R",
-    "name": "Steve Scalise"
+    "name": "Steve Scalise",
+    "bioguide_id": "S001176"
   },
   "LA02": {
     "party": "D",
-    "name": "Troy A. Carter"
+    "name": "Troy A. Carter",
+    "bioguide_id": "C001125"
   },
   "LA03": {
     "party": "R",
-    "name": "Clay Higgins"
+    "name": "Clay Higgins",
+    "bioguide_id": "H001077"
   },
   "LA04": {
     "party": "R",
-    "name": "Mike Johnson"
+    "name": "Mike Johnson",
+    "bioguide_id": "J000299"
   },
   "LA05": {
     "party": "R",
-    "name": "Julia Letlow"
+    "name": "Julia Letlow",
+    "bioguide_id": "L000595"
   },
   "LA06": {
     "party": "D",
-    "name": "Cleo Fields"
+    "name": "Cleo Fields",
+    "bioguide_id": "F000110"
   },
   "MA01": {
     "party": "D",
-    "name": "Richard E. Neal"
+    "name": "Richard E. Neal",
+    "bioguide_id": "N000015"
   },
   "MA02": {
     "party": "D",
-    "name": "James P. McGovern"
+    "name": "James P. McGovern",
+    "bioguide_id": "M000312"
   },
   "MA03": {
     "party": "D",
-    "name": "Lori Trahan"
+    "name": "Lori Trahan",
+    "bioguide_id": "T000482"
   },
   "MA04": {
     "party": "D",
-    "name": "Jake Auchincloss"
+    "name": "Jake Auchincloss",
+    "bioguide_id": "A000148"
   },
   "MA05": {
     "party": "D",
-    "name": "Katherine M. Clark"
+    "name": "Katherine M. Clark",
+    "bioguide_id": "C001101"
   },
   "MA06": {
     "party": "D",
-    "name": "Seth Moulton"
+    "name": "Seth Moulton",
+    "bioguide_id": "M001196"
   },
   "MA07": {
     "party": "D",
-    "name": "Ayanna Pressley"
+    "name": "Ayanna Pressley",
+    "bioguide_id": "P000617"
   },
   "MA08": {
     "party": "D",
-    "name": "Stephen F. Lynch"
+    "name": "Stephen F. Lynch",
+    "bioguide_id": "L000562"
   },
   "MA09": {
     "party": "D",
-    "name": "William R. Keating"
+    "name": "William R. Keating",
+    "bioguide_id": "K000375"
   },
   "MD01": {
     "party": "R",
-    "name": "Andy Harris"
+    "name": "Andy Harris",
+    "bioguide_id": "H001052"
   },
   "MD02": {
     "party": "D",
-    "name": "Johnny Olszewski, Jr."
+    "name": "Johnny Olszewski, Jr.",
+    "bioguide_id": "O000176"
   },
   "MD03": {
     "party": "D",
-    "name": "Sarah Elfreth"
+    "name": "Sarah Elfreth",
+    "bioguide_id": "E000301"
   },
   "MD04": {
     "party": "D",
-    "name": "Glenn Ivey"
+    "name": "Glenn Ivey",
+    "bioguide_id": "I000058"
   },
   "MD05": {
     "party": "D",
-    "name": "Steny H. Hoyer"
+    "name": "Steny H. Hoyer",
+    "bioguide_id": "H000874"
   },
   "MD06": {
     "party": "D",
-    "name": "April McClain Delaney"
+    "name": "April McClain Delaney",
+    "bioguide_id": "M001232"
   },
   "MD07": {
     "party": "D",
-    "name": "Kweisi Mfume"
+    "name": "Kweisi Mfume",
+    "bioguide_id": "M000687"
   },
   "MD08": {
     "party": "D",
-    "name": "Jamie Raskin"
+    "name": "Jamie Raskin",
+    "bioguide_id": "R000606"
   },
   "ME01": {
     "party": "D",
-    "name": "Chellie Pingree"
+    "name": "Chellie Pingree",
+    "bioguide_id": "P000597"
   },
   "ME02": {
     "party": "D",
-    "name": "Jared F. Golden"
+    "name": "Jared F. Golden",
+    "bioguide_id": "G000592"
   },
   "MI01": {
     "party": "R",
-    "name": "Jack Bergman"
+    "name": "Jack Bergman",
+    "bioguide_id": "B001301"
   },
   "MI02": {
     "party": "R",
-    "name": "John R. Moolenaar"
+    "name": "John R. Moolenaar",
+    "bioguide_id": "M001194"
   },
   "MI03": {
     "party": "D",
-    "name": "Hillary J. Scholten"
+    "name": "Hillary J. Scholten",
+    "bioguide_id": "S001221"
   },
   "MI04": {
     "party": "R",
-    "name": "Bill Huizenga"
+    "name": "Bill Huizenga",
+    "bioguide_id": "H001058"
   },
   "MI05": {
     "party": "R",
-    "name": "Tim Walberg"
+    "name": "Tim Walberg",
+    "bioguide_id": "W000798"
   },
   "MI06": {
     "party": "D",
-    "name": "Debbie Dingell"
+    "name": "Debbie Dingell",
+    "bioguide_id": "D000624"
   },
   "MI07": {
     "party": "R",
-    "name": "Tom Barrett"
+    "name": "Tom Barrett",
+    "bioguide_id": "B001321"
   },
   "MI08": {
     "party": "D",
-    "name": "Kristen McDonald Rivet"
+    "name": "Kristen McDonald Rivet",
+    "bioguide_id": "M001237"
   },
   "MI09": {
     "party": "R",
-    "name": "Lisa C. McClain"
+    "name": "Lisa C. McClain",
+    "bioguide_id": "M001136"
   },
   "MI10": {
     "party": "R",
-    "name": "John James"
+    "name": "John James",
+    "bioguide_id": "J000307"
   },
   "MI11": {
     "party": "D",
-    "name": "Haley M. Stevens"
+    "name": "Haley M. Stevens",
+    "bioguide_id": "S001215"
   },
   "MI12": {
     "party": "D",
-    "name": "Rashida Tlaib"
+    "name": "Rashida Tlaib",
+    "bioguide_id": "T000481"
   },
   "MI13": {
     "party": "D",
-    "name": "Shri Thanedar"
+    "name": "Shri Thanedar",
+    "bioguide_id": "T000488"
   },
   "MN01": {
     "party": "R",
-    "name": "Brad Finstad"
+    "name": "Brad Finstad",
+    "bioguide_id": "F000475"
   },
   "MN02": {
     "party": "D",
-    "name": "Angie Craig"
+    "name": "Angie Craig",
+    "bioguide_id": "C001119"
   },
   "MN03": {
     "party": "D",
-    "name": "Kelly Morrison"
+    "name": "Kelly Morrison",
+    "bioguide_id": "M001234"
   },
   "MN04": {
     "party": "D",
-    "name": "Betty McCollum"
+    "name": "Betty McCollum",
+    "bioguide_id": "M001143"
   },
   "MN05": {
     "party": "D",
-    "name": "Ilhan Omar"
+    "name": "Ilhan Omar",
+    "bioguide_id": "O000173"
   },
   "MN06": {
     "party": "R",
-    "name": "Tom Emmer"
+    "name": "Tom Emmer",
+    "bioguide_id": "E000294"
   },
   "MN07": {
     "party": "R",
-    "name": "Michelle Fischbach"
+    "name": "Michelle Fischbach",
+    "bioguide_id": "F000470"
   },
   "MN08": {
     "party": "R",
-    "name": "Pete Stauber"
+    "name": "Pete Stauber",
+    "bioguide_id": "S001212"
   },
   "MO01": {
     "party": "D",
-    "name": "Wesley Bell"
+    "name": "Wesley Bell",
+    "bioguide_id": "B001324"
   },
   "MO02": {
     "party": "R",
-    "name": "Ann Wagner"
+    "name": "Ann Wagner",
+    "bioguide_id": "W000812"
   },
   "MO03": {
     "party": "R",
-    "name": "Robert F. Onder, Jr."
+    "name": "Robert F. Onder, Jr.",
+    "bioguide_id": "O000177"
   },
   "MO04": {
     "party": "R",
-    "name": "Mark Alford"
+    "name": "Mark Alford",
+    "bioguide_id": "A000379"
   },
   "MO05": {
     "party": "D",
-    "name": "Emanuel Cleaver"
+    "name": "Emanuel Cleaver",
+    "bioguide_id": "C001061"
   },
   "MO06": {
     "party": "R",
-    "name": "Sam Graves"
+    "name": "Sam Graves",
+    "bioguide_id": "G000546"
   },
   "MO07": {
     "party": "R",
-    "name": "Eric Burlison"
+    "name": "Eric Burlison",
+    "bioguide_id": "B001316"
   },
   "MO08": {
     "party": "R",
-    "name": "Jason Smith"
+    "name": "Jason Smith",
+    "bioguide_id": "S001195"
   },
   "MP00": {
     "party": "R",
-    "name": "Kimberlyn King-Hinds"
+    "name": "Kimberlyn King-Hinds",
+    "bioguide_id": "K000404"
   },
   "MS01": {
     "party": "R",
-    "name": "Trent Kelly"
+    "name": "Trent Kelly",
+    "bioguide_id": "K000388"
   },
   "MS02": {
     "party": "D",
-    "name": "Bennie G. Thompson"
+    "name": "Bennie G. Thompson",
+    "bioguide_id": "T000193"
   },
   "MS03": {
     "party": "R",
-    "name": "Michael Guest"
+    "name": "Michael Guest",
+    "bioguide_id": "G000591"
   },
   "MS04": {
     "party": "R",
-    "name": "Mike Ezell"
+    "name": "Mike Ezell",
+    "bioguide_id": "E000235"
   },
   "MT01": {
     "party": "R",
-    "name": "Ryan K. Zinke"
+    "name": "Ryan K. Zinke",
+    "bioguide_id": "Z000018"
   },
   "MT02": {
     "party": "R",
-    "name": "Troy Downing"
+    "name": "Troy Downing",
+    "bioguide_id": "D000634"
   },
   "NC01": {
     "party": "D",
-    "name": "Donald G. Davis"
+    "name": "Donald G. Davis",
+    "bioguide_id": "D000230"
   },
   "NC02": {
     "party": "D",
-    "name": "Deborah K. Ross"
+    "name": "Deborah K. Ross",
+    "bioguide_id": "R000305"
   },
   "NC03": {
     "party": "R",
-    "name": "Gregory F. Murphy"
+    "name": "Gregory F. Murphy",
+    "bioguide_id": "M001210"
   },
   "NC04": {
     "party": "D",
-    "name": "Valerie P. Foushee"
+    "name": "Valerie P. Foushee",
+    "bioguide_id": "F000477"
   },
   "NC05": {
     "party": "R",
-    "name": "Virginia Foxx"
+    "name": "Virginia Foxx",
+    "bioguide_id": "F000450"
   },
   "NC06": {
     "party": "R",
-    "name": "Addison P. McDowell"
+    "name": "Addison P. McDowell",
+    "bioguide_id": "M001240"
   },
   "NC07": {
     "party": "R",
-    "name": "David Rouzer"
+    "name": "David Rouzer",
+    "bioguide_id": "R000603"
   },
   "NC08": {
     "party": "R",
-    "name": "Mark Harris"
+    "name": "Mark Harris",
+    "bioguide_id": "H001102"
   },
   "NC09": {
     "party": "R",
-    "name": "Richard Hudson"
+    "name": "Richard Hudson",
+    "bioguide_id": "H001067"
   },
   "NC10": {
     "party": "R",
-    "name": "Pat Harrigan"
+    "name": "Pat Harrigan",
+    "bioguide_id": "H001101"
   },
   "NC11": {
     "party": "R",
-    "name": "Chuck Edwards"
+    "name": "Chuck Edwards",
+    "bioguide_id": "E000246"
   },
   "NC12": {
     "party": "D",
-    "name": "Alma S. Adams"
+    "name": "Alma S. Adams",
+    "bioguide_id": "A000370"
   },
   "NC13": {
     "party": "R",
-    "name": "Brad Knott"
+    "name": "Brad Knott",
+    "bioguide_id": "K000405"
   },
   "NC14": {
     "party": "R",
-    "name": "Tim Moore"
+    "name": "Tim Moore",
+    "bioguide_id": "M001236"
   },
   "ND00": {
     "party": "R",
-    "name": "Julie Fedorchak"
+    "name": "Julie Fedorchak",
+    "bioguide_id": "F000482"
   },
   "NE01": {
     "party": "R",
-    "name": "Mike Flood"
+    "name": "Mike Flood",
+    "bioguide_id": "F000474"
   },
   "NE02": {
     "party": "R",
-    "name": "Don Bacon"
+    "name": "Don Bacon",
+    "bioguide_id": "B001298"
   },
   "NE03": {
     "party": "R",
-    "name": "Adrian Smith"
+    "name": "Adrian Smith",
+    "bioguide_id": "S001172"
   },
   "NH01": {
     "party": "D",
-    "name": "Chris Pappas"
+    "name": "Chris Pappas",
+    "bioguide_id": "P000614"
   },
   "NH02": {
     "party": "D",
-    "name": "Maggie Goodlander"
+    "name": "Maggie Goodlander",
+    "bioguide_id": "G000604"
   },
   "NJ01": {
     "party": "D",
-    "name": "Donald Norcross"
+    "name": "Donald Norcross",
+    "bioguide_id": "N000188"
   },
   "NJ02": {
     "party": "R",
-    "name": "Jefferson Van Drew"
+    "name": "Jefferson Van Drew",
+    "bioguide_id": "V000133"
   },
   "NJ03": {
     "party": "D",
-    "name": "Herbert C. Conaway, Jr."
+    "name": "Herbert C. Conaway, Jr.",
+    "bioguide_id": "C001136"
   },
   "NJ04": {
     "party": "R",
-    "name": "Christopher H. Smith"
+    "name": "Christopher H. Smith",
+    "bioguide_id": "S000522"
   },
   "NJ05": {
     "party": "D",
-    "name": "Josh Gottheimer"
+    "name": "Josh Gottheimer",
+    "bioguide_id": "G000583"
   },
   "NJ06": {
     "party": "D",
-    "name": "Frank Pallone, Jr."
+    "name": "Frank Pallone, Jr.",
+    "bioguide_id": "P000034"
   },
   "NJ07": {
     "party": "R",
-    "name": "Thomas H. Kean, Jr."
+    "name": "Thomas H. Kean, Jr.",
+    "bioguide_id": "K000398"
   },
   "NJ08": {
     "party": "D",
-    "name": "Robert Menendez"
+    "name": "Robert Menendez",
+    "bioguide_id": "M001226"
   },
   "NJ09": {
     "party": "D",
-    "name": "Nellie Pou"
+    "name": "Nellie Pou",
+    "bioguide_id": "P000621"
   },
   "NJ10": {
     "party": "D",
-    "name": "LaMonica McIver"
+    "name": "LaMonica McIver",
+    "bioguide_id": "M001229"
   },
   "NJ11": {
     "party": "D",
-    "name": "Analilia Mejia"
+    "name": "Analilia Mejia",
+    "bioguide_id": "M001246"
   },
   "NJ12": {
     "party": "D",
-    "name": "Bonnie Watson Coleman"
+    "name": "Bonnie Watson Coleman",
+    "bioguide_id": "W000822"
   },
   "NM01": {
     "party": "D",
-    "name": "Melanie A. Stansbury"
+    "name": "Melanie A. Stansbury",
+    "bioguide_id": "S001218"
   },
   "NM02": {
     "party": "D",
-    "name": "Gabe Vasquez"
+    "name": "Gabe Vasquez",
+    "bioguide_id": "V000136"
   },
   "NM03": {
     "party": "D",
-    "name": "Teresa Leger Fernandez"
+    "name": "Teresa Leger Fernandez",
+    "bioguide_id": "L000273"
   },
   "NV01": {
     "party": "D",
-    "name": "Dina Titus"
+    "name": "Dina Titus",
+    "bioguide_id": "T000468"
   },
   "NV02": {
     "party": "R",
-    "name": "Mark E. Amodei"
+    "name": "Mark E. Amodei",
+    "bioguide_id": "A000369"
   },
   "NV03": {
     "party": "D",
-    "name": "Susie Lee"
+    "name": "Susie Lee",
+    "bioguide_id": "L000590"
   },
   "NV04": {
     "party": "D",
-    "name": "Steven Horsford"
+    "name": "Steven Horsford",
+    "bioguide_id": "H001066"
   },
   "NY01": {
     "party": "R",
-    "name": "Nick LaLota"
+    "name": "Nick LaLota",
+    "bioguide_id": "L000598"
   },
   "NY02": {
     "party": "R",
-    "name": "Andrew R. Garbarino"
+    "name": "Andrew R. Garbarino",
+    "bioguide_id": "G000597"
   },
   "NY03": {
     "party": "D",
-    "name": "Thomas R. Suozzi"
+    "name": "Thomas R. Suozzi",
+    "bioguide_id": "S001201"
   },
   "NY04": {
     "party": "D",
-    "name": "Laura Gillen"
+    "name": "Laura Gillen",
+    "bioguide_id": "G000602"
   },
   "NY05": {
     "party": "D",
-    "name": "Gregory W. Meeks"
+    "name": "Gregory W. Meeks",
+    "bioguide_id": "M001137"
   },
   "NY06": {
     "party": "D",
-    "name": "Grace Meng"
+    "name": "Grace Meng",
+    "bioguide_id": "M001188"
   },
   "NY07": {
     "party": "D",
-    "name": "Nydia M. Vel\u00e1zquez"
+    "name": "Nydia M. Vel\u00e1zquez",
+    "bioguide_id": "V000081"
   },
   "NY08": {
     "party": "D",
-    "name": "Hakeem S. Jeffries"
+    "name": "Hakeem S. Jeffries",
+    "bioguide_id": "J000294"
   },
   "NY09": {
     "party": "D",
-    "name": "Yvette D. Clarke"
+    "name": "Yvette D. Clarke",
+    "bioguide_id": "C001067"
   },
   "NY10": {
     "party": "D",
-    "name": "Daniel S. Goldman"
+    "name": "Daniel S. Goldman",
+    "bioguide_id": "G000599"
   },
   "NY11": {
     "party": "R",
-    "name": "Nicole Malliotakis"
+    "name": "Nicole Malliotakis",
+    "bioguide_id": "M000317"
   },
   "NY12": {
     "party": "D",
-    "name": "Jerrold Nadler"
+    "name": "Jerrold Nadler",
+    "bioguide_id": "N000002"
   },
   "NY13": {
     "party": "D",
-    "name": "Adriano Espaillat"
+    "name": "Adriano Espaillat",
+    "bioguide_id": "E000297"
   },
   "NY14": {
     "party": "D",
-    "name": "Alexandria Ocasio-Cortez"
+    "name": "Alexandria Ocasio-Cortez",
+    "bioguide_id": "O000172"
   },
   "NY15": {
     "party": "D",
-    "name": "Ritchie Torres"
+    "name": "Ritchie Torres",
+    "bioguide_id": "T000486"
   },
   "NY16": {
     "party": "D",
-    "name": "George Latimer"
+    "name": "George Latimer",
+    "bioguide_id": "L000606"
   },
   "NY17": {
     "party": "R",
-    "name": "Michael Lawler"
+    "name": "Michael Lawler",
+    "bioguide_id": "L000599"
   },
   "NY18": {
     "party": "D",
-    "name": "Patrick Ryan"
+    "name": "Patrick Ryan",
+    "bioguide_id": "R000579"
   },
   "NY19": {
     "party": "D",
-    "name": "Josh Riley"
+    "name": "Josh Riley",
+    "bioguide_id": "R000622"
   },
   "NY20": {
     "party": "D",
-    "name": "Paul Tonko"
+    "name": "Paul Tonko",
+    "bioguide_id": "T000469"
   },
   "NY21": {
     "party": "R",
-    "name": "Elise M. Stefanik"
+    "name": "Elise M. Stefanik",
+    "bioguide_id": "S001196"
   },
   "NY22": {
     "party": "D",
-    "name": "John W. Mannion"
+    "name": "John W. Mannion",
+    "bioguide_id": "M001231"
   },
   "NY23": {
     "party": "R",
-    "name": "Nicholas A. Langworthy"
+    "name": "Nicholas A. Langworthy",
+    "bioguide_id": "L000600"
   },
   "NY24": {
     "party": "R",
-    "name": "Claudia Tenney"
+    "name": "Claudia Tenney",
+    "bioguide_id": "T000478"
   },
   "NY25": {
     "party": "D",
-    "name": "Joseph D. Morelle"
+    "name": "Joseph D. Morelle",
+    "bioguide_id": "M001206"
   },
   "NY26": {
     "party": "D",
-    "name": "Timothy M. Kennedy"
+    "name": "Timothy M. Kennedy",
+    "bioguide_id": "K000402"
   },
   "OH01": {
     "party": "D",
-    "name": "Greg Landsman"
+    "name": "Greg Landsman",
+    "bioguide_id": "L000601"
   },
   "OH02": {
     "party": "R",
-    "name": "David J. Taylor"
+    "name": "David J. Taylor",
+    "bioguide_id": "T000490"
   },
   "OH03": {
     "party": "D",
-    "name": "Joyce Beatty"
+    "name": "Joyce Beatty",
+    "bioguide_id": "B001281"
   },
   "OH04": {
     "party": "R",
-    "name": "Jim Jordan"
+    "name": "Jim Jordan",
+    "bioguide_id": "J000289"
   },
   "OH05": {
     "party": "R",
-    "name": "Robert E. Latta"
+    "name": "Robert E. Latta",
+    "bioguide_id": "L000566"
   },
   "OH06": {
     "party": "R",
-    "name": "Michael A. Rulli"
+    "name": "Michael A. Rulli",
+    "bioguide_id": "R000619"
   },
   "OH07": {
     "party": "R",
-    "name": "Max L. Miller"
+    "name": "Max L. Miller",
+    "bioguide_id": "M001222"
   },
   "OH08": {
     "party": "R",
-    "name": "Warren Davidson"
+    "name": "Warren Davidson",
+    "bioguide_id": "D000626"
   },
   "OH09": {
     "party": "D",
-    "name": "Marcy Kaptur"
+    "name": "Marcy Kaptur",
+    "bioguide_id": "K000009"
   },
   "OH10": {
     "party": "R",
-    "name": "Michael R. Turner"
+    "name": "Michael R. Turner",
+    "bioguide_id": "T000463"
   },
   "OH11": {
     "party": "D",
-    "name": "Shontel M. Brown"
+    "name": "Shontel M. Brown",
+    "bioguide_id": "B001313"
   },
   "OH12": {
     "party": "R",
-    "name": "Troy Balderson"
+    "name": "Troy Balderson",
+    "bioguide_id": "B001306"
   },
   "OH13": {
     "party": "D",
-    "name": "Emilia Strong Sykes"
+    "name": "Emilia Strong Sykes",
+    "bioguide_id": "S001223"
   },
   "OH14": {
     "party": "R",
-    "name": "David P. Joyce"
+    "name": "David P. Joyce",
+    "bioguide_id": "J000295"
   },
   "OH15": {
     "party": "R",
-    "name": "Mike Carey"
+    "name": "Mike Carey",
+    "bioguide_id": "C001126"
   },
   "OK01": {
     "party": "R",
-    "name": "Kevin Hern"
+    "name": "Kevin Hern",
+    "bioguide_id": "H001082"
   },
   "OK02": {
     "party": "R",
-    "name": "Josh Brecheen"
+    "name": "Josh Brecheen",
+    "bioguide_id": "B001317"
   },
   "OK03": {
     "party": "R",
-    "name": "Frank D. Lucas"
+    "name": "Frank D. Lucas",
+    "bioguide_id": "L000491"
   },
   "OK04": {
     "party": "R",
-    "name": "Tom Cole"
+    "name": "Tom Cole",
+    "bioguide_id": "C001053"
   },
   "OK05": {
     "party": "R",
-    "name": "Stephanie I. Bice"
+    "name": "Stephanie I. Bice",
+    "bioguide_id": "B000740"
   },
   "OR01": {
     "party": "D",
-    "name": "Suzanne Bonamici"
+    "name": "Suzanne Bonamici",
+    "bioguide_id": "B001278"
   },
   "OR02": {
     "party": "R",
-    "name": "Cliff Bentz"
+    "name": "Cliff Bentz",
+    "bioguide_id": "B000668"
   },
   "OR03": {
     "party": "D",
-    "name": "Maxine Dexter"
+    "name": "Maxine Dexter",
+    "bioguide_id": "D000635"
   },
   "OR04": {
     "party": "D",
-    "name": "Val T. Hoyle"
+    "name": "Val T. Hoyle",
+    "bioguide_id": "H001094"
   },
   "OR05": {
     "party": "D",
-    "name": "Janelle S. Bynum"
+    "name": "Janelle S. Bynum",
+    "bioguide_id": "B001326"
   },
   "OR06": {
     "party": "D",
-    "name": "Andrea Salinas"
+    "name": "Andrea Salinas",
+    "bioguide_id": "S001226"
   },
   "PA01": {
     "party": "R",
-    "name": "Brian K. Fitzpatrick"
+    "name": "Brian K. Fitzpatrick",
+    "bioguide_id": "F000466"
   },
   "PA02": {
     "party": "D",
-    "name": "Brendan F. Boyle"
+    "name": "Brendan F. Boyle",
+    "bioguide_id": "B001296"
   },
   "PA03": {
     "party": "D",
-    "name": "Dwight Evans"
+    "name": "Dwight Evans",
+    "bioguide_id": "E000296"
   },
   "PA04": {
     "party": "D",
-    "name": "Madeleine Dean"
+    "name": "Madeleine Dean",
+    "bioguide_id": "D000631"
   },
   "PA05": {
     "party": "D",
-    "name": "Mary Gay Scanlon"
+    "name": "Mary Gay Scanlon",
+    "bioguide_id": "S001205"
   },
   "PA06": {
     "party": "D",
-    "name": "Chrissy Houlahan"
+    "name": "Chrissy Houlahan",
+    "bioguide_id": "H001085"
   },
   "PA07": {
     "party": "R",
-    "name": "Ryan Mackenzie"
+    "name": "Ryan Mackenzie",
+    "bioguide_id": "M001230"
   },
   "PA08": {
     "party": "R",
-    "name": "Robert P. Bresnahan, Jr."
+    "name": "Robert P. Bresnahan, Jr.",
+    "bioguide_id": "B001327"
   },
   "PA09": {
     "party": "R",
-    "name": "Daniel Meuser"
+    "name": "Daniel Meuser",
+    "bioguide_id": "M001204"
   },
   "PA10": {
     "party": "R",
-    "name": "Scott Perry"
+    "name": "Scott Perry",
+    "bioguide_id": "P000605"
   },
   "PA11": {
     "party": "R",
-    "name": "Lloyd Smucker"
+    "name": "Lloyd Smucker",
+    "bioguide_id": "S001199"
   },
   "PA12": {
     "party": "D",
-    "name": "Summer L. Lee"
+    "name": "Summer L. Lee",
+    "bioguide_id": "L000602"
   },
   "PA13": {
     "party": "R",
-    "name": "John Joyce"
+    "name": "John Joyce",
+    "bioguide_id": "J000302"
   },
   "PA14": {
     "party": "R",
-    "name": "Guy Reschenthaler"
+    "name": "Guy Reschenthaler",
+    "bioguide_id": "R000610"
   },
   "PA15": {
     "party": "R",
-    "name": "Glenn Thompson"
+    "name": "Glenn Thompson",
+    "bioguide_id": "T000467"
   },
   "PA16": {
     "party": "R",
-    "name": "Mike Kelly"
+    "name": "Mike Kelly",
+    "bioguide_id": "K000376"
   },
   "PA17": {
     "party": "D",
-    "name": "Christopher R. Deluzio"
+    "name": "Christopher R. Deluzio",
+    "bioguide_id": "D000530"
   },
   "PR00": {
     "party": "D",
-    "name": "Pablo Jos\u00e9 Hern\u00e1ndez"
+    "name": "Pablo Jos\u00e9 Hern\u00e1ndez",
+    "bioguide_id": "H001103"
   },
   "RI01": {
     "party": "D",
-    "name": "Gabe Amo"
+    "name": "Gabe Amo",
+    "bioguide_id": "A000380"
   },
   "RI02": {
     "party": "D",
-    "name": "Seth Magaziner"
+    "name": "Seth Magaziner",
+    "bioguide_id": "M001223"
   },
   "SC01": {
     "party": "R",
-    "name": "Nancy Mace"
+    "name": "Nancy Mace",
+    "bioguide_id": "M000194"
   },
   "SC02": {
     "party": "R",
-    "name": "Joe Wilson"
+    "name": "Joe Wilson",
+    "bioguide_id": "W000795"
   },
   "SC03": {
     "party": "R",
-    "name": "Sheri Biggs"
+    "name": "Sheri Biggs",
+    "bioguide_id": "B001325"
   },
   "SC04": {
     "party": "R",
-    "name": "William R. Timmons IV"
+    "name": "William R. Timmons IV",
+    "bioguide_id": "T000480"
   },
   "SC05": {
     "party": "R",
-    "name": "Ralph Norman"
+    "name": "Ralph Norman",
+    "bioguide_id": "N000190"
   },
   "SC06": {
     "party": "D",
-    "name": "James E. Clyburn"
+    "name": "James E. Clyburn",
+    "bioguide_id": "C000537"
   },
   "SC07": {
     "party": "R",
-    "name": "Russell Fry"
+    "name": "Russell Fry",
+    "bioguide_id": "F000478"
   },
   "SD00": {
     "party": "R",
-    "name": "Dusty Johnson"
+    "name": "Dusty Johnson",
+    "bioguide_id": "J000301"
   },
   "TN01": {
     "party": "R",
-    "name": "Diana Harshbarger"
+    "name": "Diana Harshbarger",
+    "bioguide_id": "H001086"
   },
   "TN02": {
     "party": "R",
-    "name": "Tim Burchett"
+    "name": "Tim Burchett",
+    "bioguide_id": "B001309"
   },
   "TN03": {
     "party": "R",
-    "name": "Charles J. \"Chuck\" Fleischmann"
+    "name": "Charles J. \"Chuck\" Fleischmann",
+    "bioguide_id": "F000459"
   },
   "TN04": {
     "party": "R",
-    "name": "Scott DesJarlais"
+    "name": "Scott DesJarlais",
+    "bioguide_id": "D000616"
   },
   "TN05": {
     "party": "R",
-    "name": "Andrew Ogles"
+    "name": "Andrew Ogles",
+    "bioguide_id": "O000175"
   },
   "TN06": {
     "party": "R",
-    "name": "John W. Rose"
+    "name": "John W. Rose",
+    "bioguide_id": "R000612"
   },
   "TN07": {
     "party": "R",
-    "name": "Matt Van Epps"
+    "name": "Matt Van Epps",
+    "bioguide_id": "V000139"
   },
   "TN08": {
     "party": "R",
-    "name": "David Kustoff"
+    "name": "David Kustoff",
+    "bioguide_id": "K000392"
   },
   "TN09": {
     "party": "D",
-    "name": "Steve Cohen"
+    "name": "Steve Cohen",
+    "bioguide_id": "C001068"
   },
   "TX01": {
     "party": "R",
-    "name": "Nathaniel Moran"
+    "name": "Nathaniel Moran",
+    "bioguide_id": "M001224"
   },
   "TX02": {
     "party": "R",
-    "name": "Dan Crenshaw"
+    "name": "Dan Crenshaw",
+    "bioguide_id": "C001120"
   },
   "TX03": {
     "party": "R",
-    "name": "Keith Self"
+    "name": "Keith Self",
+    "bioguide_id": "S001224"
   },
   "TX04": {
     "party": "R",
-    "name": "Pat Fallon"
+    "name": "Pat Fallon",
+    "bioguide_id": "F000246"
   },
   "TX05": {
     "party": "R",
-    "name": "Lance Gooden"
+    "name": "Lance Gooden",
+    "bioguide_id": "G000589"
   },
   "TX06": {
     "party": "R",
-    "name": "Jake Ellzey"
+    "name": "Jake Ellzey",
+    "bioguide_id": "E000071"
   },
   "TX07": {
     "party": "D",
-    "name": "Lizzie Fletcher"
+    "name": "Lizzie Fletcher",
+    "bioguide_id": "F000468"
   },
   "TX08": {
     "party": "R",
-    "name": "Morgan Luttrell"
+    "name": "Morgan Luttrell",
+    "bioguide_id": "L000603"
   },
   "TX09": {
     "party": "D",
-    "name": "Al Green"
+    "name": "Al Green",
+    "bioguide_id": "G000553"
   },
   "TX10": {
     "party": "R",
-    "name": "Michael T. McCaul"
+    "name": "Michael T. McCaul",
+    "bioguide_id": "M001157"
   },
   "TX11": {
     "party": "R",
-    "name": "August Pfluger"
+    "name": "August Pfluger",
+    "bioguide_id": "P000048"
   },
   "TX12": {
     "party": "R",
-    "name": "Craig A. Goldman"
+    "name": "Craig A. Goldman",
+    "bioguide_id": "G000601"
   },
   "TX13": {
     "party": "R",
-    "name": "Ronny Jackson"
+    "name": "Ronny Jackson",
+    "bioguide_id": "J000304"
   },
   "TX14": {
     "party": "R",
-    "name": "Randy K. Weber, Sr."
+    "name": "Randy K. Weber, Sr.",
+    "bioguide_id": "W000814"
   },
   "TX15": {
     "party": "R",
-    "name": "Monica De La Cruz"
+    "name": "Monica De La Cruz",
+    "bioguide_id": "D000594"
   },
   "TX16": {
     "party": "D",
-    "name": "Veronica Escobar"
+    "name": "Veronica Escobar",
+    "bioguide_id": "E000299"
   },
   "TX17": {
     "party": "R",
-    "name": "Pete Sessions"
+    "name": "Pete Sessions",
+    "bioguide_id": "S000250"
   },
   "TX18": {
     "party": "D",
-    "name": "Christian D. Menefee"
+    "name": "Christian D. Menefee",
+    "bioguide_id": "M001245"
   },
   "TX19": {
     "party": "R",
-    "name": "Jodey C. Arrington"
+    "name": "Jodey C. Arrington",
+    "bioguide_id": "A000375"
   },
   "TX20": {
     "party": "D",
-    "name": "Joaquin Castro"
+    "name": "Joaquin Castro",
+    "bioguide_id": "C001091"
   },
   "TX21": {
     "party": "R",
-    "name": "Chip Roy"
+    "name": "Chip Roy",
+    "bioguide_id": "R000614"
   },
   "TX22": {
     "party": "R",
-    "name": "Troy E. Nehls"
+    "name": "Troy E. Nehls",
+    "bioguide_id": "N000026"
   },
   "TX23": {
     "party": null,
-    "name": null
+    "name": null,
+    "bioguide_id": null
   },
   "TX24": {
     "party": "R",
-    "name": "Beth Van Duyne"
+    "name": "Beth Van Duyne",
+    "bioguide_id": "V000134"
   },
   "TX25": {
     "party": "R",
-    "name": "Roger Williams"
+    "name": "Roger Williams",
+    "bioguide_id": "W000816"
   },
   "TX26": {
     "party": "R",
-    "name": "Brandon Gill"
+    "name": "Brandon Gill",
+    "bioguide_id": "G000603"
   },
   "TX27": {
     "party": "R",
-    "name": "Michael Cloud"
+    "name": "Michael Cloud",
+    "bioguide_id": "C001115"
   },
   "TX28": {
     "party": "D",
-    "name": "Henry Cuellar"
+    "name": "Henry Cuellar",
+    "bioguide_id": "C001063"
   },
   "TX29": {
     "party": "D",
-    "name": "Sylvia R. Garcia"
+    "name": "Sylvia R. Garcia",
+    "bioguide_id": "G000587"
   },
   "TX30": {
     "party": "D",
-    "name": "Jasmine Crockett"
+    "name": "Jasmine Crockett",
+    "bioguide_id": "C001130"
   },
   "TX31": {
     "party": "R",
-    "name": "John R. Carter"
+    "name": "John R. Carter",
+    "bioguide_id": "C001051"
   },
   "TX32": {
     "party": "D",
-    "name": "Julie Johnson"
+    "name": "Julie Johnson",
+    "bioguide_id": "J000310"
   },
   "TX33": {
     "party": "D",
-    "name": "Marc A. Veasey"
+    "name": "Marc A. Veasey",
+    "bioguide_id": "V000131"
   },
   "TX34": {
     "party": "D",
-    "name": "Vicente Gonzalez"
+    "name": "Vicente Gonzalez",
+    "bioguide_id": "G000581"
   },
   "TX35": {
     "party": "D",
-    "name": "Greg Casar"
+    "name": "Greg Casar",
+    "bioguide_id": "C001131"
   },
   "TX36": {
     "party": "R",
-    "name": "Brian Babin"
+    "name": "Brian Babin",
+    "bioguide_id": "B001291"
   },
   "TX37": {
     "party": "D",
-    "name": "Lloyd Doggett"
+    "name": "Lloyd Doggett",
+    "bioguide_id": "D000399"
   },
   "TX38": {
     "party": "R",
-    "name": "Wesley Hunt"
+    "name": "Wesley Hunt",
+    "bioguide_id": "H001095"
   },
   "UT01": {
     "party": "R",
-    "name": "Blake D. Moore"
+    "name": "Blake D. Moore",
+    "bioguide_id": "M001213"
   },
   "UT02": {
     "party": "R",
-    "name": "Celeste Maloy"
+    "name": "Celeste Maloy",
+    "bioguide_id": "M001228"
   },
   "UT03": {
     "party": "R",
-    "name": "Mike Kennedy"
+    "name": "Mike Kennedy",
+    "bioguide_id": "K000403"
   },
   "UT04": {
     "party": "R",
-    "name": "Burgess Owens"
+    "name": "Burgess Owens",
+    "bioguide_id": "O000086"
   },
   "VA01": {
     "party": "R",
-    "name": "Robert J. Wittman"
+    "name": "Robert J. Wittman",
+    "bioguide_id": "W000804"
   },
   "VA02": {
     "party": "R",
-    "name": "Jennifer A. Kiggans"
+    "name": "Jennifer A. Kiggans",
+    "bioguide_id": "K000399"
   },
   "VA03": {
     "party": "D",
-    "name": "Robert C. \"Bobby\" Scott"
+    "name": "Robert C. \"Bobby\" Scott",
+    "bioguide_id": "S000185"
   },
   "VA04": {
     "party": "D",
-    "name": "Jennifer L. McClellan"
+    "name": "Jennifer L. McClellan",
+    "bioguide_id": "M001227"
   },
   "VA05": {
     "party": "R",
-    "name": "John J. McGuire III"
+    "name": "John J. McGuire III",
+    "bioguide_id": "M001239"
   },
   "VA06": {
     "party": "R",
-    "name": "Ben Cline"
+    "name": "Ben Cline",
+    "bioguide_id": "C001118"
   },
   "VA07": {
     "party": "D",
-    "name": "Eugene Simon Vindman"
+    "name": "Eugene Simon Vindman",
+    "bioguide_id": "V000138"
   },
   "VA08": {
     "party": "D",
-    "name": "Donald S. Beyer, Jr."
+    "name": "Donald S. Beyer, Jr.",
+    "bioguide_id": "B001292"
   },
   "VA09": {
     "party": "R",
-    "name": "H. Morgan Griffith"
+    "name": "H. Morgan Griffith",
+    "bioguide_id": "G000568"
   },
   "VA10": {
     "party": "D",
-    "name": "Suhas Subramanyam"
+    "name": "Suhas Subramanyam",
+    "bioguide_id": "S001230"
   },
   "VA11": {
     "party": "D",
-    "name": "James R. Walkinshaw"
+    "name": "James R. Walkinshaw",
+    "bioguide_id": "W000831"
   },
   "VI00": {
     "party": "D",
-    "name": "Stacey E. Plaskett"
+    "name": "Stacey E. Plaskett",
+    "bioguide_id": "P000610"
   },
   "VT00": {
     "party": "D",
-    "name": "Becca Balint"
+    "name": "Becca Balint",
+    "bioguide_id": "B001318"
   },
   "WA01": {
     "party": "D",
-    "name": "Suzan K. DelBene"
+    "name": "Suzan K. DelBene",
+    "bioguide_id": "D000617"
   },
   "WA02": {
     "party": "D",
-    "name": "Rick Larsen"
+    "name": "Rick Larsen",
+    "bioguide_id": "L000560"
   },
   "WA03": {
     "party": "D",
-    "name": "Marie Gluesenkamp Perez"
+    "name": "Marie Gluesenkamp Perez",
+    "bioguide_id": "G000600"
   },
   "WA04": {
     "party": "R",
-    "name": "Dan Newhouse"
+    "name": "Dan Newhouse",
+    "bioguide_id": "N000189"
   },
   "WA05": {
     "party": "R",
-    "name": "Michael Baumgartner"
+    "name": "Michael Baumgartner",
+    "bioguide_id": "B001322"
   },
   "WA06": {
     "party": "D",
-    "name": "Emily Randall"
+    "name": "Emily Randall",
+    "bioguide_id": "R000621"
   },
   "WA07": {
     "party": "D",
-    "name": "Pramila Jayapal"
+    "name": "Pramila Jayapal",
+    "bioguide_id": "J000298"
   },
   "WA08": {
     "party": "D",
-    "name": "Kim Schrier"
+    "name": "Kim Schrier",
+    "bioguide_id": "S001216"
   },
   "WA09": {
     "party": "D",
-    "name": "Adam Smith"
+    "name": "Adam Smith",
+    "bioguide_id": "S000510"
   },
   "WA10": {
     "party": "D",
-    "name": "Marilyn Strickland"
+    "name": "Marilyn Strickland",
+    "bioguide_id": "S001159"
   },
   "WI01": {
     "party": "R",
-    "name": "Bryan Steil"
+    "name": "Bryan Steil",
+    "bioguide_id": "S001213"
   },
   "WI02": {
     "party": "D",
-    "name": "Mark Pocan"
+    "name": "Mark Pocan",
+    "bioguide_id": "P000607"
   },
   "WI03": {
     "party": "R",
-    "name": "Derrick Van Orden"
+    "name": "Derrick Van Orden",
+    "bioguide_id": "V000135"
   },
   "WI04": {
     "party": "D",
-    "name": "Gwen Moore"
+    "name": "Gwen Moore",
+    "bioguide_id": "M001160"
   },
   "WI05": {
     "party": "R",
-    "name": "Scott Fitzgerald"
+    "name": "Scott Fitzgerald",
+    "bioguide_id": "F000471"
   },
   "WI06": {
     "party": "R",
-    "name": "Glenn Grothman"
+    "name": "Glenn Grothman",
+    "bioguide_id": "G000576"
   },
   "WI07": {
     "party": "R",
-    "name": "Thomas P. Tiffany"
+    "name": "Thomas P. Tiffany",
+    "bioguide_id": "T000165"
   },
   "WI08": {
     "party": "R",
-    "name": "Tony Wied"
+    "name": "Tony Wied",
+    "bioguide_id": "W000829"
   },
   "WV01": {
     "party": "R",
-    "name": "Carol D. Miller"
+    "name": "Carol D. Miller",
+    "bioguide_id": "M001205"
   },
   "WV02": {
     "party": "R",
-    "name": "Riley M. Moore"
+    "name": "Riley M. Moore",
+    "bioguide_id": "M001235"
   },
   "WY00": {
     "party": "R",
-    "name": "Harriet M. Hageman"
+    "name": "Harriet M. Hageman",
+    "bioguide_id": "H001096"
   }
 }
