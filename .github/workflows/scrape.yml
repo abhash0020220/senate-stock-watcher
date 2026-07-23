@@ -2,9 +2,9 @@ name: Scrape Congress trade disclosures
 
 on:
   schedule:
-    # Every Monday at 09:00 UTC. Free — runs on GitHub's infrastructure,
+    # Every day at 09:00 UTC. Free — runs on GitHub's infrastructure,
     # no API keys, no Claude involved, just the plain Python scrapers.
-    - cron: '0 9 * * 1'
+    - cron: '0 9 * * *'
   workflow_dispatch: {}
 
 permissions:
