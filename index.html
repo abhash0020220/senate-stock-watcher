@@ -27,6 +27,8 @@
   <div class="view-tabs">
     <button class="view-tab active" id="tabTrades" data-view="trades">Trades</button>
     <button class="view-tab" id="tabAnalytics" data-view="analytics">Analytics</button>
+    <button class="view-tab" id="tabBlog" data-view="blog">Blog</button>
+    <button class="view-tab" id="tabAbout" data-view="about">About</button>
   </div>
 
   <section id="analyticsView" class="analytics-view" style="display:none;">
@@ -188,6 +190,91 @@
       <div class="modal-chart-wrap"><canvas id="modalCanvas"></canvas></div>
     </div>
   </div>
+
+  <section id="blogView" style="display:none;">
+    <article class="chart-card article">
+      <h1 class="article_title">Congress Is Trading Stocks While Writing the Rules. Here's What That Actually Means.</h1>
+      <p class="article_meta">A field guide to the STOCK Act, the loopholes in it, the fight to ban the practice outright, and how to read the raw data yourself.</p>
+
+      <p>Every year, a few hundred members of the U.S. House and Senate buy and sell individual stocks — sometimes in companies whose regulation, contracts, or subsidies they personally vote on. It's completely legal. It's also the subject of a decade-long argument in Washington about whether it should be. This page is a plain-language walkthrough of the law that governs it, the research on whether lawmakers actually profit from the arrangement, and where the current push to ban the practice outright actually stands — with links to the primary sources at the end so you don't have to take any of this on faith.</p>
+
+      <h2>The basic problem</h2>
+      <p>Members of Congress have access to information the rest of the market doesn't: draft legislation, closed-door briefings, regulatory previews, defense appropriations, upcoming antitrust actions. A member sitting on the House Financial Services Committee, for instance, hears about coming bank regulation before it's public. A member on Armed Services sees defense budget allocations before contractors do. If that member — or their spouse — happens to also trade individual stocks in those same sectors, the appearance of a conflict is immediate, whether or not any actual wrongdoing occurred.</p>
+      <p>That tension is the entire reason this tool exists: the trades are public record, but they're scattered across two separate government websites, published as unsearchable PDFs and paginated HTML tables, with no way to see them in aggregate. Making them easy to browse doesn't prove anyone did anything wrong — it just removes the friction that keeps most people from ever looking.</p>
+
+      <h2>What the STOCK Act actually requires</h2>
+      <p>The <strong>Stop Trading on Congressional Knowledge (STOCK) Act</strong> passed in 2012 with near-unanimous support (96–3 in the Senate, 417–2 in the House) after a "60 Minutes" segment on congressional trading generated public pressure. It does three specific things:</p>
+      <ul>
+        <li>It explicitly states that members of Congress and their staff are <em>not exempt</em> from insider-trading law — clarifying that the SEC can prosecute them the same as anyone else.</li>
+        <li>It requires any trade over $1,000 (by the member, spouse, or dependent child) to be publicly disclosed within 45 days, via a Periodic Transaction Report (PTR) — the exact filings this site scrapes and displays.</li>
+        <li>It bars using non-public government information for personal financial benefit, and bars "tipping" that information to someone else who trades on it.</li>
+      </ul>
+      <p>What it does <em>not</em> do is ban the trading itself. A member can sit on a committee that directly oversees an industry and still legally buy and sell that industry's stocks, as long as the trade is disclosed within the window. Enforcement is also famously toothless: the standard penalty for filing late is a flat $200 fine, which is often waived entirely by House or Senate ethics offices. A 2021 investigation by Business Insider found dozens of members with repeated, unpunished STOCK Act violations — and the pattern hasn't gone away since. <a href="https://www.congress.gov/member/markwayne-mullin/M001190" target="_blank" rel="noopener">Sen. Markwayne Mullin</a>, for example, has trades in this dataset disclosed <strong>over 900 days</strong> after they happened — you can look them up yourself using the "Filed" column and the "Slowest to file" sort on the Trades tab.</p>
+
+      <h2>Does it actually pay off?</h2>
+      <p>This is genuinely contested, and the research has moved over time. The earliest and most-cited study — Ziobrowski, Boyd, Cheng, and Ziobrowski (2004), published in the <em>Journal of Financial and Quantitative Analysis</em> — found that a portfolio mimicking Senate purchases beat the market by roughly 115 basis points a month, which the authors described as evidence senators were "trading with a substantial informational advantage." A related follow-up found a smaller but still positive edge for House members.</p>
+      <p>More recent work complicates that picture. Eggers and Hainmueller's later analysis (NBER working paper) found that, once you account for the full portfolio and time period more carefully, members of Congress would generally have been just as well off — or better off — in a plain index fund. The honest summary: there's decent evidence of an edge in the earlier data, weaker evidence of one more recently, and no consensus that it's gone away entirely. Nobody claims lawmakers are bad investors on average; the disagreement is over whether their access explains any outperformance, or whether it's noise.</p>
+
+      <h2>The current push to just ban it</h2>
+      <p>Given the enforcement problems, the debate in Washington has increasingly shifted from "improve disclosure" to "just don't let them trade individual stocks at all." Several bills reflect that shift:</p>
+      <ul>
+        <li>The <strong>ETHICS Act</strong> (Ending Trading and Holdings in Congressional Stocks) would bar members, the president, and the vice president from trading individual securities while in office, with a penalty of a full month's salary or 10% of the asset's value, whichever is greater. It cleared a bipartisan Senate committee vote and was reintroduced in the House in August 2025.</li>
+        <li>The <strong>Restore Trust in Congress Act</strong>, introduced in the House in September 2025, has attracted more than eighty co-sponsors from both parties.</li>
+        <li>As of November 2025, the House was actively debating a floor vote on a trading ban — a genuinely live legislative fight, not just a proposal that dies in committee.</li>
+      </ul>
+      <p>Public opinion isn't really the obstacle: polling cited by the Campaign Legal Center puts support for a ban at roughly 86% across party lines, which is about as close to universal agreement as anything gets in American politics right now. The obstacle is that any bill has to pass through the very body it would restrict.</p>
+
+      <h2>How to actually use this data</h2>
+      <p>A few starting points if you want to dig in yourself rather than take anyone's summary of it:</p>
+      <ul>
+        <li>Sort the Trades tab by <strong>"Slowest to file"</strong> to see who's treating the 45-day deadline as optional.</li>
+        <li>Use the <strong>"Filed after 45+ days"</strong> filter to isolate every trade that missed the legal deadline — that's the STOCK Act's actual compliance line, not a guess.</li>
+        <li>On the Analytics tab, <strong>"Average days to file"</strong> by party and by chamber shows whether slow filing is an individual habit or a systemic one.</li>
+        <li>The <strong>Dollar volume by ticker</strong> chart surfaces which specific companies see the most congressional money moving through them — worth cross-referencing against who sits on which committee.</li>
+      </ul>
+      <p>None of this proves misconduct on its own. A late filing is usually sloppy paperwork, not a crime — the STOCK Act's disclosure requirement and its insider-trading provisions are legally separate, and only a tiny handful of cases have ever triggered the latter. What the data is good for is exactly what it was designed for: making the pattern visible enough that voters, reporters, and watchdog groups don't have to take anyone's word for it.</p>
+
+      <h2>Further reading</h2>
+      <ul class="resource-list">
+        <li><a href="https://www.congress.gov/112/plaws/publ105/PLAW-112publ105.htm" target="_blank" rel="noopener">STOCK Act — full official text</a> <span class="resource-note">Public Law 112-105, via Congress.gov</span></li>
+        <li><a href="https://www.congress.gov/bill/112th-congress/senate-bill/2038" target="_blank" rel="noopener">S.2038 — STOCK Act bill tracker</a> <span class="resource-note">Sponsor, votes, and full legislative history</span></li>
+        <li><a href="https://campaignlegal.org/update/congressional-stock-trading-and-stock-act" target="_blank" rel="noopener">Congressional Stock Trading and the STOCK Act</a> <span class="resource-note">Campaign Legal Center — plain-language overview of the law's gaps</span></li>
+        <li><a href="https://www.cbo.gov/publication/60708" target="_blank" rel="noopener">S. 1171, the ETHICS Act</a> <span class="resource-note">Congressional Budget Office's official cost/impact analysis</span></li>
+        <li><a href="https://www.npr.org/2025/11/21/nx-s1-5613395/house-considers-banning-stock-trading-by-members-of-congress" target="_blank" rel="noopener">House considers banning stock trading by members of Congress</a> <span class="resource-note">NPR, November 2025 — where the ban debate stands right now</span></li>
+        <li><a href="https://consumerwatchdog.org/sites/default/files/resources/abnormalreturnsziobrowski.pdf" target="_blank" rel="noopener">Abnormal Returns from the Common Stock Investments of the U.S. Senate</a> <span class="resource-note">Ziobrowski et al., Journal of Financial and Quantitative Analysis, 2004</span></li>
+        <li><a href="https://www.nber.org/system/files/working_papers/w26975/w26975.pdf" target="_blank" rel="noopener">Senators As Feckless As the Rest of Us at Stock Picking</a> <span class="resource-note">Eggers &amp; Hainmueller, NBER working paper — the counter-argument to Ziobrowski</span></li>
+        <li><a href="https://news.yahoo.com/64-members-congress-violated-law-125839548.html" target="_blank" rel="noopener">64 members of Congress have violated a law designed to prevent insider trading</a> <span class="resource-note">Coverage of Business Insider's "Conflicted Congress" investigation</span></li>
+        <li><a href="https://govfacts.org/accountability-ethics/ethics-conflicts-of-interest/stock-trading-by-officials/congressional-stock-trading-the-law-the-conflicts-and-the-push-for-a-ban/" target="_blank" rel="noopener">Congressional Stock Trading: The Law, the Conflicts, and the Push for a Ban</a> <span class="resource-note">GovFacts — longer-form explainer tying the law, the research, and the reform bills together</span></li>
+      </ul>
+    </article>
+  </section>
+
+  <section id="aboutView" style="display:none;">
+    <article class="chart-card article">
+      <h1 class="article_title">About this site</h1>
+      <p class="article_meta">A solo, independent side project — not affiliated with Congress, any political party, or any news organization.</p>
+
+      <h2>What this is</h2>
+      <p>Hill &amp; Wall is a free, publicly available tracker of stock trades disclosed by U.S. House members and Senators, built by one person as a personal project. It exists because the underlying data is technically public but practically unusable: House filings are scanned into unsearchable PDFs, Senate filings are buried in paginated HTML tables, and neither chamber publishes anything you could actually search, sort, or chart. This site scrapes both, parses them into a consistent format, and makes the result freely browsable.</p>
+
+      <h2>How it's built</h2>
+      <p>The whole thing is deliberately zero-cost: no paid APIs, no backend server, no database. It's static HTML/CSS/JavaScript, hosted for free on GitHub Pages. A small set of Python scrapers pulls directly from the House Clerk's and Senate's own disclosure sites (both are free and require no API key), plus each chamber's public member directory for party affiliation and official profile links. A scheduled, free GitHub Actions job keeps the data refreshing on its own. All of the code — scrapers included — is open source.</p>
+
+      <h2>Accuracy and limitations</h2>
+      <p>This tool reproduces exactly what each chamber publishes, including that data's real-world imperfections: filers occasionally mistype a transaction date, disclosure amounts are reported as dollar ranges rather than exact figures (that's the law, not a limitation of this site), and a small number of older filings exist only as scanned images that can't be reliably parsed. Where a date is provably impossible — like a disclosure filed before the trade it's disclosing — this site flags it visually rather than silently "correcting" it. Nothing here should be read as an accusation of wrongdoing; a late filing is almost always sloppy paperwork, not a crime.</p>
+
+      <h2>Who built it</h2>
+      <p>Built and maintained by one person, unaffiliated with any campaign, party, media outlet, or advocacy group. The name behind it is intentionally not listed here — the code, the data pipeline, and the sourcing speak for themselves, and you're welcome to verify every claim on this site against the primary sources linked on the Blog tab rather than take anyone's word for it. Bug reports, corrections, and contributions are welcome through the project's public repository.</p>
+
+      <h2>Data sources</h2>
+      <ul>
+        <li><a href="https://disclosures-clerk.house.gov/FinancialDisclosure" target="_blank" rel="noopener">disclosures-clerk.house.gov</a> — House Periodic Transaction Reports</li>
+        <li><a href="https://efdsearch.senate.gov/search/" target="_blank" rel="noopener">efdsearch.senate.gov</a> — Senate Periodic Transaction Reports</li>
+        <li><a href="https://clerk.house.gov" target="_blank" rel="noopener">clerk.house.gov</a> — House member directory (party, district)</li>
+        <li><a href="https://www.senate.gov" target="_blank" rel="noopener">senate.gov</a> — Senate member directory (party, state)</li>
+      </ul>
+    </article>
+  </section>
 
   <div id="tradesView">
 

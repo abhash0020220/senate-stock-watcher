@@ -53,8 +53,12 @@ const els = {
   pageInfoBottom: document.getElementById('pageInfoBottom'),
   tabTrades: document.getElementById('tabTrades'),
   tabAnalytics: document.getElementById('tabAnalytics'),
+  tabBlog: document.getElementById('tabBlog'),
+  tabAbout: document.getElementById('tabAbout'),
   tradesView: document.getElementById('tradesView'),
   analyticsView: document.getElementById('analyticsView'),
+  blogView: document.getElementById('blogView'),
+  aboutView: document.getElementById('aboutView'),
   memberSelect: document.getElementById('memberSelect'),
   partyCaveat: document.getElementById('partyCaveat'),
   analyticsChamberFilter: document.getElementById('analyticsChamberFilter'),
@@ -316,12 +320,15 @@ function monthLabel(m) {
 }
 
 function switchView(view) {
-  const showAnalytics = view === 'analytics';
-  els.tradesView.style.display = showAnalytics ? 'none' : '';
-  els.analyticsView.style.display = showAnalytics ? '' : 'none';
-  els.tabTrades.classList.toggle('active', !showAnalytics);
-  els.tabAnalytics.classList.toggle('active', showAnalytics);
-  if (showAnalytics && !analyticsBuilt) {
+  els.tradesView.style.display = view === 'trades' ? '' : 'none';
+  els.analyticsView.style.display = view === 'analytics' ? '' : 'none';
+  els.blogView.style.display = view === 'blog' ? '' : 'none';
+  els.aboutView.style.display = view === 'about' ? '' : 'none';
+  els.tabTrades.classList.toggle('active', view === 'trades');
+  els.tabAnalytics.classList.toggle('active', view === 'analytics');
+  els.tabBlog.classList.toggle('active', view === 'blog');
+  els.tabAbout.classList.toggle('active', view === 'about');
+  if (view === 'analytics' && !analyticsBuilt) {
     buildAnalytics();
     analyticsBuilt = true;
   }
@@ -901,6 +908,8 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && els.char
 
 els.tabTrades.addEventListener('click', () => switchView('trades'));
 els.tabAnalytics.addEventListener('click', () => switchView('analytics'));
+els.tabBlog.addEventListener('click', () => switchView('blog'));
+els.tabAbout.addEventListener('click', () => switchView('about'));
 els.analyticsChamberFilter.addEventListener('change', () => {
   populateMemberSelect();
   rebuildAllCharts();
