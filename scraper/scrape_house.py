@@ -79,7 +79,12 @@ def scrape_years(years, delay=0.3, limit=None):
 
 
 if __name__ == '__main__':
-    years = [int(a) for a in sys.argv[1:]] or [2025, 2026]
+    import datetime
+    current_year = datetime.date.today().year
+    # Late-filed PTRs (members get 30-45 days to file) mean trades from the
+    # tail of last year can still land in this year's search results, so
+    # default to scraping both the current and prior year.
+    years = [int(a) for a in sys.argv[1:]] or [current_year - 1, current_year]
     trades = scrape_years(years)
     trades = [t for t in trades if t.get('ticker')]  # drop rows we couldn't identify a ticker for
     out_path = Path(__file__).parent.parent / 'data' / 'transactions.json'

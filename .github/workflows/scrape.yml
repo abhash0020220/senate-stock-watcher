@@ -1,0 +1,40 @@
+name: Scrape House trade disclosures
+
+on:
+  schedule:
+    # Every Monday at 09:00 UTC. Free — runs on GitHub's infrastructure,
+    # no API keys, no Claude involved, just the plain Python scraper.
+    - cron: '0 9 * * 1'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r scraper/requirements.txt
+
+      - name: Run scraper
+        working-directory: scraper
+        run: python3 scrape_house.py
+
+      - name: Refresh party lookup
+        working-directory: scraper
+        run: python3 build_party_lookup.py
+
+      - name: Commit updated data if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/transactions.json data/member_parties.json
+          git diff --cached --quiet && echo "No changes" || git commit -m "Weekly data refresh"
+          git push
