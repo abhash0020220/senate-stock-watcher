@@ -11,6 +11,8 @@
   --text-dim: #8a919c;
   --green: #3ddc84;
   --red: #ff6b6b;
+  --orange: #f7b955;
+  --purple: #c084fc;
 }
 
 body {
@@ -146,7 +148,9 @@ tbody tr:hover { background: var(--surface-2); }
   font-weight: 600;
 }
 .type-purchase { background: rgba(61, 220, 132, 0.15); color: var(--green); }
-.type-sale { background: rgba(255, 107, 107, 0.15); color: var(--red); }
+.type-sale-full { background: rgba(255, 107, 107, 0.15); color: var(--red); }
+.type-sale-partial { background: rgba(247, 185, 85, 0.15); color: var(--orange); }
+.type-exchange { background: rgba(192, 132, 252, 0.15); color: var(--purple); }
 .type-other { background: rgba(255, 255, 255, 0.08); color: var(--text-dim); }
 
 .party-pill {

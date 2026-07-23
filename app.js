@@ -32,6 +32,7 @@ const els = {
   stats: document.getElementById('stats'),
   search: document.getElementById('searchInput'),
   stateFilter: document.getElementById('stateFilter'),
+  partyFilter: document.getElementById('partyFilter'),
   chamberFilter: document.getElementById('chamberFilter'),
   typeFilter: document.getElementById('typeFilter'),
   minAmountFilter: document.getElementById('minAmountFilter'),
@@ -67,9 +68,20 @@ function parseDate(str) {
   return new Date(y, m - 1, d);
 }
 
+// House PTRs just print "S" for a full sale (mapped to "Sale"); Senate
+// filings explicitly print "S (full)" (mapped to "Sale (Full)"). Same
+// underlying event, two different chamber labels — normalize so
+// filtering/coloring doesn't split one thing into two values.
+function normalizeType(type) {
+  return type === 'Sale' ? 'Sale (Full)' : type;
+}
+
 function typeClass(type) {
-  if (type === 'Purchase') return 'type-purchase';
-  if (type.startsWith('Sale')) return 'type-sale';
+  const t = normalizeType(type);
+  if (t === 'Purchase') return 'type-purchase';
+  if (t === 'Sale (Full)') return 'type-sale-full';
+  if (t === 'Sale (Partial)') return 'type-sale-partial';
+  if (t === 'Exchange') return 'type-exchange';
   return 'type-other';
 }
 
@@ -162,6 +174,7 @@ function renderStats() {
 function applyFilters() {
   const q = els.search.value.trim().toLowerCase();
   const stateVal = els.stateFilter.value;
+  const partyVal = els.partyFilter.value;
   const chamberVal = els.chamberFilter.value;
   const typeVal = els.typeFilter.value;
   const minAmount = parseInt(els.minAmountFilter.value, 10) || 0;
@@ -172,8 +185,9 @@ function applyFilters() {
 
   filteredTrades = allTrades.filter(t => {
     if (stateVal && t._state !== stateVal) return false;
+    if (partyVal && t._party !== partyVal) return false;
     if (chamberVal && t.chamber !== chamberVal) return false;
-    if (typeVal && t.type !== typeVal) return false;
+    if (typeVal && normalizeType(t.type) !== typeVal) return false;
     if (minAmount && t._amountLow < minAmount) return false;
     if (fromVal && t._date < fromVal) return false;
     if (toVal && t._date > toVal) return false;
@@ -219,8 +233,8 @@ function renderTable() {
       <td>${escapeHtml(t.chamber)}</td>
       <td>${escapeHtml(STATE_NAMES[t._state] || t._state)}</td>
       <td>${escapeHtml(t.office)}</td>
-      <td><strong>${escapeHtml(t.ticker)}</strong></td>
-      <td><span class="type-pill ${typeClass(t.type)}">${escapeHtml(t.type)}</span></td>
+      <td><strong>${escapeHtml(t.ticker)}</strong> <a class="member-link" href="https://finance.yahoo.com/quote/${encodeURIComponent(t.ticker)}" target="_blank" rel="noopener" title="View on Yahoo Finance">↗</a></td>
+      <td><span class="type-pill ${typeClass(t.type)}">${escapeHtml(normalizeType(t.type))}</span></td>
       <td>${escapeHtml(t.amount)}</td>
       <td>${escapeHtml(t.asset_description)}</td>
       <td>${t.ptr_link ? `<a class="ptr-link" href="${t.ptr_link}" target="_blank" rel="noopener">filing ↗</a>` : ''}</td>
@@ -240,6 +254,7 @@ function renderTable() {
 function clearFilters() {
   els.search.value = '';
   els.stateFilter.value = '';
+  els.partyFilter.value = '';
   els.chamberFilter.value = '';
   els.typeFilter.value = '';
   els.minAmountFilter.value = '0';
@@ -826,6 +841,7 @@ els.analyticsChamberFilter.addEventListener('change', () => {
 
 els.search.addEventListener('input', applyFilters);
 els.stateFilter.addEventListener('change', applyFilters);
+els.partyFilter.addEventListener('change', applyFilters);
 els.chamberFilter.addEventListener('change', applyFilters);
 els.typeFilter.addEventListener('change', applyFilters);
 els.minAmountFilter.addEventListener('change', applyFilters);
